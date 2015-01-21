@@ -1,0 +1,52 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: { default-font: { file: foo32.fnt }, title-font: { file: title48.fnt }, small-font: { file: foo24.fnt } },
+com.badlogic.gdx.graphics.Color: {
+	green: { a: 1, b: 0, g: 1, r: 0 },
+	white: { a: 1, b: 1, g: 1, r: 1 },
+	red: { a: 1, b: 0, g: 0, r: 1 },
+	black: { a: 1, b: 0, g: 0, r: 0 }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle: {
+	default: { down: bt, up: bt },
+	toggle: { down: bt, checked: bt-clicked, up: bt },
+	buy: { down: bt-buy, checked: bt-buy, up: bt-buy },
+	bt-cancel: { down: bt-cancel, checked: bt-cancel, up: bt-cancel }
+},
+
+com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle: {
+	default: { down: bt, up: bt, font: default-font, fontColor: white },
+	toggle: { down: bt, up: bt, checked: bt-clicked, font: default-font, fontColor: white, downFontColor: red },
+	level-0: {down: lvl-0, up: lvl-0, checked: lvl-0, font: default-font, fontColor: white, downFontColor: red},
+	level-1: {down: lvl-1, up: lvl-1, checked: lvl-1, font: default-font, fontColor: white, downFontColor: red},
+	level-2: {down: lvl-2, up: lvl-2, checked: lvl-2, font: default-font, fontColor: white, downFontColor: red},
+	level-3: {down: lvl-3, up: lvl-3, checked: lvl-3, font: default-font, fontColor: white, downFontColor: red},
+	level-locked: {down: lvl-lock, up: lvl-lock, checked: lvl-lock, font: default-font, fontColor: white, downFontColor: red}
+},
+com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle: {
+	default: { }
+},
+com.badlogic.gdx.scenes.scene2d.ui.SelectBox$SelectBoxStyle: {
+	default: {
+		font: default-font, fontColor: white, background: bt,
+		scrollStyle: default,
+		listStyle: { font: default-font, selection: bt }
+	}
+},
+com.badlogic.gdx.scenes.scene2d.ui.SplitPane$SplitPaneStyle: {
+	default-vertical: { handle: panel },
+	default-horizontal: { handle: panel }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle: {
+	default: { titleFont: default-font, background: panel, titleFontColor: white },
+	dialog: { titleFont: default-font, background: panel, titleFontColor: white, stageBackground: panel }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
+	default-horizontal: { background: Slider, knob: Slider-Button }
+},
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	default: { font: default-font, fontColor: white },
+	title: { font: title-font, fontColor: white },
+	gold:  { font: title-font, fontColor: white, background: gold-label },
+	small:  { font: small-font, fontColor: white }
+}
+}

@@ -1,0 +1,232 @@
+package fr.alex.games.entity;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.esotericsoftware.spine.AnimationState;
+import com.esotericsoftware.spine.AnimationStateData;
+import com.esotericsoftware.spine.Bone;
+import com.esotericsoftware.spine.Skeleton;
+import com.esotericsoftware.spine.SkeletonBounds;
+import com.esotericsoftware.spine.SkeletonData;
+import com.esotericsoftware.spine.SkeletonJson;
+import com.esotericsoftware.spine.SkeletonRenderer;
+import com.esotericsoftware.spine.Skin;
+import com.esotericsoftware.spine.Slot;
+import com.esotericsoftware.spine.attachments.AtlasAttachmentLoader;
+import com.esotericsoftware.spine.attachments.Attachment;
+import com.esotericsoftware.spine.attachments.AttachmentType;
+import com.esotericsoftware.spine.attachments.BoundingBoxAttachment;
+import com.esotericsoftware.spine.attachments.RegionAttachment;
+
+import fr.alex.games.GM;
+
+public class SpineSpatial extends SimpleSpatial {
+	private Skeleton skeleton;
+	private AnimationStateData stateData;
+	private AnimationState animState;
+	private Bone root;
+	private Texture diffuse;
+	private Texture normal;
+
+	public SpineSpatial(String spineFile, boolean flip, Body body, Color color, Vector2 size, Vector2 center, float rotationInDegrees) {
+		GM.assetManager.load(spineFile + ".atlas", TextureAtlas.class);
+		GM.assetManager.load(spineFile + "-diffuse.png", Texture.class);
+		GM.assetManager.load(spineFile + "-normal.png", Texture.class);
+		GM.assetManager.finishLoading();
+		final TextureAtlas atlas = GM.assetManager.get(spineFile + ".atlas", TextureAtlas.class);
+		diffuse = GM.assetManager.get(spineFile + "-diffuse.png", Texture.class);
+		normal = GM.assetManager.get(spineFile + "-normal.png", Texture.class);
+
+		AtlasAttachmentLoader atlasLoader = new AtlasAttachmentLoader(atlas) {
+
+			@Override
+			public RegionAttachment newRegionAttachment(Skin skin, String name, String path) {
+				Box2dAttachment attachment = new Box2dAttachment(name);
+				AtlasRegion region = atlas.findRegion(attachment.getName());
+				if (region == null)
+					throw new RuntimeException("Region not found in atlas: " + attachment);
+				attachment.setRegion(region);
+				return attachment;
+			}
+		};
+
+		SkeletonJson skeletonJson = new SkeletonJson(atlasLoader);
+		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal(spineFile + ".json"));
+
+		float scale = size.y / skeletonData.getHeight();
+		stateData = new AnimationStateData(skeletonData);
+		stateData.setMix("idle", "idle", 0.2f);
+		animState = new AnimationState(stateData);
+		animState.setAnimation(0, "idle", true);
+		animState.getCurrent(0).setTime(Math.round(Math.random() * 10));
+
+		skeleton = new Skeleton(skeletonData);
+		root = skeleton.findBone("root");
+		root.setScale(scale, scale);
+		root.setPosition(body.getPosition().x, body.getPosition().y);
+		skeleton.updateWorldTransform();
+
+		Vector2 vector = new Vector2();
+		for (Slot slot : skeleton.getSlots()) {
+			if (!(slot.getAttachment() instanceof Box2dAttachment))
+				continue;
+			Box2dAttachment attachment = (Box2dAttachment) slot.getAttachment();
+			PolygonShape boxPoly = new PolygonShape();
+			float width = attachment.getWidth() / 2 * attachment.getScaleX() * scale;
+			float height = attachment.getHeight() / 2 * attachment.getScaleY() * scale;
+			Vector2 c = vector.set(attachment.getX() * scale, attachment.getY()* scale);
+			float angle = attachment.getRotation() * MathUtils.degRad;
+			boxPoly.setAsBox(width, height, c, angle);
+			BodyDef boxBodyDef = new BodyDef();
+			boxBodyDef.type = BodyType.DynamicBody;
+			attachment.body = GM.scene.getWorld().createBody(boxBodyDef);
+			attachment.body.createFixture(boxPoly, 1);
+			boxPoly.dispose();
+		}
+
+		defineSpatial(flip, body, color, size, center, rotationInDegrees);
+		idle();
+		updateSlotPosition();
+		body.setActive(false);
+		GM.getWorld().destroyBody(body);
+	}
+	
+	public void setUserData(UserData userData) {
+		this.userData = userData;
+		for (Slot slot : skeleton.getSlots()) {
+			if (!(slot.getAttachment() instanceof Box2dAttachment))
+				continue;
+			Box2dAttachment attachment = (Box2dAttachment) slot.getAttachment();
+			if (attachment.body == null)
+				continue;
+			attachment.body.setUserData(userData);
+		}
+	}
+
+	public void defineSpatial(boolean flip, Body body, Color color, Vector2 size, Vector2 center, float rotationInDegrees) {
+		mBody = body;
+
+		skeleton.setFlip(flip, false);
+		mRotation = rotationInDegrees;
+
+		mHalfSize.set(size.x / 2, size.y / 2);
+		mCenter.set(center);
+
+		/*
+		 * if (body != null) { mTmp.set(body.getPosition());
+		 * skeleton.setPosition(body.getPosition().x, body.getPosition().y);
+		 * //skeleton.setPosition(mTmp.x - size.x / 2, mTmp.y - size.y / 2);
+		 * 
+		 * float angle = mBody.getAngle() * MathUtils.radiansToDegrees;
+		 * //mTmp.set
+		 * (mCenter).rotate(angle).add(mBody.getPosition()).sub(mHalfSize);
+		 * //root.setRotation(mRotation + angle); } else { //mTmp.set(center.x -
+		 * size.x / 2, center.y - size.y / 2);
+		 * root.setRotation(rotationInDegrees); }
+		 */
+	}
+
+	public void flipX() {
+		skeleton.setFlip(!skeleton.getFlipX(), skeleton.getFlipY());
+	}
+
+	public void render(SkeletonRenderer skeletonRenderer, SpriteBatch batch, float delta) {
+		// if this is a dynamic spatial...
+		normal.bind(1);
+		diffuse.bind(0);
+		/*
+		 * if (mBody != null) { // use body information to render it... float
+		 * float angle = mBody.getAngle() * MathUtils.radiansToDegrees;
+		 * mTmp.set(
+		 * mCenter).rotate(angle).add(mBody.getPosition()).sub(mHalfSize);
+		 * 
+		 * skeleton.setPosition(mBody.getPosition().x, mBody.getPosition().y);
+		 * animState.update(delta); animState.apply(skeleton);
+		 * root.setRotation(angle * (skeleton.getFlipX() ? -1 : 1));
+		 * skeleton.updateWorldTransform(); skeletonRenderer.draw(batch,
+		 * skeleton); } else { // else just draw it wherever it was defined at
+		 * skeletonRenderer.draw(batch, skeleton); }
+		 */
+
+		animState.update(delta);
+		animState.apply(skeleton);
+		skeleton.updateWorldTransform();
+		updateSlotPosition();
+
+		skeletonRenderer.draw(batch, skeleton);
+		if (properties != null) {
+			for (Property p : properties) {
+				// p.update(delta);
+				// p.draw(batch);
+			}
+		}
+		if (userData != null) {
+			userData.update(delta);
+		}
+	}
+	
+	private void updateSlotPosition(){
+		for (Slot slot : skeleton.getSlots()) {
+			if (!(slot.getAttachment() instanceof Box2dAttachment))
+				continue;
+			Box2dAttachment attachment = (Box2dAttachment) slot.getAttachment();
+			if (attachment.body == null)
+				continue;
+			attachment.body.setTransform(slot.getBone().getWorldX(), slot.getBone().getWorldY(), slot.getBone().getWorldRotation() * MathUtils.degRad);
+		}
+	}
+
+	public void die() {
+		if (!alreadyDied) {
+			System.out.println("die");
+			
+
+			/*
+			 * for (Slot slot : skeleton.getSlots()) { try {
+			 * System.out.println(slot.getData().getName()); BodyDef b = new
+			 * BodyDef(); b.position.set(slot.getData().getBoneData().getX(),
+			 * slot.getData().getBoneData().getX()); b.type =
+			 * BodyType.DynamicBody; Body body = GM.world.createBody(b);
+			 * 
+			 * PolygonShape shape = new PolygonShape();
+			 * System.out.println(slot.getAttachmentVertices().items); for(float
+			 * f : slot.getData().){ System.out.println(f); }
+			 * shape.set(slot.getAttachmentVertices().items);
+			 * 
+			 * 
+			 * FixtureDef fixtureDef = new FixtureDef(); fixtureDef.shape =
+			 * shape; fixtureDef.density = 2f; fixtureDef.restitution = .5f;
+			 * fixtureDef.friction = .5f; body.createFixture(fixtureDef); }
+			 * catch (Exception e) {
+			 * 
+			 * } }
+			 */
+		}
+		super.die();
+	}
+
+	/**
+	 * Set the chicken animation to idle
+	 */
+	public void idle() {
+		animState.setAnimation(0, "idle", true);
+	}
+
+	static class Box2dAttachment extends RegionAttachment {
+		Body body;
+
+		public Box2dAttachment(String name) {
+			super(name);
+		}
+	}
+}

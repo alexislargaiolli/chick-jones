@@ -1,0 +1,41 @@
+
+coin.png
+size: 262,142
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+aile
+  rotate: true
+  xy: 141, 69
+  size: 72, 97
+  orig: 72, 97
+  offset: 0, 0
+  index: -1
+aile2
+  rotate: true
+  xy: 141, 1
+  size: 66, 88
+  orig: 66, 88
+  offset: 0, 0
+  index: -1
+body
+  rotate: true
+  xy: 1, 2
+  size: 139, 138
+  orig: 139, 138
+  offset: 0, 0
+  index: -1
+eye
+  rotate: true
+  xy: 240, 82
+  size: 28, 20
+  orig: 28, 20
+  offset: 0, 0
+  index: -1
+eye2
+  rotate: true
+  xy: 240, 112
+  size: 29, 21
+  orig: 29, 21
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,263 @@
+
+ui.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+Slider
+  rotate: false
+  xy: 1, 995
+  size: 664, 21
+  orig: 664, 21
+  offset: 0, 0
+  index: -1
+Large-Button-Red
+  rotate: false
+  xy: 667, 939
+  size: 336, 77
+  orig: 336, 77
+  offset: 0, 0
+  index: -1
+World-Unlocked
+  rotate: false
+  xy: 1, 420
+  size: 440, 573
+  orig: 440, 573
+  offset: 0, 0
+  index: -1
+Large-Box-Blue
+  rotate: false
+  xy: 1, 1
+  size: 438, 417
+  orig: 438, 417
+  offset: 0, 0
+  index: -1
+Large-Box-Red
+  rotate: false
+  xy: 441, 1
+  size: 438, 417
+  orig: 438, 417
+  offset: 0, 0
+  index: -1
+direction-arrow
+  rotate: false
+  xy: 881, 929
+  size: 123, 8
+  orig: 123, 8
+  offset: 0, 0
+  index: -1
+Level-2-Star
+  rotate: false
+  xy: 443, 742
+  size: 194, 251
+  orig: 194, 251
+  offset: 0, 0
+  index: -1
+dirction-wheel
+  rotate: false
+  xy: 443, 430
+  size: 310, 310
+  orig: 310, 310
+  offset: 0, 0
+  index: -1
+Level-Locked
+  rotate: false
+  xy: 639, 743
+  size: 194, 194
+  orig: 194, 194
+  offset: 0, 0
+  index: -1
+Small-Button-Red
+  rotate: false
+  xy: 755, 664
+  size: 245, 77
+  orig: 245, 77
+  offset: 0, 0
+  index: -1
+Small-Button-Blue
+  rotate: false
+  xy: 755, 585
+  size: 245, 77
+  orig: 245, 77
+  offset: 0, 0
+  index: -1
+Padlock
+  rotate: false
+  xy: 755, 435
+  size: 96, 148
+  orig: 96, 148
+  offset: 0, 0
+  index: -1
+bt-fire
+  rotate: false
+  xy: 881, 483
+  size: 101, 100
+  orig: 101, 100
+  offset: 0, 0
+  index: -1
+direction-bt
+  rotate: false
+  xy: 853, 421
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+Help
+  rotate: false
+  xy: 915, 386
+  size: 90, 95
+  orig: 90, 95
+  offset: 0, 0
+  index: -1
+Vol-Up
+  rotate: false
+  xy: 881, 294
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Cancel
+  rotate: false
+  xy: 881, 202
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Vol-Down
+  rotate: false
+  xy: 881, 110
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Vol-Mute
+  rotate: false
+  xy: 881, 18
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Forward
+  rotate: false
+  xy: 835, 837
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Menu
+  rotate: false
+  xy: 835, 745
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Settings
+  rotate: false
+  xy: 927, 837
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Pause
+  rotate: false
+  xy: 927, 745
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+default-scroll
+  rotate: false
+  xy: 700, 300
+  size: 20, 20
+  split: 2, 2, 2, 2
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+
+ui2.png
+format: RGBA8888
+filter: Nearest,Linear
+repeat: none
+World-Locked
+  rotate: false
+  xy: 1, 408
+  size: 440, 573
+  orig: 440, 573
+  offset: 0, 0
+  index: -1
+Medium-Box-Blue
+  rotate: false
+  xy: 1, 80
+  size: 438, 326
+  orig: 438, 326
+  offset: 0, 0
+  index: -1
+Level-3-Star
+  rotate: false
+  xy: 443, 730
+  size: 194, 251
+  orig: 194, 251
+  offset: 0, 0
+  index: -1
+Level-Unlocked
+  rotate: false
+  xy: 443, 477
+  size: 194, 251
+  orig: 194, 251
+  offset: 0, 0
+  index: -1
+Level-1-Star
+  rotate: false
+  xy: 639, 730
+  size: 194, 251
+  orig: 194, 251
+  offset: 0, 0
+  index: -1
+Large-Button-Blue
+  rotate: false
+  xy: 1, 1
+  size: 336, 77
+  orig: 336, 77
+  offset: 0, 0
+  index: -1
+gold-label
+  rotate: false
+  xy: 443, 410
+  size: 192, 65
+  orig: 192, 65
+  offset: 0, 0
+  index: -1
+Stop
+  rotate: false
+  xy: 639, 638
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Reset
+  rotate: false
+  xy: 835, 891
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Back
+  rotate: false
+  xy: 639, 546
+  size: 90, 90
+  orig: 90, 90
+  offset: 0, 0
+  index: -1
+Slider-Button
+  rotate: false
+  xy: 731, 640
+  size: 59, 88
+  orig: 59, 88
+  offset: 0, 0
+  index: -1
+white
+  rotate: false
+  xy: 0, 100
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1

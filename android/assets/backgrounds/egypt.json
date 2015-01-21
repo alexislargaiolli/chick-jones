@@ -1,0 +1,98 @@
+{
+width: 1280,
+height: 720,
+speedX: .5,
+speedY: 0,
+layers: [
+	{
+		name: BK,
+		paralaxX: 0,
+		paralaxY: 0,
+		startX: 0,
+		startY: 0,
+		padX: 0,
+		padY: 0
+	},
+	{
+		name: Sun,
+		paralaxX: 0,
+		paralaxY: 0,
+		startX: 40,
+		startY: 350,
+		padX: 0,
+		padY: 0
+	},	
+	{
+		name: Clouds-1,
+		paralaxX: 0.001,
+		paralaxY: 0,
+		startX: 400,
+		startY: 515,
+		padX: 0,
+		padY: 0
+	},
+	{
+		name: Clouds-2,
+		paralaxX: 0.002,
+		paralaxY: 0,
+		startX: 940,
+		startY: 530,
+		padX: 0,
+		padY: 0
+	},			
+	{
+		name: dune1,
+		paralaxX: 0.005,
+		paralaxY: 0.005,
+		startX: 0,
+		startY: -35,
+		padX: 0,
+		padY: 0
+	},
+	{
+		name: Pyramids-1,
+		paralaxX: 0.01,
+		paralaxY: 0.01,
+		startX: 200,
+		startY: 320,
+		padX: 0,
+		padY: 0
+	},	
+	{
+		name: Pyramids-2,
+		paralaxX: 0.01,
+		paralaxY: 0.01,
+		startX: 850,
+		startY: 230,
+		padX: 0,
+		padY: 0
+	},
+	{
+		name: dune2,
+		paralaxX: 0.02,
+		paralaxY: 0.02,
+		startX: 0,
+		startY: -160,
+		padX: 0,
+		padY: 0
+	},	
+	{
+		name: Pyramids-3,
+		paralaxX: 0.05,
+		paralaxY: 0.05,
+		startX: 480,
+		startY: 80,
+		padX: 0,
+		padY: 0
+	},
+	{
+		name: dune3,
+		paralaxX: 0.1,
+		paralaxY: 0.1,
+		startX: 0,
+		startY: -350,
+		padX: 0,
+		padY: 0
+	}
+]
+}

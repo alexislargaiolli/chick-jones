@@ -1,0 +1,97 @@
+
+skeleton.png
+size: 1004,254
+format: RGBA8888
+filter: MipMapNearestLinear,Linear
+repeat: none
+aileback
+  rotate: false
+  xy: 492, 5
+  size: 166, 94
+  orig: 166, 94
+  offset: 0, 0
+  index: -1
+ailefront
+  rotate: false
+  xy: 2, 2
+  size: 259, 87
+  orig: 259, 87
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 91
+  size: 316, 163
+  orig: 316, 163
+  offset: 0, 0
+  index: -1
+cuisse_back
+  rotate: false
+  xy: 575, 182
+  size: 74, 72
+  orig: 74, 72
+  offset: 0, 0
+  index: -1
+cuisse_front
+  rotate: false
+  xy: 413, 12
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1
+foot_back
+  rotate: false
+  xy: 320, 98
+  size: 85, 44
+  orig: 85, 44
+  offset: 0, 0
+  index: -1
+foot_front
+  rotate: false
+  xy: 480, 101
+  size: 87, 41
+  orig: 87, 41
+  offset: 0, 0
+  index: -1
+hat
+  rotate: false
+  xy: 263, 2
+  size: 148, 87
+  orig: 148, 87
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 831, 12
+  size: 242, 173
+  orig: 242, 173
+  offset: 0, 0
+  index: -1
+patte_back
+  rotate: false
+  xy: 575, 114
+  size: 52, 66
+  orig: 52, 66
+  offset: 0, 0
+  index: -1
+patte_front
+  rotate: true
+  xy: 407, 91
+  size: 51, 71
+  orig: 51, 71
+  offset: 0, 0
+  index: -1
+tail
+  rotate: false
+  xy: 320, 144
+  size: 253, 110
+  orig: 254, 110
+  offset: 0, 0
+  index: -1
+worm
+  rotate: false
+  xy: 660, 5
+  size: 169, 249
+  orig: 169, 249
+  offset: 0, 0
+  index: -1

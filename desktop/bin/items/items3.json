@@ -1,0 +1,111 @@
+[
+{
+	class: fr.alex.games.items.Item,
+	gold: 0,
+	name: item.1.name,
+	passives: [
+		{
+			carac: BOW_STRENGTH,
+			type: ADD,
+			bonus: 10
+		}
+	],
+	desc: item.1.desc,
+	icon: item_1_icon,
+	type: BOW,
+	id: 1
+},
+{
+	class: fr.alex.games.items.Item,
+	gold: 100,
+	name: item.4.name,
+	passives: [
+		{
+			carac: BOW_STRENGTH,
+			type: ADD,
+			bonus: 10
+		}
+	],
+	desc: item.4.desc,
+	icon: item_1_icon,
+	type: BOW,
+	id: 4
+},
+{
+	class: fr.alex.games.items.Item,
+	gold: 200,
+	name: item.5.name,
+	passives: [
+		{
+			carac: BOW_STRENGTH,
+			type: ADD,
+			bonus: 5
+		}
+		,{
+			carac: ARROW_COUNT,
+			type: ADD,
+			bonus: 1
+		}
+	],
+	desc: item.5.desc,
+	icon: item_1_icon,
+	type: BOW,
+	id: 5
+},
+{
+	class: fr.alex.games.items.Item,
+	gold: 100,
+	name: item.2.name,
+	passives: [
+		{
+			carac: BOW_STRENGTH,
+			type: ADD,
+			bonus: 1
+		}
+	],
+	desc: item.2.desc,
+	icon: item_2_icon,
+	type: BOW,
+	id: 2
+},
+{
+	class: fr.alex.games.items.Item,
+	gold: 100,
+	name: item.3.name,
+	actives: [
+		{
+			passives: [
+				{
+					carac: TIME_SPEED,
+					type: MUL,
+					bonus: 3
+				}
+			],
+			name: item.3.skill.1.name,
+			cooldown: 30,
+			desc: item.3.skill.1.desc,
+			duration: 5
+		}
+	],
+	desc: item.3.desc,
+	icon: item_3_icon,
+	type: OBJECT,
+	id: 3
+},
+{
+	class: fr.alex.games.items.Item,
+	gold: 100,
+	name: item.6.name,
+	passives: [
+		{
+			carac: BOW_STRENGTH,
+			type: ADD,
+			bonus: 5
+		}
+	],
+	desc: item.6.desc,
+	icon: item_1_icon,
+	type: OBJECT,
+	id: 6
+}
+]

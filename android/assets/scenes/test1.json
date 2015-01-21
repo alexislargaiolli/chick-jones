@@ -1,0 +1,1319 @@
+
+{
+	"allowSleep" : true,
+	"autoClearForces" : true,
+	"body" : 
+	[
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture0",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								20.90651893615723,
+								20.90651893615723,
+								-6.254980087280273,
+								-6.254980087280273
+							],
+							"y" : 
+							[
+								-0.1035966277122498,
+								0.1326017379760742,
+								0.1326017379760742,
+								-0.1035966277122498
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "body0",
+			"position" : 
+			{
+				"x" : 5,
+				"y" : 4
+			},
+			"type" : 0
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 8.138351440429688,
+				"y" : 0.4487758576869965
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 7.734509944915771,
+				"y" : 0.4441340267658234
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 7.585970401763916,
+				"y" : 0.2445340156555176
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 8.277607917785645,
+				"y" : 0.2538177371025085
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 7.831989765167236,
+				"y" : 0.2445340007543564
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 8.054798126220703,
+				"y" : 0.2398921549320221
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 1.566439390182495,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : 
+							[
+								-0.4939563274383545,
+								0.005723476409912109,
+								0.005723476409912109,
+								-0.4939563274383545
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.08181398361921310,
+			"massData-center" : 
+			{
+				"x" : 0,
+				"y" : -0.244116410613060
+			},
+			"massData-mass" : 0.4996798038482666,
+			"name" : "body2",
+			"position" : 
+			{
+				"x" : 8.410688400268555,
+				"y" : 1.639912724494934
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 1.566439390182495,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : 
+							[
+								-0.4939563274383545,
+								0.005723476409912109,
+								0.005723476409912109,
+								-0.4939563274383545
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.08181398361921310,
+			"massData-center" : 
+			{
+				"x" : 0,
+				"y" : -0.244116410613060
+			},
+			"massData-mass" : 0.4996798038482666,
+			"name" : "body2",
+			"position" : 
+			{
+				"x" : 8.410688400268555,
+				"y" : 0.6419126391410828
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 1.566439390182495,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : 
+							[
+								-0.4939563274383545,
+								0.005723476409912109,
+								0.005723476409912109,
+								-0.4939563274383545
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.08181398361921310,
+			"massData-center" : 
+			{
+				"x" : 0,
+				"y" : -0.244116410613060
+			},
+			"massData-mass" : 0.4996798038482666,
+			"name" : "body2",
+			"position" : 
+			{
+				"x" : 6.939218044281006,
+				"y" : 1.635270833969116
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 1.566439390182495,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : 
+							[
+								-0.4939563274383545,
+								0.005723476409912109,
+								0.005723476409912109,
+								-0.4939563274383545
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.08181398361921310,
+			"massData-center" : 
+			{
+				"x" : 0,
+				"y" : -0.244116410613060
+			},
+			"massData-mass" : 0.4996798038482666,
+			"name" : "body2",
+			"position" : 
+			{
+				"x" : 6.939218044281006,
+				"y" : 0.6372707486152649
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 1.565127611160278,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture3",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								-0.01521682739257812,
+								-0.01521682739257812,
+								-0.5142235755920410,
+								-0.5142235755920410
+							],
+							"y" : 
+							[
+								-1.479666471481323,
+								0.4928879737854004,
+								0.4928879737854004,
+								-1.479666471481323
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.6481812000274658,
+			"massData-center" : 
+			{
+				"x" : -0.2647202014923096,
+				"y" : -0.4933892488479614
+			},
+			"massData-mass" : 0.984317958354950,
+			"name" : "body3",
+			"position" : 
+			{
+				"x" : 7.428515911102295,
+				"y" : 2.659165382385254
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 5.224829196929932,
+				"y" : 3.231186151504517
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : 
+							[
+								-0.4939563274383545,
+								0.005723476409912109,
+								0.005723476409912109,
+								-0.4939563274383545
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.08181398361921310,
+			"massData-center" : 
+			{
+				"x" : 0,
+				"y" : -0.244116410613060
+			},
+			"massData-mass" : 0.4996798038482666,
+			"name" : "body2",
+			"position" : 
+			{
+				"x" : 4.980520725250244,
+				"y" : 0.6389253139495850
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture3",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								-0.01521682739257812,
+								-0.01521682739257812,
+								-0.5142235755920410,
+								-0.5142235755920410
+							],
+							"y" : 
+							[
+								-1.479666471481323,
+								0.4928879737854004,
+								0.4928879737854004,
+								-1.479666471481323
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.6481812000274658,
+			"massData-center" : 
+			{
+				"x" : -0.2647202014923096,
+				"y" : -0.4933892488479614
+			},
+			"massData-mass" : 0.984317958354950,
+			"name" : "body3",
+			"position" : 
+			{
+				"x" : 5.239498138427734,
+				"y" : 2.125631093978882
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture2",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : [ 0.5, 0.5, -0.5, -0.5 ],
+							"y" : 
+							[
+								-0.4939563274383545,
+								0.005723476409912109,
+								0.005723476409912109,
+								-0.4939563274383545
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.08181398361921310,
+			"massData-center" : 
+			{
+				"x" : 0,
+				"y" : -0.244116410613060
+			},
+			"massData-mass" : 0.4996798038482666,
+			"name" : "body2",
+			"position" : 
+			{
+				"x" : 4.961980819702148,
+				"y" : 3.115363597869873
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 4.150993347167969,
+				"y" : 0.2538177371025085
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"circle" : 
+					{
+						"center" : 0,
+						"radius" : 0.1
+					},
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture1"
+				}
+			],
+			"linearVelocity" : 0,
+			"massData-I" : 0.0001570796448504552,
+			"massData-mass" : 0.03141592815518379,
+			"name" : "body1",
+			"position" : 
+			{
+				"x" : 4.722846031188965,
+				"y" : 3.220835924148560
+			},
+			"type" : 2
+		},
+		
+		{
+			"angle" : 0,
+			"angularVelocity" : 0,
+			"awake" : true,
+			"fixture" : 
+			[
+				
+				{
+					"density" : 1,
+					"friction" : 0.2,
+					"name" : "fixture0",
+					"polygon" : 
+					{
+						"vertices" : 
+						{
+							"x" : 
+							[
+								20.90651893615723,
+								20.90651893615723,
+								-6.254980087280273,
+								-6.254980087280273
+							],
+							"y" : 
+							[
+								-0.1035966277122498,
+								0.1326017379760742,
+								0.1326017379760742,
+								-0.1035966277122498
+							]
+						}
+					}
+				}
+			],
+			"linearVelocity" : 0,
+			"name" : "body0",
+			"position" : 
+			{
+				"x" : 5,
+				"y" : 0
+			},
+			"type" : 0
+		}
+	],
+	"collisionbitplanes" : 
+	{
+		"names" : 
+		[
+			"bitplane1",
+			"bitplane2",
+			"bitplane3",
+			"bitplane4",
+			"bitplane5",
+			"bitplane6",
+			"bitplane7",
+			"bitplane8",
+			"bitplane9",
+			"bitplane10",
+			"bitplane11",
+			"bitplane12",
+			"bitplane13",
+			"bitplane14",
+			"bitplane15",
+			"bitplane16",
+			"bitplane17",
+			"bitplane18",
+			"bitplane19",
+			"bitplane20",
+			"bitplane21",
+			"bitplane22",
+			"bitplane23",
+			"bitplane24",
+			"bitplane25",
+			"bitplane26",
+			"bitplane27",
+			"bitplane28",
+			"bitplane29",
+			"bitplane30",
+			"bitplane31",
+			"bitplane32"
+		]
+	},
+	"continuousPhysics" : true,
+	"gravity" : 
+	{
+		"x" : 0,
+		"y" : -10
+	},
+	"image" : 
+	[
+		
+		{
+			"aspectScale" : 1,
+			"body" : 3,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 12,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 4,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"angle" : 1.574974536895752,
+			"aspectScale" : 1,
+			"body" : 14,
+			"center" : 
+			{
+				"x" : -0.2613419890403748,
+				"y" : -0.4928179979324341
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.007217337843030691,
+					-0.01547099184244871,
+					-0.5154666304588318,
+					-0.5072129964828491
+				],
+				"y" : 
+				[
+					-1.479469776153564,
+					0.4959228932857513,
+					0.4938337802886963,
+					-1.481558918952942
+				]
+			},
+			"file" : "block31.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.007217337843030691,
+				-1.479469776153564,
+				-0.01547099184244871,
+				0.4959228932857513,
+				-0.5154666304588318,
+				0.4938337802886963,
+				-0.5072129964828491,
+				-1.481558918952942
+			],
+			"name" : "image1",
+			"opacity" : 0.5,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 5,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 16,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"angle" : 1.574974536895752,
+			"aspectScale" : 1,
+			"body" : 11,
+			"center" : 
+			{
+				"x" : -0.2613419890403748,
+				"y" : -0.4928179979324341
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.007217337843030691,
+					-0.01547099184244871,
+					-0.5154666304588318,
+					-0.5072129964828491
+				],
+				"y" : 
+				[
+					-1.479469776153564,
+					0.4959228932857513,
+					0.4938337802886963,
+					-1.481558918952942
+				]
+			},
+			"file" : "block31.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.007217337843030691,
+				-1.479469776153564,
+				-0.01547099184244871,
+				0.4959228932857513,
+				-0.5154666304588318,
+				0.4938337802886963,
+				-0.5072129964828491,
+				-1.481558918952942
+			],
+			"name" : "image1",
+			"opacity" : 0.5,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 6,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 2,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 1,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 17,
+			"center" : 0,
+			"corners" : 
+			{
+				"x" : [ -0.1, 0.1, 0.1, -0.1 ],
+				"y" : [ -0.1, -0.1, 0.1, 0.1 ]
+			},
+			"file" : "coin.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : [ -0.1, -0.1, 0.1, -0.1, 0.1, 0.1, -0.1, 0.1 ],
+			"name" : "coin",
+			"opacity" : 0.5,
+			"scale" : 0.2
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 13,
+			"center" : 
+			{
+				"x" : -0.001252169953659177,
+				"y" : -0.2436729967594147
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.5012521743774414,
+					0.4987478256225586,
+					0.4987478256225586,
+					-0.5012521743774414
+				],
+				"y" : 
+				[
+					-0.4936729967594147,
+					-0.4936729967594147,
+					0.006327003240585327,
+					0.006327003240585327
+				]
+			},
+			"file" : "block13.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.5012521743774414,
+				-0.4936729967594147,
+				0.4987478256225586,
+				-0.4936729967594147,
+				0.4987478256225586,
+				0.006327003240585327,
+				-0.5012521743774414,
+				0.006327003240585327
+			],
+			"name" : "image0",
+			"opacity" : 0.5,
+			"renderOrder" : 1,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 9,
+			"center" : 
+			{
+				"x" : -0.001252169953659177,
+				"y" : -0.2436729967594147
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.5012521743774414,
+					0.4987478256225586,
+					0.4987478256225586,
+					-0.5012521743774414
+				],
+				"y" : 
+				[
+					-0.4936729967594147,
+					-0.4936729967594147,
+					0.006327003240585327,
+					0.006327003240585327
+				]
+			},
+			"file" : "block13.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.5012521743774414,
+				-0.4936729967594147,
+				0.4987478256225586,
+				-0.4936729967594147,
+				0.4987478256225586,
+				0.006327003240585327,
+				-0.5012521743774414,
+				0.006327003240585327
+			],
+			"name" : "image0",
+			"opacity" : 0.5,
+			"renderOrder" : 1,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 8,
+			"center" : 
+			{
+				"x" : -0.001252169953659177,
+				"y" : -0.2436729967594147
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.5012521743774414,
+					0.4987478256225586,
+					0.4987478256225586,
+					-0.5012521743774414
+				],
+				"y" : 
+				[
+					-0.4936729967594147,
+					-0.4936729967594147,
+					0.006327003240585327,
+					0.006327003240585327
+				]
+			},
+			"file" : "block13.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.5012521743774414,
+				-0.4936729967594147,
+				0.4987478256225586,
+				-0.4936729967594147,
+				0.4987478256225586,
+				0.006327003240585327,
+				-0.5012521743774414,
+				0.006327003240585327
+			],
+			"name" : "image0",
+			"opacity" : 0.5,
+			"renderOrder" : 1,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 10,
+			"center" : 
+			{
+				"x" : -0.001252169953659177,
+				"y" : -0.2436729967594147
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.5012521743774414,
+					0.4987478256225586,
+					0.4987478256225586,
+					-0.5012521743774414
+				],
+				"y" : 
+				[
+					-0.4936729967594147,
+					-0.4936729967594147,
+					0.006327003240585327,
+					0.006327003240585327
+				]
+			},
+			"file" : "block13.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.5012521743774414,
+				-0.4936729967594147,
+				0.4987478256225586,
+				-0.4936729967594147,
+				0.4987478256225586,
+				0.006327003240585327,
+				-0.5012521743774414,
+				0.006327003240585327
+			],
+			"name" : "image0",
+			"opacity" : 0.5,
+			"renderOrder" : 1,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 15,
+			"center" : 
+			{
+				"x" : -0.001252169953659177,
+				"y" : -0.2436729967594147
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.5012521743774414,
+					0.4987478256225586,
+					0.4987478256225586,
+					-0.5012521743774414
+				],
+				"y" : 
+				[
+					-0.4936729967594147,
+					-0.4936729967594147,
+					0.006327003240585327,
+					0.006327003240585327
+				]
+			},
+			"file" : "block13.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.5012521743774414,
+				-0.4936729967594147,
+				0.4987478256225586,
+				-0.4936729967594147,
+				0.4987478256225586,
+				0.006327003240585327,
+				-0.5012521743774414,
+				0.006327003240585327
+			],
+			"name" : "image0",
+			"opacity" : 0.5,
+			"renderOrder" : 1,
+			"scale" : 0.5
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 7,
+			"center" : 
+			{
+				"x" : -0.001252169953659177,
+				"y" : -0.2436729967594147
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.5012521743774414,
+					0.4987478256225586,
+					0.4987478256225586,
+					-0.5012521743774414
+				],
+				"y" : 
+				[
+					-0.4936729967594147,
+					-0.4936729967594147,
+					0.006327003240585327,
+					0.006327003240585327
+				]
+			},
+			"file" : "block13.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.5012521743774414,
+				-0.4936729967594147,
+				0.4987478256225586,
+				-0.4936729967594147,
+				0.4987478256225586,
+				0.006327003240585327,
+				-0.5012521743774414,
+				0.006327003240585327
+			],
+			"name" : "image0",
+			"opacity" : 0.5,
+			"renderOrder" : 1,
+			"scale" : 0.5
+		}
+	],
+	"positionIterations" : 3,
+	"stepsPerSecond" : 60.0,
+	"subStepping" : false,
+	"velocityIterations" : 8,
+	"warmStarting" : true
+}
