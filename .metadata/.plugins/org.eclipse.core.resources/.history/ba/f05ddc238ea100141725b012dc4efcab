@@ -404,7 +404,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 	private void draw(float delta) {
 
-		//background.render(delta);
+		background.render(delta);
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 
