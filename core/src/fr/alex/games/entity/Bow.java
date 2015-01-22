@@ -1,6 +1,7 @@
 package fr.alex.games.entity;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -10,6 +11,10 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.esotericsoftware.spine.Animation;
 import com.esotericsoftware.spine.BoneData;
@@ -19,6 +24,10 @@ import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.GM;
+import fr.alex.games.box2d.entities.Component;
+import fr.alex.games.box2d.entities.Destroyer;
+import fr.alex.games.box2d.entities.Entity;
+import fr.alex.games.box2d.entities.SpriteComponent;
 import fr.alex.games.screens.GameScreen.State;
 
 public class Bow {
@@ -163,8 +172,8 @@ public class Bow {
 	 * @param effect
 	 * @return
 	 */
-	public Array<Arrow> fire() {
-		Array<Arrow> arrows = new Array<Arrow>();
+	public Array<Entity> fire() {
+		Array<Entity> arrows = new Array<Entity>();
 		if (arrowCount > 1) {
 			for (int i = 0; i < arrowCount; ++i) {
 				float x = origin.x;
@@ -180,11 +189,11 @@ public class Bow {
 				x = x - MathUtils.cosDeg(angle) * widthArrow * .5f;
 				y = y - MathUtils.sinDeg(angle) * widthArrow * .5f;
 
-				Arrow arrow = createArrow(x, y);
+				Entity arrow = createArrow(x, y);
 				arrows.add(arrow);
 			}
 		} else {
-			Arrow arrow = createArrow(origin.x, origin.y);
+			Entity arrow = createArrow(origin.x, origin.y);
 			arrows.add(arrow);
 		}
 		bend = false;
@@ -193,15 +202,36 @@ public class Bow {
 		return arrows;
 	}
 
-	private Arrow createArrow(float x, float y) {
-		Body body = Arrow.createBody(x, y, widthArrow, heightArrow);
+	private Entity createArrow(float x, float y) {
+		PolygonShape shape = new PolygonShape();
+
+		shape.set(new float[] { -widthArrow * .5f, -heightArrow * .5f, -widthArrow * .5f, heightArrow * .5f, widthArrow * .5f, heightArrow * .5f, widthArrow * .5f, -heightArrow * .5f });
+
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.position.set(x, y);
+		bodyDef.allowSleep = false;
+		bodyDef.gravityScale = 1f;
+		Body body = GM.world.createBody(bodyDef);
+
+		FixtureDef fixtureDef = new FixtureDef();
+		fixtureDef.shape = shape;
+		fixtureDef.density = 2f;
+		fixtureDef.restitution = .5f;
+		fixtureDef.friction = .5f;
+		body.createFixture(fixtureDef);
+		
 		body.setTransform(x, y, getAngleRad());
 
 		body.setLinearVelocity(computeVelocity().cpy());
 		body.setAngularDamping(1.5f);
 
-		Arrow arrow = new Arrow(body, getAngleRad(), new Vector2(widthArrow, heightArrow), new Vector2(), arrowTexture, diffuse, normal, effect);
-		body.setUserData(arrow);
+		/*Arrow arrow = new Arrow(body, getAngleRad(), new Vector2(widthArrow, heightArrow), new Vector2(), arrowTexture, diffuse, normal, effect);
+		body.setUserData(arrow);*/
+		Entity arrow = new Entity();
+		Component c = new SpriteComponent(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow, heightArrow), Vector2.Zero, getAngleRad());
+		arrow.add(c);
+		arrow.add(new Destroyer(arrow));
 		return arrow;
 	}
 

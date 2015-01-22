@@ -29,7 +29,7 @@ public class UserData {
 		if (coin && !alreadyHit) {
 			GM.gold += coins;
 			coins = 0;
-			EffectManager.get().goldEffect(body.getPosition().x, body.getPosition().y);
+			EffectManager.get().effect(Effect.GOLD, body.getPosition().x, body.getPosition().y);
 		}
 		if (star && !alreadyHit) {
 			GM.stars += 1;
@@ -41,7 +41,7 @@ public class UserData {
 				remove = true;
 			}
 			if (isDead()) {
-				EffectManager.get().dustEffect(body.getPosition().x, body.getPosition().y);
+				EffectManager.get().effect(Effect.DUST, body.getPosition().x, body.getPosition().y);
 			}
 		}
 		alreadyHit = true;

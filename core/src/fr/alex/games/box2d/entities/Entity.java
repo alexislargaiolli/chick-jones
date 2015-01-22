@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 public class Entity {
@@ -31,18 +32,33 @@ public class Entity {
 		}
 	}
 
-	public void contact(Entity entity) {
+	public void contact(Entity entity, Contact contact) {
 		for (Component c : components.values()) {
-			c.contact(entity);
+			c.contact(entity, contact);
+		}
+	}
+
+	public void destroy() {
+		SpriteComponent sprite = (SpriteComponent) get(SpriteComponent.name);
+		if (sprite != null) {
+			sprite.destroy();
+		}
+		SkeletonComponent skeleton = (SkeletonComponent) get(SkeletonComponent.name);
+		if (skeleton != null) {
+			skeleton.destroy();
 		}
 	}
 
 	public void add(Component component) {
-		components.put(component.getName(), component);		
+		components.put(component.getName(), component);
 	}
 
 	public Component get(String name) {
 		return components.get(name);
+	}
+
+	public boolean contains(String name) {
+		return components.containsKey(name);
 	}
 
 	public boolean isDead() {
@@ -67,5 +83,10 @@ public class Entity {
 
 	public void setPosition(Vector2 position) {
 		this.position = position;
+	}
+
+	public void setPosition(float x, float y) {
+		this.position.x = x;
+		this.position.y = y;
 	}
 }

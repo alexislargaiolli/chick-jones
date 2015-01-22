@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+import fr.alex.games.box2d.entities.Entity;
 import fr.alex.games.entity.Arrow;
 import fr.alex.games.entity.Chicken;
 import fr.alex.games.entity.UserData;
@@ -93,8 +94,14 @@ public class GameCollisions implements ContactListener {
 		Object o2 = contact.getFixtureB().getBody().getUserData();
 		Body b1 = contact.getFixtureA().getBody();
 		Body b2 = contact.getFixtureB().getBody();
-
-		if (o1 instanceof Arrow) {
+		
+		if(o1 instanceof Entity && o2 instanceof Entity){
+			Entity e1 = (Entity) o1;
+			Entity e2 = (Entity) o2;
+			e1.contact(e2, contact);
+			e2.contact(e1, contact);			
+		}
+		/*if (o1 instanceof Arrow) {
 			arrowContact((Arrow) o1, b1, o2, b2, contact);
 		} else if (o2 instanceof Arrow) {
 			arrowContact((Arrow) o2, b2, o1, b1, contact);
@@ -109,7 +116,7 @@ public class GameCollisions implements ContactListener {
 			} else {
 				playerContact((Chicken) o2, b2, o1, b1, contact);
 			}
-		}
+		}*/
 	}
 
 	@Override

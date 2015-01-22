@@ -1,5 +1,7 @@
 package fr.alex.games.entity;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool;
@@ -23,22 +25,17 @@ public class EffectManager {
 
 	private SpriteBatch batch;
 	private Array<PooledEffect> effects = new Array<PooledEffect>();
-	private ParticleEffectPool goldEffect;
-	private ParticleEffectPool fireEffect;
-	private ParticleEffectPool dustEffect;
+	private HashMap<Effect, ParticleEffectPool> effectPools;
 
 	private EffectManager() {
-		ParticleEffect fEffect = new ParticleEffect();
-		fEffect.load(Gdx.files.internal(Main.PARTICLES_PATH + "fire.p"), Gdx.files.internal(""));
-		fireEffect = new ParticleEffectPool(fEffect, 1, 2);
 		
-		ParticleEffect bombEffect = new ParticleEffect();
-		bombEffect.load(Gdx.files.internal(Main.PARTICLES_PATH + "gold.p"), Gdx.files.internal(""));		
-		goldEffect = new ParticleEffectPool(bombEffect, 1, 2);
-		
-		ParticleEffect dEffect = new ParticleEffect();
-		dEffect.load(Gdx.files.internal(Main.PARTICLES_PATH + "dust.p"), Gdx.files.internal(""));		
-		dustEffect = new ParticleEffectPool(dEffect, 1, 2);
+		effectPools = new HashMap<Effect, ParticleEffectPool>();
+		for(Effect e : Effect.values()){
+			ParticleEffect fEffect = new ParticleEffect();
+			fEffect.load(Gdx.files.internal(Main.PARTICLES_PATH + e.getFile()), Gdx.files.internal(""));
+			ParticleEffectPool effectPool = new ParticleEffectPool(fEffect, 1, 2);
+			effectPools.put(e, effectPool);
+		}		
 		
 		batch = new SpriteBatch();
 	}
@@ -57,26 +54,12 @@ public class EffectManager {
 		batch.end();
 	}
 
-	public PooledEffect fireEffect(float x, float y) {
-		PooledEffect effect = fireEffect.obtain();
+	public PooledEffect effect(Effect e, float x, float y) {
+		PooledEffect effect = effectPools.get(e).obtain();		
 		
 		effect.setPosition(Utils.toWorld(x), Utils.toWorld(y));
 		effects.add(effect);
 		return effect;
-	}
-
-	public PooledEffect goldEffect(float x, float y){
-		PooledEffect effect = goldEffect.obtain();
-		effect.setPosition(Utils.toWorld(x), Utils.toWorld(y));
-		effects.add(effect);
-		return effect;
-	}
-	
-	public PooledEffect dustEffect(float x, float y){
-		PooledEffect effect = dustEffect.obtain();
-		effect.setPosition(Utils.toWorld(x), Utils.toWorld(y));
-		effects.add(effect);
-		return effect;
-	}
+	}	
 	
 }
