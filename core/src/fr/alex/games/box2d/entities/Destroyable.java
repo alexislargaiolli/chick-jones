@@ -30,7 +30,7 @@ public class Destroyable extends Component {
 	@Override
 	public void contact(Entity entity, Contact contact) {
 		if (!effectPooled && entity.contains(Destroyer.name)) {
-			EffectManager.get().effect(effect, entity.getPosition().x, entity.getPosition().y);
+			EffectManager.get().effect(effect, this.entity.getPosition().x, this.entity.getPosition().y);
 			effectPooled = true;
 		}
 	}

@@ -30,7 +30,7 @@ public class SkeletonComponent extends Component {
 	private Skeleton skeleton;
 	private AnimationStateData stateData;
 	private AnimationState animState;
-	private Vector2 halfSize;
+	private Bone root;
 
 	public SkeletonComponent(Entity entity, String spineFile, Vector2 position, Vector2 size) {
 		super(entity);
@@ -53,14 +53,13 @@ public class SkeletonComponent extends Component {
 		SkeletonJson skeletonJson = new SkeletonJson(atlasLoader);
 		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal(spineFile + ".json"));
 		float scale = size.y / skeletonData.getHeight();
-		halfSize = new Vector2(size.x * .5f, size.y * .5f);
 		stateData = new AnimationStateData(skeletonData);
 		stateData.setMix("idle", "idle", 0.2f);
 		animState = new AnimationState(stateData);
 		animState.setAnimation(0, "idle", true);
 
 		skeleton = new Skeleton(skeletonData);
-		Bone root = skeleton.findBone("root");
+		root = skeleton.findBone("root");
 		root.setScale(scale, scale);
 		root.setPosition(position.x, position.y);
 		skeleton.updateWorldTransform();
@@ -91,7 +90,7 @@ public class SkeletonComponent extends Component {
 		animState.apply(skeleton);
 		skeleton.updateWorldTransform();
 		updateSlotPosition();
-		entity.setPosition(skeleton.getX() + halfSize.x, skeleton.getY() + halfSize.y);
+		entity.setPosition(root.getX(), root.getY());
 	}
 
 	@Override

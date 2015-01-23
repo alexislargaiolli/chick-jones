@@ -1,6 +1,8 @@
 package fr.alex.games.screens;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -39,6 +41,7 @@ import fr.alex.games.box2d.entities.Entity;
 import fr.alex.games.box2d.entities.NormalMapComponent;
 import fr.alex.games.box2d.entities.SkeletonComponent;
 import fr.alex.games.box2d.entities.SpriteComponent;
+import fr.alex.games.box2d.entities.Stickable;
 import fr.alex.games.entity.Arrow;
 import fr.alex.games.entity.Chicken;
 import fr.alex.games.entity.Effect;
@@ -61,6 +64,8 @@ public class GameScreen implements Screen, InputProcessor {
 		STARTING, PLAYING, ENDING, WIN, LOOSE, PAUSE
 	}
 
+	public static List<StickyInfo> arrowToStick = new ArrayList<StickyInfo>();
+	
 	/**
 	 * Current game state
 	 */
@@ -193,7 +198,8 @@ public class GameScreen implements Screen, InputProcessor {
 		camera = new OrthographicCamera(viewportWidth, viewportHeight);
 		cameraDeltaX = viewportWidth * .25f;
 		GM.ratio = (float) Gdx.graphics.getHeight() / viewportHeight;
-
+		entities.clear();
+		arrows.clear();
 		Array<Body> tmp = GM.scene.getNamed(Body.class, "chicken");
 		TextureAtlas common = GM.assetManager.get(Main.COMMON_ATLAS_PATH, TextureAtlas.class);
 		Texture commonDiffuse = GM.assetManager.get(Main.COMMON_ATLAS_PATH.replace(".atlas", "-diffuse.png"), Texture.class);
@@ -221,6 +227,7 @@ public class GameScreen implements Screen, InputProcessor {
 		GM.stars = 0;
 		GM.maxArrowCount = 40;
 		GM.arrowCount = GM.maxArrowCount;
+		
 		counter = 0;
 		arrows.clear();
 		activedSkills.clear();
@@ -235,6 +242,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 		state = State.STARTING;
 		updateCamera();
+		arrowToStick.clear();
 	}
 
 	@Override
@@ -308,9 +316,9 @@ public class GameScreen implements Screen, InputProcessor {
 	private void updateWorld(float delta) {
 		GM.scene.step();
 		// Handle arrow to stick
-		for (StickyInfo info : GameCollisions.arrowToStick) {
+		for (StickyInfo info : arrowToStick) {
 			WeldJointDef def = new WeldJointDef();
-			def.initialize(info.getArrow().getmBody(), info.getUserData().getSpatial().getmBody(), info.getArrow().getmBody().getWorldCenter());
+			def.initialize(info.getB1(), info.getB2(), info.getAnchor());
 			GM.scene.getWorld().createJoint(def);
 		}
 
@@ -335,7 +343,7 @@ public class GameScreen implements Screen, InputProcessor {
 			}				
 		}
 
-		GameCollisions.arrowToStick.clear();
+		arrowToStick.clear();
 	}
 
 	private void updateArrows(float delta) {
@@ -423,7 +431,7 @@ public class GameScreen implements Screen, InputProcessor {
 		batch.begin();
 		chicken.draw(batch, skeletonRenderer);
 		batch.end();
-		batch.begin();
+		
 		EffectManager.get().draw(camera.combined.cpy().scale(Utils.WORLD_TO_BOX, Utils.WORLD_TO_BOX, 0), delta);
 		hud.draw();
 
@@ -471,7 +479,7 @@ public class GameScreen implements Screen, InputProcessor {
 			if (spine == null) {
 				Component c = new NormalMapComponent(e, diffuse, normal);
 				e.add(c);
-				c = new SpriteComponent(e, region, image.flip, image.body, image.color, tmp, image.center, image.angleInRads);
+				c = new SpriteComponent(e, region, image.flip, image.body, image.color, tmp, image.center, image.angleInRads* MathUtils.radiansToDegrees);
 				e.add(c);
 			} else {
 				String file = (String) GM.scene.getCustom(image, "spineFile");
@@ -492,6 +500,11 @@ public class GameScreen implements Screen, InputProcessor {
 				Boolean destroyable = (Boolean) GM.scene.getCustom(image, "destroyable");
 				if (destroyable != null && destroyable) {
 					e.add(new Destroyable(e, Effect.GOLD));
+				}
+				
+				Boolean stick = (Boolean) GM.scene.getCustom(image, "stick");
+				if (stick != null && stick) {
+					e.add(new Stickable(e));
 				}
 			}
 			entities.add(e);

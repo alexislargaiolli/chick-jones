@@ -1,36 +1,18 @@
 package fr.alex.games;
 
 import com.badlogic.gdx.math.Vector2;
-
-import fr.alex.games.entity.Arrow;
-import fr.alex.games.entity.UserData;
+import com.badlogic.gdx.physics.box2d.Body;
 
 public class StickyInfo {
-	private Arrow arrow;
-	private UserData userData;
+	private Body b1;
+	private Body b2;
 	private Vector2 anchor;
 
-	public StickyInfo(Arrow arrow, UserData userData, Vector2 anchor) {
+	public StickyInfo(Body b1, Body b2, Vector2 anchor) {
 		super();
-		this.arrow = arrow;
-		this.userData = userData;
+		this.b1 = b1;
+		this.b2 = b2;
 		this.anchor = anchor;
-	}
-
-	public Arrow getArrow() {
-		return arrow;
-	}
-
-	public void setArrow(Arrow arrow) {
-		this.arrow = arrow;
-	}
-
-	public UserData getUserData() {
-		return userData;
-	}
-
-	public void setUserData(UserData userData) {
-		this.userData = userData;
 	}
 
 	public Vector2 getAnchor() {
@@ -41,4 +23,19 @@ public class StickyInfo {
 		this.anchor = anchor;
 	}
 
+	public Body getB1() {
+		return b1;
+	}
+
+	public void setB1(Body b1) {
+		this.b1 = b1;
+	}
+
+	public Body getB2() {
+		return b2;
+	}
+
+	public void setB2(Body b2) {
+		this.b2 = b2;
+	}
 }

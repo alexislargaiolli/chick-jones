@@ -50,7 +50,7 @@ public class GameCollisions implements ContactListener {
 				Vector2 contactPoint = contact.getWorldManifold().getPoints()[0];
 				contact.setEnabled(false);
 				if (contactPoint.dst(arrow.getHead()) < .3f) {
-					arrowToStick.add(new StickyInfo(arrow, ud, contactPoint));
+					//arrowToStick.add(new StickyInfo(arrow, ud, contactPoint));
 				} else {
 					contact.setEnabled(false);
 				}

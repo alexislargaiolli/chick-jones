@@ -28,6 +28,7 @@ import fr.alex.games.box2d.entities.Component;
 import fr.alex.games.box2d.entities.Destroyer;
 import fr.alex.games.box2d.entities.Entity;
 import fr.alex.games.box2d.entities.SpriteComponent;
+import fr.alex.games.box2d.entities.Stick;
 import fr.alex.games.screens.GameScreen.State;
 
 public class Bow {
@@ -232,6 +233,7 @@ public class Bow {
 		Component c = new SpriteComponent(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow, heightArrow), Vector2.Zero, getAngleRad());
 		arrow.add(c);
 		arrow.add(new Destroyer(arrow));
+		arrow.add(new Stick(arrow));
 		return arrow;
 	}
 
