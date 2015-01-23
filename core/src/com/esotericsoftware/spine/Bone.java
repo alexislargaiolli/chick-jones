@@ -104,7 +104,7 @@ public class Bone {
 			worldFlipY = parent.worldFlipY ^ flipY;
 		} else {
 			boolean skeletonFlipX = skeleton.flipX, skeletonFlipY = skeleton.flipY;
-			worldX = skeletonFlipX ? -x : x;
+			worldX = skeletonFlipX ? x : x;
 			worldY = skeletonFlipY ? -y : y;
 			worldScaleX = scaleX;
 			worldScaleY = scaleY;

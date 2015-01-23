@@ -76,6 +76,10 @@ public class SpriteComponent extends Component {
 	public void destroy(){
 		GM.scene.getWorld().destroyBody(body);
 	}
+	
+	public void flipX(){
+		sprite.setFlip(!sprite.isFlipX(), sprite.isFlipY());
+	}
 
 	@Override
 	public String getName() {

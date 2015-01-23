@@ -100,7 +100,7 @@ public class GameCollisions implements ContactListener {
 			Entity e2 = (Entity) o2;
 			e1.contact(e2, contact);
 			e2.contact(e1, contact);			
-		}
+		}		
 		/*if (o1 instanceof Arrow) {
 			arrowContact((Arrow) o1, b1, o2, b2, contact);
 		} else if (o2 instanceof Arrow) {

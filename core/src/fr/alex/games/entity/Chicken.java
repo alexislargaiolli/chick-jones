@@ -119,7 +119,8 @@ public class Chicken {
 		animState.update(delta * timeFactor);
 		animState.apply(skeleton);
 		skeleton.updateWorldTransform();
-		bow.setOrigin(chicken.getWorldCenter().x + width * .25f, chicken.getWorldCenter().y + height * .2f);
+		//bow.setOrigin(chicken.getWorldCenter().x + width * .25f, chicken.getWorldCenter().y + height * .2f);
+		bow.setOrigin(chicken.getWorldCenter().x + width, chicken.getWorldCenter().y + height);
 		bow.update(state, delta * timeFactor);
 
 		if (state == State.PLAYING && !dead && chicken.getLinearVelocity().x < speed) {

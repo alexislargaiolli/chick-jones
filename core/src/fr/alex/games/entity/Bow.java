@@ -24,6 +24,7 @@ import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.GM;
+import fr.alex.games.box2d.entities.ArrowRotation;
 import fr.alex.games.box2d.entities.Component;
 import fr.alex.games.box2d.entities.Destroyer;
 import fr.alex.games.box2d.entities.Entity;
@@ -55,15 +56,14 @@ public class Bow {
 	private TextureRegion arrowTexture;
 	Texture diffuse;
 	Texture normal;
-	
+
 	private PooledEffect effect;
 
 	float widthArrow = .6f;
 	float heightArrow = .06f;
 	float arrowCount = 1;
 	private Sprite arrowSprite;
-	
-	
+
 	public Bow(Chicken player, TextureRegion defaultArrowTexture, Texture diffuse, Texture normal) {
 		super();
 		origin = new Vector2();
@@ -124,8 +124,8 @@ public class Bow {
 					float x = origin.x;
 					float y = origin.y;
 					float spaceBetweenArrow = .3f / arrowCount;
-					x += MathUtils.cosDeg(angle + 90) * (i * spaceBetweenArrow - (arrowCount-1) * .5f * spaceBetweenArrow);
-					y += MathUtils.sinDeg(angle + 90) * (i * spaceBetweenArrow - (arrowCount-1) * .5f * spaceBetweenArrow);
+					x += MathUtils.cosDeg(angle + 90) * (i * spaceBetweenArrow - (arrowCount - 1) * .5f * spaceBetweenArrow);
+					y += MathUtils.sinDeg(angle + 90) * (i * spaceBetweenArrow - (arrowCount - 1) * .5f * spaceBetweenArrow);
 
 					arrowSprite.setPosition(x - MathUtils.cosDeg(angle) * (widthArrow * bendSize), y - MathUtils.sinDeg(angle) * (widthArrow * bendSize));
 					arrowSprite.setRotation(angle);
@@ -206,7 +206,12 @@ public class Bow {
 	private Entity createArrow(float x, float y) {
 		PolygonShape shape = new PolygonShape();
 
-		shape.set(new float[] { -widthArrow * .5f, -heightArrow * .5f, -widthArrow * .5f, heightArrow * .5f, widthArrow * .5f, heightArrow * .5f, widthArrow * .5f, -heightArrow * .5f });
+		// float[] vertives = new float[] { -widthArrow * .5f, -heightArrow *
+		// .5f, -widthArrow * .5f, heightArrow * .5f, widthArrow * .5f,
+		// heightArrow * .5f, widthArrow * .5f, -heightArrow * .5f };
+		float[] vertives = new float[] { -widthArrow * .5f, 0, widthArrow * .2f, -heightArrow * .5f, widthArrow * .5f, 0, widthArrow * .2f, heightArrow * .5f };
+
+		shape.set(vertives);
 
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.type = BodyType.DynamicBody;
@@ -217,23 +222,27 @@ public class Bow {
 
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = shape;
-		fixtureDef.density = 2f;
+		fixtureDef.density = 1f;
 		fixtureDef.restitution = .5f;
-		fixtureDef.friction = .5f;
+		fixtureDef.friction = .1f;
 		body.createFixture(fixtureDef);
-		
+
 		body.setTransform(x, y, getAngleRad());
 
 		body.setLinearVelocity(computeVelocity().cpy());
-		body.setAngularDamping(1.5f);
+		body.setAngularDamping(1f);
 
-		/*Arrow arrow = new Arrow(body, getAngleRad(), new Vector2(widthArrow, heightArrow), new Vector2(), arrowTexture, diffuse, normal, effect);
-		body.setUserData(arrow);*/
+		/*
+		 * Arrow arrow = new Arrow(body, getAngleRad(), new Vector2(widthArrow,
+		 * heightArrow), new Vector2(), arrowTexture, diffuse, normal, effect);
+		 * body.setUserData(arrow);
+		 */
 		Entity arrow = new Entity();
-		Component c = new SpriteComponent(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow, heightArrow), Vector2.Zero, getAngleRad());
+		Component c = new SpriteComponent(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow, heightArrow), Vector2.Zero, 0);
 		arrow.add(c);
+		arrow.add(new ArrowRotation(arrow));
 		arrow.add(new Destroyer(arrow));
-		arrow.add(new Stick(arrow));
+		arrow.add(new Stick(arrow));		
 		return arrow;
 	}
 

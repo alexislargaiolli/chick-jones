@@ -1,8 +1,6 @@
 package fr.alex.games.screens;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.badlogic.gdx.Gdx;
@@ -20,9 +18,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.joints.WeldJointDef;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Json;
 import com.esotericsoftware.spine.SkeletonRenderer;
 import com.gushikustudios.rube.RubeScene;
 import com.gushikustudios.rube.loader.serializers.utils.RubeImage;
@@ -32,19 +28,15 @@ import fr.alex.games.GameCollisions;
 import fr.alex.games.HUD;
 import fr.alex.games.LightManager;
 import fr.alex.games.Main;
-import fr.alex.games.StickyInfo;
 import fr.alex.games.Utils;
-import fr.alex.games.background.ParallaxBackground;
 import fr.alex.games.box2d.entities.Component;
-import fr.alex.games.box2d.entities.Destroyable;
 import fr.alex.games.box2d.entities.Entity;
+import fr.alex.games.box2d.entities.HorizontalMove;
 import fr.alex.games.box2d.entities.NormalMapComponent;
 import fr.alex.games.box2d.entities.SkeletonComponent;
 import fr.alex.games.box2d.entities.SpriteComponent;
 import fr.alex.games.box2d.entities.Stickable;
-import fr.alex.games.entity.Arrow;
 import fr.alex.games.entity.Chicken;
-import fr.alex.games.entity.Effect;
 import fr.alex.games.entity.EffectManager;
 import fr.alex.games.entity.Fly;
 import fr.alex.games.entity.Jump;
@@ -63,8 +55,6 @@ public class GameScreen implements Screen, InputProcessor {
 	public enum State {
 		STARTING, PLAYING, ENDING, WIN, LOOSE, PAUSE
 	}
-
-	public static List<StickyInfo> arrowToStick = new ArrayList<StickyInfo>();
 	
 	/**
 	 * Current game state
@@ -156,12 +146,7 @@ public class GameScreen implements Screen, InputProcessor {
 	/**
 	 * Delta y for camera position relative to player position
 	 */
-	private float cameraDeltaY = 1.5f;
-
-	/**
-	 * Drag constant for arrow rotation
-	 */
-	private static final float dragConstant = 2f;
+	private float cameraDeltaY = 1.5f;	
 
 	/**
 	 * Last screen touch position used to compute bow direction
@@ -174,6 +159,14 @@ public class GameScreen implements Screen, InputProcessor {
 	private boolean debug;
 
 	private LightManager lightManager;
+	
+	public static final short CHICKEN_ENTITY = 0x0001;    // 0001
+	public static final short ARROW_ENTITY = 0x0002;
+	public static final short WORLD_ENTITY = 0x0004;
+    
+	public static final short MASK_CHICKEN = WORLD_ENTITY;
+	public static final short MASK_ARROW = WORLD_ENTITY;
+	public static final short MASK_WORLD = -1;
 
 	public GameScreen() {
 		entities = new Array<Entity>();
@@ -242,7 +235,6 @@ public class GameScreen implements Screen, InputProcessor {
 
 		state = State.STARTING;
 		updateCamera();
-		arrowToStick.clear();
 	}
 
 	@Override
@@ -284,8 +276,6 @@ public class GameScreen implements Screen, InputProcessor {
 			} else if (state == State.PLAYING) {
 				updateSkills(delta);
 
-				// updateArrows(delta);
-
 				if (isLost()) {
 					state = State.ENDING;
 					GM.world.clearForces();
@@ -315,13 +305,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 	private void updateWorld(float delta) {
 		GM.scene.step();
-		// Handle arrow to stick
-		for (StickyInfo info : arrowToStick) {
-			WeldJointDef def = new WeldJointDef();
-			def.initialize(info.getB1(), info.getB2(), info.getAnchor());
-			GM.scene.getWorld().createJoint(def);
-		}
-
+		
 		for (int i = 0; i < entities.size; i++) {
 			Entity e = entities.get(i);			
 			if (e.isToRemove()) {
@@ -341,33 +325,6 @@ public class GameScreen implements Screen, InputProcessor {
 			else{				
 				a.update(delta);
 			}				
-		}
-
-		arrowToStick.clear();
-	}
-
-	private void updateArrows(float delta) {
-		for (int i = 0; i < arrows.size; i++) {
-			Entity a = arrows.get(i);
-			Body body = ((SpriteComponent) a.get(SpriteComponent.name)).getBody();
-			float flightSpeed = new Vector2(body.getLinearVelocity()).nor().len();
-			float bodyAngle = body.getAngle();
-			Vector2 pointingDirection = new Vector2(MathUtils.cos(bodyAngle), -MathUtils.sin(bodyAngle));
-			float flyingAngle = MathUtils.atan2(body.getLinearVelocity().y, body.getLinearVelocity().x);
-
-			Vector2 flightDirection = new Vector2(MathUtils.cos(flyingAngle), MathUtils.sin(flyingAngle));
-			float dot = flightDirection.dot(pointingDirection);
-			float dragForceMagnitude = (1 - Math.abs(dot)) * flightSpeed * flightSpeed * dragConstant * body.getMass();
-			Vector2 arrowTailPosition = body.getWorldPoint(new Vector2(-.3f, 0));
-			body.applyForce(new Vector2((dragForceMagnitude * -flightDirection.x), (dragForceMagnitude * -flightDirection.y)), arrowTailPosition, true);
-
-			if (!isInScreen(body.getPosition())) {
-				a.setDead(true);
-			}
-			if (a.isDead()) {
-				GM.world.destroyBody(body);
-				arrows.removeIndex(i);
-			}
 		}
 	}
 
@@ -474,6 +431,7 @@ public class GameScreen implements Screen, InputProcessor {
 			if (region == null) {
 				region = GM.commonAtlas.findRegion(textureFileName);
 			}
+			
 			Entity e = new Entity();
 			Boolean spine = (Boolean) GM.scene.getCustom(image, "spine");
 			if (spine == null) {
@@ -499,12 +457,17 @@ public class GameScreen implements Screen, InputProcessor {
 			if (active != null && active) {
 				Boolean destroyable = (Boolean) GM.scene.getCustom(image, "destroyable");
 				if (destroyable != null && destroyable) {
-					e.add(new Destroyable(e, Effect.GOLD));
+					//e.add(new Destroyable(e, Effect.GOLD));
 				}
 				
 				Boolean stick = (Boolean) GM.scene.getCustom(image, "stick");
 				if (stick != null && stick) {
 					e.add(new Stickable(e));
+				}
+				
+				Float speedX = (Float) GM.scene.getCustom(image, "speedX");
+				if (speedX != null) {
+					e.add(new HorizontalMove(e, 3, -0.01f));
 				}
 			}
 			entities.add(e);
