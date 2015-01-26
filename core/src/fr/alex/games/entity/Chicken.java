@@ -178,6 +178,8 @@ public class Chicken {
 	 */
 	public void stop() {
 		speed = 0;
+		chicken.setLinearDamping(10);
+		chicken.setLinearVelocity(0,0);
 		idle();
 	}
 
