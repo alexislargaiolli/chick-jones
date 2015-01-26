@@ -15,9 +15,11 @@ public abstract class Component {
 
 	public abstract void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta);
 
-	public abstract void contact(Entity entity, Contact contact);
-
-	
+	public abstract void contact(Entity other, Contact contact);	
 
 	public abstract String getName();
+	
+	public void onEvent(ComponentEvent event){
+		
+	}
 }

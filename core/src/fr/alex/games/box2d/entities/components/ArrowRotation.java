@@ -1,4 +1,4 @@
-package fr.alex.games.box2d.entities;
+package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -6,6 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
+
+import fr.alex.games.box2d.entities.Component;
+import fr.alex.games.box2d.entities.Entity;
 
 public class ArrowRotation extends Component{
 
@@ -22,7 +25,7 @@ public class ArrowRotation extends Component{
 
 	@Override
 	public void update(float delta) {
-		Body body = ((SpriteComponent) entity.get(SpriteComponent.name)).getBody();
+		Body body = ((Box2dSprite) entity.get(Box2dSprite.name)).getBody();
 		float flightSpeed = new Vector2(body.getLinearVelocity()).nor().len();
 		float bodyAngle = body.getAngle();
 		Vector2 pointingDirection = new Vector2(MathUtils.cos(bodyAngle), -MathUtils.sin(bodyAngle));

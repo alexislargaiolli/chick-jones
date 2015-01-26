@@ -1,16 +1,19 @@
-package fr.alex.games.box2d.entities;
+package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
-public class NormalMapComponent extends Component {
+import fr.alex.games.box2d.entities.Component;
+import fr.alex.games.box2d.entities.Entity;
+
+public class NormalMap extends Component {
 	public final static String name = "normal";
 	protected Texture diffuse;
 	protected Texture normal;	
 
-	public NormalMapComponent(Entity entity, Texture diffuse, Texture normal) {
+	public NormalMap(Entity entity, Texture diffuse, Texture normal) {
 		super(entity);
 		this.diffuse = diffuse;
 		this.normal = normal;

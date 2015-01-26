@@ -1,6 +1,8 @@
 package fr.alex.games.box2d.entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -13,11 +15,14 @@ public class Entity {
 	private Vector2 position;
 	private HashMap<String, Component> components;
 
+	private List<Component> eventListners;
+
 	public Entity() {
 		dead = false;
 		toRemove = false;
 		position = new Vector2();
 		components = new HashMap<String, Component>();
+		eventListners = new ArrayList<Component>();
 	}
 
 	public void update(float delta) {
@@ -32,20 +37,19 @@ public class Entity {
 		}
 	}
 
-	public void contact(Entity entity, Contact contact) {
-		for (Component c : components.values()) {
+	public void contact(Entity entity, Contact contact) {		
+		for (Component c : components.values()) {			
 			c.contact(entity, contact);
 		}
 	}
 
-	public void destroy() {
-		SpriteComponent sprite = (SpriteComponent) get(SpriteComponent.name);
-		if (sprite != null) {
-			sprite.destroy();
-		}
-		SkeletonComponent skeleton = (SkeletonComponent) get(SkeletonComponent.name);
-		if (skeleton != null) {
-			skeleton.destroy();
+	public void addListner(Component listner){
+		eventListners.add(listner);
+	}
+	
+	public void broadcastEvent(ComponentEvent event){
+		for(Component c : eventListners){
+			c.onEvent(event);
 		}
 	}
 
@@ -88,5 +92,5 @@ public class Entity {
 	public void setPosition(float x, float y) {
 		this.position.x = x;
 		this.position.y = y;
-	}
+	}	
 }

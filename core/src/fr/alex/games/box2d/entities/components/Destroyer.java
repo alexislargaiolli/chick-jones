@@ -1,8 +1,11 @@
-package fr.alex.games.box2d.entities;
+package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
+
+import fr.alex.games.box2d.entities.Component;
+import fr.alex.games.box2d.entities.Entity;
 
 public class Destroyer extends Component {
 	public final static String name = "destroyer";
@@ -27,8 +30,7 @@ public class Destroyer extends Component {
 	public void contact(Entity entity, Contact contact) {
 		if (entity.contains(Destroyable.name)) {
 			hasDestroy = true;
-			contact.setEnabled(false);
-			entity.setToRemove(true);
+			contact.setEnabled(false);			
 		}
 	}
 

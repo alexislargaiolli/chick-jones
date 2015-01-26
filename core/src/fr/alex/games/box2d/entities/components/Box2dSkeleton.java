@@ -1,4 +1,4 @@
-package fr.alex.games.box2d.entities;
+package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -24,17 +24,23 @@ import com.esotericsoftware.spine.attachments.AtlasAttachmentLoader;
 import com.esotericsoftware.spine.attachments.RegionAttachment;
 
 import fr.alex.games.GM;
+import fr.alex.games.box2d.entities.Component;
+import fr.alex.games.box2d.entities.ComponentEvent;
+import fr.alex.games.box2d.entities.Entity;
+import fr.alex.games.box2d.entities.EventType;
 
-public class SkeletonComponent extends Component {
+public class Box2dSkeleton extends Component {
 	public final static String name = "skeleton";
+	protected boolean toDestroy;
 	private Skeleton skeleton;
 	private AnimationStateData stateData;
 	private AnimationState animState;
 	private Bone root;
 
-	public SkeletonComponent(Entity entity, String spineFile, Vector2 position, Vector2 size) {
+	public Box2dSkeleton(Entity entity, String spineFile, Body body, Vector2 size) {
 		super(entity);
-		entity.setPosition(position);
+		entity.addListner(this);
+		entity.setPosition(body.getPosition().cpy());
 		GM.assetManager.load(spineFile + ".atlas", TextureAtlas.class);
 		GM.assetManager.finishLoading();
 		final TextureAtlas atlas = GM.assetManager.get(spineFile + ".atlas", TextureAtlas.class);
@@ -50,7 +56,7 @@ public class SkeletonComponent extends Component {
 				return attachment;
 			}
 		};
-		
+
 		SkeletonJson skeletonJson = new SkeletonJson(atlasLoader);
 		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal(spineFile + ".json"));
 		float scale = size.y / skeletonData.getHeight();
@@ -62,7 +68,7 @@ public class SkeletonComponent extends Component {
 		skeleton = new Skeleton(skeletonData);
 		root = skeleton.findBone("root");
 		root.setScale(scale, scale);
-		root.setPosition(position.x, position.y);
+		root.setPosition(entity.getPosition().x, entity.getPosition().y);
 		skeleton.updateWorldTransform();
 
 		Vector2 vector = new Vector2();
@@ -82,17 +88,29 @@ public class SkeletonComponent extends Component {
 			attachment.body.createFixture(boxPoly, 1);
 			attachment.body.setUserData(entity);
 			boxPoly.dispose();
-		}		
-		
+		}
+		GM.scene.getWorld().destroyBody(body);
+	}
+
+	@Override
+	public void onEvent(ComponentEvent event) {
+		if (event.getType() == EventType.DESTROY) {
+			toDestroy = true;
+		}
 	}
 
 	@Override
 	public void update(float delta) {
-		root.setPosition(entity.getPosition().x, entity.getPosition().y);
-		animState.update(delta);
-		animState.apply(skeleton);
-		skeleton.updateWorldTransform();
-		updateSlotPosition();		
+		if (toDestroy && !entity.isToRemove()) {
+			destroy();
+			this.entity.setToRemove(true);
+		} else {
+			root.setPosition(entity.getPosition().x, entity.getPosition().y);
+			animState.update(delta);
+			animState.apply(skeleton);
+			skeleton.updateWorldTransform();
+			updateSlotPosition();
+		}
 	}
 
 	@Override
@@ -120,7 +138,7 @@ public class SkeletonComponent extends Component {
 			// attachment.body = null;
 		}
 	}
-	
+
 	public void flipX() {
 		skeleton.setFlip(!skeleton.getFlipX(), skeleton.getFlipY());
 	}

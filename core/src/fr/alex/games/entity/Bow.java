@@ -24,12 +24,13 @@ import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.GM;
-import fr.alex.games.box2d.entities.ArrowRotation;
 import fr.alex.games.box2d.entities.Component;
-import fr.alex.games.box2d.entities.Destroyer;
 import fr.alex.games.box2d.entities.Entity;
-import fr.alex.games.box2d.entities.SpriteComponent;
-import fr.alex.games.box2d.entities.Stick;
+import fr.alex.games.box2d.entities.components.ArrowRotation;
+import fr.alex.games.box2d.entities.components.Collector;
+import fr.alex.games.box2d.entities.components.Destroyer;
+import fr.alex.games.box2d.entities.components.Box2dSprite;
+import fr.alex.games.box2d.entities.components.Stick;
 import fr.alex.games.screens.GameScreen.State;
 
 public class Bow {
@@ -64,7 +65,7 @@ public class Bow {
 	float arrowCount = 1;
 	private Sprite arrowSprite;
 
-	public Bow(Chicken player, TextureRegion defaultArrowTexture, Texture diffuse, Texture normal) {
+	public Bow(Chicken player, TextureRegion defaultArrowTexture, Texture diffuse, Texture normal, Vector2 size) {
 		super();
 		origin = new Vector2();
 		velocity = new Vector2();
@@ -76,7 +77,8 @@ public class Bow {
 		SkeletonJson skeletonJson = new SkeletonJson(atlas);
 		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("chicken/bow.json"));
 		root = skeletonData.findBone("root");
-		root.setScale(player.getScale(), player.getScale());
+		float scale = size.y / skeletonData.getHeight();
+		root.setScale(scale, scale);
 		root.setRotation(30);
 
 		animShot = skeletonData.findAnimation("shot");
@@ -238,11 +240,12 @@ public class Bow {
 		 * body.setUserData(arrow);
 		 */
 		Entity arrow = new Entity();
-		Component c = new SpriteComponent(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow, heightArrow), Vector2.Zero, 0);
+		Component c = new Box2dSprite(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow, heightArrow), Vector2.Zero, 0);
 		arrow.add(c);
 		arrow.add(new ArrowRotation(arrow));
 		arrow.add(new Destroyer(arrow));
 		arrow.add(new Stick(arrow));		
+		arrow.add(new Collector(arrow));
 		return arrow;
 	}
 

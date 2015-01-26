@@ -1,4 +1,4 @@
-package fr.alex.games.box2d.entities;
+package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,20 +11,26 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.GM;
+import fr.alex.games.box2d.entities.Component;
+import fr.alex.games.box2d.entities.ComponentEvent;
+import fr.alex.games.box2d.entities.Entity;
+import fr.alex.games.box2d.entities.EventType;
 
-public class SpriteComponent extends Component {
+public class Box2dSprite extends Component {
 	public final static String name = "sprite";
 	protected Sprite sprite;
 	protected Body body;
+	protected boolean toDestroy;
 	protected final Vector2 center = new Vector2();
 	protected final Vector2 halfSize = new Vector2();
 	protected float rotation;
 	protected Vector2 tmp = new Vector2();
 
-	public SpriteComponent(Entity entity, TextureRegion region, boolean flip, Body body, Color color, Vector2 size, Vector2 center, float rotationInDegrees) {
+	public Box2dSprite(Entity entity, TextureRegion region, boolean flip, Body body, Color color, Vector2 size, Vector2 center, float rotationInDegrees) {
 		super(entity);
+		entity.addListner(this);
 		this.sprite = new Sprite(region);
-		this.body = body;		
+		this.body = body;
 		this.sprite.flip(flip, false);
 		this.sprite.setColor(color);
 		this.rotation = rotationInDegrees;
@@ -47,6 +53,7 @@ public class SpriteComponent extends Component {
 		}
 
 		this.sprite.setPosition(this.tmp.x, this.tmp.y);
+		entity.setPosition(this.tmp.x, this.tmp.y);
 	}
 
 	@Override
@@ -57,9 +64,17 @@ public class SpriteComponent extends Component {
 			sprite.setPosition(tmp.x, tmp.y);
 			entity.setPosition(tmp.x, tmp.y);
 			sprite.setRotation(rotation + angle);
-			if(entity.isDead()){				
-				entity.setToRemove(true);
+			if (toDestroy && !entity.isToRemove()) {
+				destroy();
+				this.entity.setToRemove(true);
 			}
+		}
+	}
+
+	@Override
+	public void onEvent(ComponentEvent event) {
+		if (event.getType() == EventType.DESTROY) {
+			toDestroy = true;
 		}
 	}
 
@@ -72,12 +87,12 @@ public class SpriteComponent extends Component {
 	public void contact(Entity entity, Contact contact) {
 
 	}
-	
-	public void destroy(){
+
+	public void destroy() {
 		GM.scene.getWorld().destroyBody(body);
 	}
-	
-	public void flipX(){
+
+	public void flipX() {
 		sprite.setFlip(!sprite.isFlipX(), sprite.isFlipY());
 	}
 
