@@ -34,7 +34,7 @@ public class ParallaxBackground implements com.badlogic.gdx.utils.Json.Serializa
 		this.height = height;
 		this.layers = layers;
 		this.speed.set(speed);
-		camera = new OrthographicCamera(width * .5f * GM.ratio, height * .5f* GM.ratio);
+		//camera = new OrthographicCamera(width * .5f * GM.ratio, height * .5f* GM.ratio);
 		this.batch = new SpriteBatch();
 	}
 

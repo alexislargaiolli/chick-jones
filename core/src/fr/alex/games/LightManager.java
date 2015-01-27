@@ -2,6 +2,7 @@ package fr.alex.games;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
@@ -12,31 +13,60 @@ public class LightManager {
 	Vector3 lightPosition = new Vector3();
 	Vector2 resolution = new Vector2();
 	Vector3 attenuation = new Vector3();
+	float intensity = .5f;
+	float animTime = 0f;
+	float animDuration = .1f;
+	float animOrientation = 1f;
+	float minStrength = .6f;
+	float maxStrength = .9f;
 	
 	public LightManager(SpriteBatch batch){
 		program = createShader();
 		batch.setShader(program);
-		ambientColor.set(.5f, .5f, .5f);
-		lightColor.set(.8f, .8f, .8f);
-		lightPosition.set(4, 4, .5f);
-		attenuation.set(.5f, .5f, .5f);
+		ambientColor.set(.3f, .3f, .3f);
+		lightColor.set(.8f, .8f, 1f);
+		lightPosition.set(4, 4, .3f);
+		attenuation.set(.3f, .3f, .3f);
 	}
 	
 	public void resize(float width, float height){
 		resolution.set(width, height);
 	}
 	
-	public void begin(){
+	public void begin(float delta){
+		
+		if(animTime >= animDuration){
+			animOrientation = -1;
+			animDuration = 0.1f + (float) Math.random() * .5f;
+			animTime = animDuration;
+		}
+		if(animTime <= 0){
+			animOrientation = 1;
+			animDuration = 0.1f + (float) Math.random() * .5f;
+			animTime = 0;
+		}
+		animTime += delta  * animOrientation;
+		//lightPosition.z = Interpolation.linear.apply(minStrength, maxStrength, animTime / animDuration);
+		//lightPosition.set(4, 4, .2f);
+		lightPosition.z = .3f;
+		attenuation.set(.2f, .4f, .8f);
+		lightColor.set(.7f, .7f, 1f);
+		ambientColor.set(0f, 0f, 0f);
+		//intensity = .5f;
+		attenuation.z = Interpolation.pow2.apply(minStrength, maxStrength, animTime / animDuration);
+		//intensity = Interpolation.exp10.apply(minStrength, maxStrength, animTime / animDuration);
+		//lightColor.z = Interpolation.exp10.apply(minStrength, maxStrength, animTime / animDuration);
+		
 		program.setUniformi("yInvert", 0);
 		program.setUniformf("resolution", resolution);
 		program.setUniformf("ambientColor", ambientColor);
-		program.setUniformf("ambientIntensity", .5f);
+		program.setUniformf("ambientIntensity", intensity);
 		program.setUniformf("attenuation", attenuation);
 		program.setUniformf("light", lightPosition);
 		program.setUniformf("lightColor", lightColor);
 		program.setUniformi("useNormals", 1);
 		program.setUniformi("useShadow", 1);
-		program.setUniformf("strength", 1);
+		program.setUniformf("strength", .8f);
 	}
 	
 	private ShaderProgram createShader () {
@@ -126,5 +156,10 @@ public class LightManager {
 
 	public void setLightPosition(Vector3 lightPosition) {
 		this.lightPosition = lightPosition;
+	}
+	
+	public void setLightPosition(float x, float y) {
+		this.lightPosition.x = x;
+		this.lightPosition.y = y;
 	}
 }

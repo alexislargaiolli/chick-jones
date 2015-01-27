@@ -82,7 +82,7 @@ public class Chicken {
 	
 	private void handleInput(){
 		if(Gdx.input.isTouched()){
-			if (Gdx.input.getX() < GM.cameraDeltaX * GM.ratio) {
+			if (Gdx.input.getX() < GM.cameraManager.getScreenCenterX()) {
 				jump();
 			}
 		}

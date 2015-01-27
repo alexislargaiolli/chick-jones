@@ -5,14 +5,12 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.utils.Array;
@@ -20,6 +18,7 @@ import com.esotericsoftware.spine.SkeletonRenderer;
 import com.gushikustudios.rube.RubeScene;
 import com.gushikustudios.rube.loader.serializers.utils.RubeImage;
 
+import fr.alex.games.CameraManager;
 import fr.alex.games.GM;
 import fr.alex.games.GameCollisions;
 import fr.alex.games.HUD;
@@ -66,11 +65,6 @@ public class GameScreen implements Screen, InputProcessor {
 	 * Tmp vector
 	 */
 	private static final Vector2 tmp = new Vector2();
-
-	/**
-	 * Camera
-	 */
-	private OrthographicCamera camera;
 
 	/**
 	 * Box 2D debug renderer
@@ -129,35 +123,11 @@ public class GameScreen implements Screen, InputProcessor {
 	private float endX;
 
 	/**
-	 * Current camera viewport width
-	 */
-	public static float viewportWidth;
-
-	/**
-	 * Current camera viewport height
-	 */
-	public static float viewportHeight;
-
-	/**
-	 * Last screen touch position used to compute bow direction
-	 */
-	private Vector3 lastTouch;
-
-	/**
 	 * True to draw box 2d debug lines
 	 */
 	private boolean debug;
 
 	private LightManager lightManager;
-	private Vector3 chickenScreenPosition;
-
-	public static final short CHICKEN_ENTITY = 0x0001; // 0001
-	public static final short ARROW_ENTITY = 0x0002;
-	public static final short WORLD_ENTITY = 0x0004;
-
-	public static final short MASK_CHICKEN = WORLD_ENTITY;
-	public static final short MASK_ARROW = WORLD_ENTITY;
-	public static final short MASK_WORLD = -1;
 
 	public GameScreen() {
 		entities = new Array<Entity>();
@@ -170,35 +140,20 @@ public class GameScreen implements Screen, InputProcessor {
 		batch = new SpriteBatch();
 		skeletonRenderer = new SkeletonRenderer();
 		skeletonRenderer.setPremultipliedAlpha(true);
-		lastTouch = new Vector3();
 		lightManager = new LightManager(batch);
-		chickenScreenPosition = new Vector3();
 	}
 
 	public void init() {
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-		viewportHeight = 6f; // 6 meters in box 2d world
-		viewportWidth = viewportHeight * w / h;
-		camera = new OrthographicCamera(viewportWidth, viewportHeight);
-		GM.camera = camera;
-		GM.cameraDeltaX = viewportWidth * .25f;
-		GM.ratio = (float) Gdx.graphics.getHeight() / viewportHeight;
 		entities.clear();
 		enemies.clear();
 		arrows.clear();
 		statics.clear();
 		Array<Body> tmp = GM.scene.getNamed(Body.class, "chicken");
-		Texture commonDiffuse = GM.assetManager.get(
-				Main.COMMON_ATLAS_PATH.replace(".atlas", "-diffuse.png"),
-				Texture.class);
-		Texture commonNormal = GM.assetManager.get(
-				Main.COMMON_ATLAS_PATH.replace(".atlas", "-normal.png"),
-				Texture.class);
-		chicken = new Chicken(tmp.get(0), GM.commonAtlas.findRegion("arrow"),
-				commonDiffuse, commonNormal);
+		Texture commonDiffuse = GM.assetManager.get(Main.COMMON_ATLAS_PATH.replace(".atlas", "-diffuse.png"), Texture.class);
+		Texture commonNormal = GM.assetManager.get(Main.COMMON_ATLAS_PATH.replace(".atlas", "-normal.png"), Texture.class);
+		chicken = new Chicken(tmp.get(0), GM.commonAtlas.findRegion("arrow"), commonDiffuse, commonNormal);
 		tmp = GM.scene.getNamed(Body.class, "chickenSensor");
-		tmp.get(0).setUserData(chicken);
+		tmp.get(0).setUserData(chicken);		
 
 		createSpatialsFromRubeImages(GM.scene);
 
@@ -223,7 +178,6 @@ public class GameScreen implements Screen, InputProcessor {
 		arrows.clear();
 		activedSkills.clear();
 		reloadingSkills.clear();
-		lastTouch.set(1, 0, 0);
 
 		InputMultiplexer multi = new InputMultiplexer();
 		multi.addProcessor(hud.getStage());
@@ -232,7 +186,7 @@ public class GameScreen implements Screen, InputProcessor {
 		Gdx.input.setCatchBackKey(true);
 
 		state = State.STARTING;
-		updateCamera();
+		GM.cameraManager = new CameraManager(7f, new Vector2(chicken.getX(), chicken.getY()), new Vector2(0.15f, 0.3f));
 	}
 
 	@Override
@@ -262,8 +216,6 @@ public class GameScreen implements Screen, InputProcessor {
 			}
 			updateWorld(delta);
 			chicken.update(state, delta);
-			chickenScreenPosition.set(chicken.getX(), chicken.getY(), 0);
-			chickenScreenPosition = camera.project(chickenScreenPosition);
 			if (state == State.STARTING) {
 				if (counter > 0) {
 					counter -= delta;
@@ -290,14 +242,15 @@ public class GameScreen implements Screen, InputProcessor {
 					state = State.LOOSE;
 				} else {
 					hud.showWin();
-					PlayerManager.get().setLevelFinish(GM.level.getIndex(),
-							GM.stars);
+					PlayerManager.get().setLevelFinish(GM.level.getIndex(), GM.stars);
 					PlayerManager.get().addGold(GM.gold);
 					state = State.WIN;
 				}
 			}
-
-			updateCamera();
+			
+			GM.cameraManager.setTargetX(chicken.getX());
+			GM.cameraManager.setTargetY(chicken.getY());
+			GM.cameraManager.update(delta);
 		}
 
 		hud.update(delta);
@@ -308,7 +261,7 @@ public class GameScreen implements Screen, InputProcessor {
 		GM.scene.step();
 		for (int i = 0; i < arrows.size; i++) {
 			Entity arrow = arrows.get(i);
-			if (isInScreen(arrow.getPosition())) {
+			if (GM.cameraManager.isInScreen(arrow.getPosition())) {
 				arrow.update(delta);
 				if (arrow.isToRemove()) {
 					arrows.removeValue(arrow, false);
@@ -319,7 +272,7 @@ public class GameScreen implements Screen, InputProcessor {
 		}
 		for (int i = 0; i < entities.size; i++) {
 			Entity entity = entities.get(i);
-			if (isInScreen(entity.getPosition())) {
+			if (GM.cameraManager.isInScreen(entity.getPosition())) {
 				entity.update(delta);
 				if (entity.isToRemove()) {
 					entities.removeValue(entity, false);
@@ -328,7 +281,7 @@ public class GameScreen implements Screen, InputProcessor {
 		}
 		for (int i = 0; i < enemies.size; i++) {
 			Entity enemy = enemies.get(i);
-			if (isInScreen(enemy.getPosition())) {
+			if (GM.cameraManager.isInScreen(enemy.getPosition())) {
 				enemy.update(delta);
 				if (enemy.isToRemove()) {
 					enemies.removeValue(enemy, false);
@@ -360,26 +313,26 @@ public class GameScreen implements Screen, InputProcessor {
 	}
 
 	private void draw(float delta) {
-		batch.setProjectionMatrix(camera.combined);
+		batch.setProjectionMatrix(GM.cameraManager.combined());
 		batch.begin();
 
-		lightManager.begin();
-		lightManager.getLightPosition().x = chickenScreenPosition.x;
-		lightManager.getLightPosition().y = chickenScreenPosition.y;
-
+		lightManager.begin(delta);
+		Vector2 pos = GM.cameraManager.toScreen(chicken.getX(), chicken.getY());
+		lightManager.setLightPosition(pos.x, pos.y);
+		
 		for (int i = 0; i < statics.size; i++) {
 			Entity entity = statics.get(i);
-			if (isInScreen(entity.getPosition())) {
+			if (GM.cameraManager.isInScreen(entity.getPosition())) {
 				entity.draw(batch, skeletonRenderer, delta);
 			}
 		}
 		batch.end();
 
 		batch.begin();
-		
+
 		for (int i = 0; i < arrows.size; i++) {
 			Entity arrow = arrows.get(i);
-			if (isInScreen(arrow.getPosition())) {
+			if (GM.cameraManager.isInScreen(arrow.getPosition())) {
 				arrow.draw(batch, skeletonRenderer, delta);
 			}
 		}
@@ -390,7 +343,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 		for (int i = 0; i < entities.size; i++) {
 			Entity entity = entities.get(i);
-			if (isInScreen(entity.getPosition())) {
+			if (GM.cameraManager.isInScreen(entity.getPosition())) {
 				entity.draw(batch, skeletonRenderer, delta);
 			}
 		}
@@ -399,7 +352,7 @@ public class GameScreen implements Screen, InputProcessor {
 		batch.begin();
 		for (int i = 0; i < enemies.size; i++) {
 			Entity ennemy = enemies.get(i);
-			if (isInScreen(ennemy.getPosition())) {
+			if (GM.cameraManager.isInScreen(ennemy.getPosition())) {
 				ennemy.draw(batch, skeletonRenderer, delta);
 			}
 		}
@@ -410,25 +363,17 @@ public class GameScreen implements Screen, InputProcessor {
 		chicken.draw(batch, skeletonRenderer, delta);
 		batch.end();
 
-		EffectManager.get().draw(
-				camera.combined.cpy().scale(Utils.WORLD_TO_BOX,
-						Utils.WORLD_TO_BOX, 0), delta);
+		EffectManager.get().draw(GM.cameraManager.combined(Utils.WORLD_TO_BOX, Utils.WORLD_TO_BOX), delta);
 		hud.draw();
 
 		if (debug) {
-			renderer.render(GM.scene.getWorld(), camera.combined);
+			renderer.render(GM.scene.getWorld(), GM.cameraManager.combined());
 		}
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		lightManager.resize(width, height);
-	}
-
-	private void updateCamera() {
-		camera.position.x = chicken.getX() + GM.cameraDeltaX;
-		//camera.position.y = chicken.getY() + GM.cameraDeltaY;
-		camera.update();
 	}
 
 	private boolean isLost() {
@@ -442,15 +387,9 @@ public class GameScreen implements Screen, InputProcessor {
 	private void createSpatialsFromRubeImages(RubeScene scene) {
 		Array<RubeImage> images = scene.getImages();
 
-		TextureAtlas atlas = GM.assetManager.get(Main.SCENES_ATLAS_PATH
-				+ GM.level.getSceneAtlasFile(), TextureAtlas.class);
-		Texture diffuse = GM.assetManager.get(Main.SCENES_ATLAS_PATH
-				+ GM.level.getSceneAtlasFile()
-						.replace(".atlas", "-diffuse.png"), Texture.class);
-		Texture normal = GM.assetManager.get(
-				Main.SCENES_ATLAS_PATH
-						+ GM.level.getSceneAtlasFile().replace(".atlas",
-								"-normal.png"), Texture.class);
+		TextureAtlas atlas = GM.assetManager.get(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile(), TextureAtlas.class);
+		Texture diffuse = GM.assetManager.get(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile().replace(".atlas", "-diffuse.png"), Texture.class);
+		Texture normal = GM.assetManager.get(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile().replace(".atlas", "-normal.png"), Texture.class);
 
 		for (int i = 0; i < images.size; i++) {
 			RubeImage image = images.get(i);
@@ -466,9 +405,7 @@ public class GameScreen implements Screen, InputProcessor {
 			if (spine == null) {
 				Component c = new NormalMap(e, diffuse, normal);
 				e.add(c);
-				c = new Box2dSprite(e, region, image.flip, image.body,
-						image.color, tmp, image.center, image.angleInRads
-								* MathUtils.radiansToDegrees);
+				c = new Box2dSprite(e, region, image.flip, image.body, image.color, tmp, image.center, image.angleInRads * MathUtils.radiansToDegrees);
 				e.add(c);
 				if (image.body == null) {
 					statics.add(e);
@@ -481,23 +418,18 @@ public class GameScreen implements Screen, InputProcessor {
 				GM.assetManager.load(file + "-normal.png", Texture.class);
 				// Component skeleton = new Box2dSkeleton(e, file, image.body,
 				// tmp);
-				Component skeleton = new Box2dSkeletonBasic(e, file,
-						image.body, tmp, image.center);
-				Texture spineDiffuse = GM.assetManager.get(file
-						+ "-diffuse.png", Texture.class);
-				Texture spineNormal = GM.assetManager.get(file + "-normal.png",
-						Texture.class);
+				Component skeleton = new Box2dSkeletonBasic(e, file, image.body, tmp, image.center);
+				Texture spineDiffuse = GM.assetManager.get(file + "-diffuse.png", Texture.class);
+				Texture spineNormal = GM.assetManager.get(file + "-normal.png", Texture.class);
 
-				Component normalMap = new NormalMap(e, spineDiffuse,
-						spineNormal);
+				Component normalMap = new NormalMap(e, spineDiffuse, spineNormal);
 				e.add(normalMap);
 				e.add(skeleton);
 				enemies.add(e);
 			}
 			Boolean active = (Boolean) GM.scene.getCustom(image, "active");
 			if (active != null && active) {
-				Boolean destroyable = (Boolean) GM.scene.getCustom(image,
-						"destroyable");
+				Boolean destroyable = (Boolean) GM.scene.getCustom(image, "destroyable");
 				if (destroyable != null && destroyable) {
 					// e.add(new Destroyable(e));
 					e.add(new DestoryedEffect(e, Effect.GOLD));
@@ -519,8 +451,7 @@ public class GameScreen implements Screen, InputProcessor {
 				}
 				Boolean coin = (Boolean) GM.scene.getCustom(image, "coin");
 				if (coin != null && coin) {
-					Integer coins = (Integer) GM.scene
-							.getCustom(image, "coins");
+					Integer coins = (Integer) GM.scene.getCustom(image, "coins");
 					int val = 1;
 					if (coins != null) {
 						val = (Integer) coins;
@@ -546,15 +477,10 @@ public class GameScreen implements Screen, InputProcessor {
 				Boolean spine = (Boolean) GM.scene.getCustom(image, "spine");
 
 				if (spine != null) {
-					String file = (String) GM.scene.getCustom(image,
-							"spineFile");
-					spatial = new SpineSpatial(file, image.flip, image.body,
-							image.color, tmp, image.center, image.angleInRads);
+					String file = (String) GM.scene.getCustom(image, "spineFile");
+					spatial = new SpineSpatial(file, image.flip, image.body, image.color, tmp, image.center, image.angleInRads);
 				} else {
-					spatial = new SimpleSpatial(region, diffuse, normal,
-							image.flip, image.body, image.color, tmp,
-							image.center, image.angleInRads
-									* MathUtils.radiansToDegrees);
+					spatial = new SimpleSpatial(region, diffuse, normal, image.flip, image.body, image.color, tmp, image.center, image.angleInRads * MathUtils.radiansToDegrees);
 				}
 				Boolean active = (Boolean) GM.scene.getCustom(image, "active");
 				if (active != null && active) {
@@ -574,22 +500,18 @@ public class GameScreen implements Screen, InputProcessor {
 
 					Float speedX = (Float) GM.scene.getCustom(image, "speedX");
 					if (speedX != null) {
-						MoveX m = new MoveX(userData, spatial.getmBody()
-								.getPosition().cpy(), 1f, speedX);
+						MoveX m = new MoveX(userData, spatial.getmBody().getPosition().cpy(), 1f, speedX);
 						spatial.addProperties(m);
 					}
 
-					Float durationBeforeRemove = (Float) GM.scene.getCustom(
-							image, "durationBeforeDie");
+					Float durationBeforeRemove = (Float) GM.scene.getCustom(image, "durationBeforeDie");
 					if (durationBeforeRemove != null) {
 						userData.setTimeBeforeDie(durationBeforeRemove);
 					}
 
-					Float jumpSpeed = (Float) GM.scene.getCustom(image,
-							"jumpSpeed");
+					Float jumpSpeed = (Float) GM.scene.getCustom(image, "jumpSpeed");
 					if (jumpSpeed != null) {
-						Float jumpFrequence = (Float) GM.scene.getCustom(image,
-								"jumpFrequence");
+						Float jumpFrequence = (Float) GM.scene.getCustom(image, "jumpFrequence");
 						if (jumpFrequence == null) {
 							jumpFrequence = 5f;
 						}
@@ -597,15 +519,13 @@ public class GameScreen implements Screen, InputProcessor {
 						spatial.addProperties(j);
 					}
 
-					Integer imgCount = (Integer) GM.scene.getCustom(image,
-							"imageCount");
+					Integer imgCount = (Integer) GM.scene.getCustom(image, "imageCount");
 					if (imgCount != null) {
 						spatial.setImages(new TextureRegion[imgCount - 1]);
 						spatial.setImageCount(imgCount);
 						for (int j = 0; j < imgCount - 1; ++j) {
 							String key = "image" + (j + 1);
-							String img = (String) GM.scene
-									.getCustom(image, key);
+							String img = (String) GM.scene.getCustom(image, key);
 							spatial.getImages()[j] = atlas.findRegion(img);
 						}
 					}
@@ -613,16 +533,7 @@ public class GameScreen implements Screen, InputProcessor {
 				}
 			}
 		}
-	}
-
-	public boolean isInScreen(float x, float y) {
-		return x > (camera.position.x - camera.viewportWidth * 1.5f)
-				&& x < (camera.position.x + camera.viewportWidth * .75f);
-	}
-
-	public boolean isInScreen(Vector2 position) {
-		return isInScreen(position.x, position.y);
-	}
+	}	
 
 	public void activeSkill(boolean active, ActiveSkill skill) {
 		if (active) {
@@ -636,16 +547,11 @@ public class GameScreen implements Screen, InputProcessor {
 	private void handlePassiveSkill(boolean enable, PassiveSkill skill) {
 		switch (skill.getCarac()) {
 		case BOW_STRENGTH:
-			chicken.getBow().setStrength(
-					handleBonus(enable, chicken.getBow().getStrength(),
-							skill.getType(), skill.getBonus()));
+			chicken.getBow().setStrength(handleBonus(enable, chicken.getBow().getStrength(), skill.getType(), skill.getBonus()));
 			break;
 		case TIME_SPEED:
-			GM.scene.setStepsPerSecond((int) handleBonus(enable,
-					GM.scene.getStepsPerSecond(), skill.getType(),
-					skill.getBonus()));
-			chicken.setTimeFactor(handleBonus(enable, chicken.getTimeFactor(),
-					ModifType.DIV, skill.getBonus()));
+			GM.scene.setStepsPerSecond((int) handleBonus(enable, GM.scene.getStepsPerSecond(), skill.getType(), skill.getBonus()));
+			chicken.setTimeFactor(handleBonus(enable, chicken.getTimeFactor(), ModifType.DIV, skill.getBonus()));
 			break;
 		case SPEED:
 			break;
@@ -654,8 +560,7 @@ public class GameScreen implements Screen, InputProcessor {
 		}
 	}
 
-	private float handleBonus(boolean enable, float val, ModifType type,
-			float bonus) {
+	private float handleBonus(boolean enable, float val, ModifType type, float bonus) {
 		float res = val;
 		switch (type) {
 		case ADD:
@@ -722,12 +627,11 @@ public class GameScreen implements Screen, InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (state == State.PLAYING) {
-			if (Gdx.input.getX() >= GM.cameraDeltaX * GM.ratio) {
-				lastTouch.set(screenX, screenY, 0);
-				lastTouch = camera.unproject(lastTouch);
+			if (Gdx.input.getX() >= GM.cameraManager.getScreenCenterX()) {
+				Vector2 touch = GM.cameraManager.toWorld(screenX, screenY);
 
 				tmp.set(chicken.getBow().getOrigin());
-				tmp.sub(lastTouch.x, lastTouch.y);
+				tmp.sub(touch.x, touch.y);
 				chicken.getBow().setAngle(tmp.angle() + 180);
 				arrows.addAll(chicken.getBow().fire());
 				GM.arrowFiredCount++;
@@ -772,13 +676,5 @@ public class GameScreen implements Screen, InputProcessor {
 
 	public void setState(State state) {
 		this.state = state;
-	}
-
-	public Vector3 getLastTouch() {
-		return lastTouch;
-	}
-
-	public void setLastTouch(Vector3 lastTouch) {
-		this.lastTouch = lastTouch;
 	}
 }

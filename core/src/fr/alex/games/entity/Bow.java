@@ -241,7 +241,7 @@ public class Bow {
 		 * body.setUserData(arrow);
 		 */
 		Entity arrow = new Entity();
-		Component c = new Box2dSprite(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow, heightArrow), Vector2.Zero, 0);
+		Component c = new Box2dSprite(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow*1.2f, heightArrow*1.8f), Vector2.Zero, 0);
 		arrow.add(c);
 		arrow.add(new ArrowRotation(arrow));
 		arrow.add(new Destroyer(arrow));
