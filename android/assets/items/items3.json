@@ -7,7 +7,7 @@
 		{
 			carac: BOW_STRENGTH,
 			type: ADD,
-			bonus: 10
+			bonus: 5
 		}
 	],
 	desc: item.1.desc,
@@ -23,7 +23,7 @@
 		{
 			carac: BOW_STRENGTH,
 			type: ADD,
-			bonus: 10
+			bonus: 5
 		}
 	],
 	desc: item.4.desc,

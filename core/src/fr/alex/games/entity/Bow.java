@@ -227,6 +227,7 @@ public class Bow {
 		fixtureDef.density = 1f;
 		fixtureDef.restitution = .5f;
 		fixtureDef.friction = .1f;
+		fixtureDef.filter.groupIndex = -1;
 		body.createFixture(fixtureDef);
 
 		body.setTransform(x, y, getAngleRad());

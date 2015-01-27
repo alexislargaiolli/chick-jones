@@ -67,9 +67,7 @@ public class Chicken {
 	public void update(State state, float delta) {
 		handleInput();
 		chickenEntity.update(delta);
-		// bow.setOrigin(chicken.getWorldCenter().x + width * .25f,
-		// chicken.getWorldCenter().y + height * .2f);
-		bow.setOrigin(chickenEntity.getPosition().x + width, chickenEntity.getPosition().y + height);
+		bow.setOrigin(chickenEntity.getPosition().x + width * 0.3f, chickenEntity.getPosition().y + height * .2f);
 		bow.update(state, delta * timeFactor);
 
 		if (state == State.PLAYING && !isDead() && chicken.getLinearVelocity().x < speed) {

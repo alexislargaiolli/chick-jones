@@ -7,21 +7,17 @@ import com.badlogic.gdx.math.Vector3;
 
 public class LightManager {
 	ShaderProgram program;
-	final Vector3 ambientColor = new Vector3();
-	final Vector3 lightColor = new Vector3();
-	final Vector3 lightPosition = new Vector3();
-	public Vector3 getLightPosition() {
-		return lightPosition;
-	}
-
-	final Vector2 resolution = new Vector2();
-	final Vector3 attenuation = new Vector3();
+	Vector3 ambientColor = new Vector3();
+	Vector3 lightColor = new Vector3();
+	Vector3 lightPosition = new Vector3();
+	Vector2 resolution = new Vector2();
+	Vector3 attenuation = new Vector3();
 	
 	public LightManager(SpriteBatch batch){
 		program = createShader();
 		batch.setShader(program);
-		ambientColor.set(1f, 1f, 1f);
-		lightColor.set(.5f, .5f, .5f);
+		ambientColor.set(.5f, .5f, .5f);
+		lightColor.set(.8f, .8f, .8f);
 		lightPosition.set(4, 4, .5f);
 		attenuation.set(.5f, .5f, .5f);
 	}
@@ -122,5 +118,13 @@ public class LightManager {
 		program.end();
 
 		return program;
+	}
+	
+	public Vector3 getLightPosition() {
+		return lightPosition;
+	}
+
+	public void setLightPosition(Vector3 lightPosition) {
+		this.lightPosition = lightPosition;
 	}
 }
