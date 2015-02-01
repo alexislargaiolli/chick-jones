@@ -2,7 +2,6 @@ package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -15,6 +14,7 @@ import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
+import fr.alex.games.AM;
 import fr.alex.games.GM;
 import fr.alex.games.box2d.entities.Component;
 import fr.alex.games.box2d.entities.ComponentEvent;
@@ -41,11 +41,8 @@ public class Box2dSkeletonBasic extends Component {
 		this.body.setUserData(entity);
 		entity.addListner(this);
 		entity.setPosition(body.getPosition().cpy());
-		GM.assetManager.load(spineFile + ".atlas", TextureAtlas.class);
-		GM.assetManager.finishLoading();
-		final TextureAtlas atlas = GM.assetManager.get(spineFile + ".atlas", TextureAtlas.class);
 
-		SkeletonJson skeletonJson = new SkeletonJson(atlas);
+		SkeletonJson skeletonJson = new SkeletonJson(AM.getSpineAtlas());
 		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal(spineFile + ".json"));
 		float scale = size.y / skeletonData.getHeight();
 		stateData = new AnimationStateData(skeletonData);

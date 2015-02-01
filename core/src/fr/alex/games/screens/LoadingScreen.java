@@ -1,7 +1,6 @@
 package fr.alex.games.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -13,10 +12,9 @@ import com.esotericsoftware.spine.Skeleton;
 import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
-import com.gushikustudios.rube.loader.RubeSceneLoader;
 
+import fr.alex.games.AM;
 import fr.alex.games.GM;
-import fr.alex.games.Main;
 
 public class LoadingScreen extends MenuScreen {
 
@@ -38,8 +36,6 @@ public class LoadingScreen extends MenuScreen {
 		finishLoading = GM.assetManager.update();
 		if (finishLoading && counter > MIN_LOADING_TIME) {
 			if (!initialized) {
-				GM.commonAtlas = GM.assetManager.get(Main.COMMON_ATLAS_PATH, TextureAtlas.class);
-				GM.bgAtlas = GM.assetManager.get(Main.BACKGROUND_ATLAS_PATH + GM.level.getBackgroundFile(), TextureAtlas.class);
 				((GameScreen) ScreenManager.getInstance().getScreen(Screens.GAME)).init();
 				initialized = true;
 			}
@@ -70,39 +66,24 @@ public class LoadingScreen extends MenuScreen {
 		finishLoading = false;
 		initialized = false;
 		counter = 0;
-
-		RubeSceneLoader loader = new RubeSceneLoader();
-		GM.scene = loader.loadScene(Gdx.files.internal(Main.SCENES_PATH + GM.level.getSceneFile()));
-		GM.assetManager.load(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile(), TextureAtlas.class);
-		GM.assetManager.load(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile().replace(".atlas", "-diffuse.png"), Texture.class);
-		GM.assetManager.load(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile().replace(".atlas", "-normal.png"), Texture.class);
+		AM.loadScene();
 		
-		GM.assetManager.load(Main.COMMON_ATLAS_PATH, TextureAtlas.class);
-		GM.assetManager.load(Main.COMMON_ATLAS_PATH.replace(".atlas", "-diffuse.png"), Texture.class);
-		GM.assetManager.load(Main.COMMON_ATLAS_PATH.replace(".atlas", "-normal.png"), Texture.class);
-		GM.assetManager.load(Main.BACKGROUND_ATLAS_PATH + GM.level.getBackgroundFile(), TextureAtlas.class);
-		GM.assetManager.load("chicken/bow.atlas", TextureAtlas.class);
-		GM.assetManager.load("chicken/chicken-diffuse.atlas", TextureAtlas.class);
-		GM.assetManager.load("chicken/chicken-normal.png", Texture.class);
 		super.show();
-	}
+	}	
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override

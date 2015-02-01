@@ -1,0 +1,3873 @@
+
+{
+  "collisionbitplanes" : 
+  {
+    "names" : 
+    [
+      "bitplane1",
+      "bitplane2",
+      "bitplane3",
+      "bitplane4",
+      "bitplane5",
+      "bitplane6",
+      "bitplane7",
+      "bitplane8",
+      "bitplane9",
+      "bitplane10",
+      "bitplane11",
+      "bitplane12",
+      "bitplane13",
+      "bitplane14",
+      "bitplane15",
+      "bitplane16",
+      "bitplane17",
+      "bitplane18",
+      "bitplane19",
+      "bitplane20",
+      "bitplane21",
+      "bitplane22",
+      "bitplane23",
+      "bitplane24",
+      "bitplane25",
+      "bitplane26",
+      "bitplane27",
+      "bitplane28",
+      "bitplane29",
+      "bitplane30",
+      "bitplane31",
+      "bitplane32"
+    ]
+  },
+  "customPropertyDefs" : 
+  [
+    
+    {
+      "class" : "image",
+      "displayName" : "spineFile",
+      "name" : "spineFile",
+      "type" : "string"
+    },
+    
+    {
+      "class" : "image",
+      "displayName" : "active",
+      "name" : "active",
+      "type" : "bool"
+    },
+    
+    {
+      "class" : "image",
+      "displayName" : "coin",
+      "name" : "coin",
+      "type" : "bool"
+    },
+    
+    {
+      "class" : "image",
+      "displayName" : "mortal",
+      "name" : "mortal",
+      "type" : "bool"
+    },
+    
+    {
+      "class" : "image",
+      "displayName" : "coins",
+      "name" : "coins",
+      "type" : "int"
+    },
+    
+    {
+      "class" : "image",
+      "displayName" : "stick",
+      "name" : "stick",
+      "type" : "bool"
+    },
+    
+    {
+      "class" : "image",
+      "displayName" : "spine",
+      "name" : "spine",
+      "type" : "bool"
+    },
+    
+    {
+      "class" : "image",
+      "displayName" : "destroyable",
+      "name" : "destroyable",
+      "type" : "bool"
+    }
+  ],
+  "metaworld" : 
+  {
+    "allowSleep" : true,
+    "autoClearForces" : true,
+    "continuousPhysics" : true,
+    "exportOptions" : 
+    {
+      "compactCommonFloats" : true,
+      "compactZeroVecs" : true,
+      "saveFullPathForImages" : false,
+      "saveFullPathForSamplerOutput" : false,
+      "saveImagePathsRelativeToRUBEFile" : false,
+      "saveSamplerOutputPathsRelativeToRUBEFile" : false,
+      "useHumanReadableFloats" : true,
+      "usePrettyPrint" : true
+    },
+    "gravity" : 
+    {
+      "x" : 0,
+      "y" : -10
+    },
+    "metabody" : 
+    [
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixedRotation" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "filter-groupIndex" : -1,
+            "friction" : 0.2,
+            "id" : 3,
+            "name" : "fixture2",
+            "restitution" : 0.1,
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.1498029977083206,
+                -0.09155020117759705,
+                0.0003575680020730942,
+                0.1061450019478798,
+                0.6442999839782715,
+                0.5184429883956909,
+                0.2991699874401093,
+                0.1439300030469894,
+                -0.1576420068740845,
+                -0.3143410086631775,
+                -0.5311380028724670,
+                -0.6447510123252869
+              ],
+              "y" : 
+              [
+                -0.4841809868812561,
+                -0.5932919979095459,
+                -0.6451969742774963,
+                -0.6081219911575317,
+                0.002263779984787107,
+                0.08949109911918640,
+                0.1228479966521263,
+                0.4327149987220764,
+                0.4327149987220764,
+                0.06704179942607880,
+                0.04703310132026672,
+                -0.04226680099964142
+              ]
+            }
+          }
+        ],
+        "id" : 3,
+        "linearVelocity" : 0,
+        "massData-I" : 0.004991852212697268,
+        "massData-center" : 
+        {
+          "x" : 0.01116294134408236,
+          "y" : -0.08356236666440964
+        },
+        "massData-mass" : 0.7023575305938721,
+        "name" : "chicken",
+        "position" : 
+        {
+          "x" : -0.1886650025844574,
+          "y" : -0.6712930202484131
+        },
+        "sleepingAllowed" : false,
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 5,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.183157920837402,
+                6.183158874511719,
+                6.183158874511719,
+                -6.183157920837402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 5,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 4.446747779846191,
+          "y" : -1.650190353393555
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 7,
+            "name" : "fixture3",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.5,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "id" : 7,
+        "linearVelocity" : 0,
+        "name" : "end",
+        "position" : 
+        {
+          "x" : 97.26709747314453,
+          "y" : 2.181623458862305
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.8,
+            "id" : 8,
+            "name" : "fixture1",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ -0.5, 0.5, 0.5, -0.5 ],
+              "y" : [ -0.5, -0.5, 0.5, 0.5 ]
+            }
+          }
+        ],
+        "id" : 8,
+        "linearVelocity" : 0,
+        "massData-I" : 0.1666666716337204,
+        "massData-mass" : 1,
+        "name" : "body1",
+        "position" : 
+        {
+          "x" : 10.16159915924072,
+          "y" : -0.9479215145111084
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 11,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.183157920837402,
+                6.183158874511719,
+                6.183158874511719,
+                -6.183157920837402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 11,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 4.446747779846191,
+          "y" : 3.869997024536133
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 12,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.183157920837402,
+                6.183158874511719,
+                6.183158874511719,
+                -6.183157920837402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 12,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 16.78977394104004,
+          "y" : 3.869997024536133
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 13,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.183157920837402,
+                6.183158874511719,
+                6.183158874511719,
+                -6.183157920837402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 13,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 16.78977394104004,
+          "y" : -1.650190353393555
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 14,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.183157920837402,
+                5.583412170410156,
+                5.583412170410156,
+                -6.183157920837402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 14,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 29.07659912109375,
+          "y" : -1.650189995765686
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 15,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.183157920837402,
+                5.591697692871094,
+                5.591697692871094,
+                -6.183157920837402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 15,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 29.07659912109375,
+          "y" : 3.87
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 16,
+            "name" : "fixture4",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.897766113281250,
+                0.8977622985839844,
+                0.8977622985839844,
+                -0.897766113281250
+              ],
+              "y" : 
+              [
+                -0.2391290664672852,
+                -0.2391290664672852,
+                0.2391281127929688,
+                0.2391281127929688
+              ]
+            }
+          }
+        ],
+        "id" : 16,
+        "linearVelocity" : 0,
+        "name" : "body2",
+        "position" : 
+        {
+          "x" : 37.13088226318359,
+          "y" : -0.9062077999114990
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 18,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.427542686462402,
+                5.907100677490234,
+                5.907100677490234,
+                -6.427542686462402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 18,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 46.09362792968750,
+          "y" : -0.2295984029769897
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 19,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.426592826843262,
+                5.905990600585938,
+                5.905990600585938,
+                -6.426592826843262
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 19,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 46.09362792968750,
+          "y" : 5.290591239929199
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 20,
+            "name" : "fixture5",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -5.284732818603516,
+                2.474143981933594,
+                1.441431999206543,
+                1.767997503280640,
+                -4.58886718750,
+                -4.699520111083984
+              ],
+              "y" : 
+              [
+                -2.403442859649658,
+                -1.371778488159180,
+                2.602881908416748,
+                -0.4980343580245972,
+                -1.637279033660889,
+                1.160366058349609
+              ]
+            }
+          }
+        ],
+        "id" : 20,
+        "linearVelocity" : 0,
+        "name" : "body3",
+        "position" : 
+        {
+          "x" : 39.36882019042969,
+          "y" : -3.027878284454346
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 21,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 21,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 19.43949699401855,
+          "y" : 1.518092513084412
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 22,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 22,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 20.69780158996582,
+          "y" : 1.518092513084412
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 23,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 23,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 21.95069122314453,
+          "y" : 1.518092513084412
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 24,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.426592826843262,
+                5.905990600585938,
+                5.905990600585938,
+                -6.426592826843262
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 24,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 58.38577270507812,
+          "y" : 5.290591239929199
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 26,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.426592826843262,
+                5.905990600585938,
+                5.905990600585938,
+                -6.426592826843262
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 26,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 70.68670654296875,
+          "y" : 5.290591239929199
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 27,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.427542686462402,
+                5.426013946533203,
+                5.426013946533203,
+                -6.427542686462402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 27,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 70.68670654296875,
+          "y" : -0.2295984029769897
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 28,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 28,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 50.71259307861328,
+          "y" : 3.397263526916504
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 29,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 29,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 49.45970153808594,
+          "y" : 3.397263526916504
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 30,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 30,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 48.20139694213867,
+          "y" : 3.397263526916504
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 31,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -2.587226867675781,
+                2.377731323242188,
+                2.377731323242188,
+                -2.587226867675781
+              ],
+              "y" : 
+              [
+                -0.1879640221595764,
+                -0.1879640221595764,
+                0.1879640072584152,
+                0.1879640072584152
+              ]
+            }
+          }
+        ],
+        "id" : 31,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 54.59453964233398,
+          "y" : -0.2295984029769897
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 32,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -2.827453613281250,
+                2.59851074218750,
+                2.59851074218750,
+                -2.827453613281250
+              ],
+              "y" : 
+              [
+                -0.1879640221595764,
+                -0.1879640221595764,
+                0.1879640072584152,
+                0.1879640072584152
+              ]
+            }
+          }
+        ],
+        "id" : 32,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 61.67390441894531,
+          "y" : -0.2295984029769897
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 33,
+            "name" : "fixture7",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.9375915527343750,
+                0.9375915527343750,
+                0.9375915527343750,
+                -0.9375915527343750
+              ],
+              "y" : 
+              [
+                -0.1270022988319397,
+                -0.1270022988319397,
+                0.1270022839307785,
+                0.1270022839307785
+              ]
+            }
+          }
+        ],
+        "id" : 33,
+        "linearVelocity" : 0,
+        "name" : "body5",
+        "position" : 
+        {
+          "x" : 57.90699768066406,
+          "y" : -0.2454733848571777
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 34,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.426592826843262,
+                5.905990600585938,
+                5.905990600585938,
+                -6.426592826843262
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 34,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 94.85334014892578,
+          "y" : 6.646247386932373
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 35,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -6.427542686462402,
+                5.907100677490234,
+                5.907100677490234,
+                -6.427542686462402
+              ],
+              "y" : 
+              [
+                -0.1879636049270630,
+                -0.1879636049270630,
+                0.1879637241363525,
+                0.1879637241363525
+              ]
+            }
+          }
+        ],
+        "id" : 35,
+        "linearVelocity" : 0,
+        "name" : "body0",
+        "position" : 
+        {
+          "x" : 94.94699096679688,
+          "y" : 3.624462842941284
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 36,
+            "name" : "fixture4",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.897766113281250,
+                0.8977622985839844,
+                0.8977622985839844,
+                -0.897766113281250
+              ],
+              "y" : 
+              [
+                -0.2391290664672852,
+                -0.2391290664672852,
+                0.2391281127929688,
+                0.2391281127929688
+              ]
+            }
+          }
+        ],
+        "id" : 36,
+        "linearVelocity" : 0,
+        "name" : "body2",
+        "position" : 
+        {
+          "x" : 78.64820098876953,
+          "y" : 0.6724154949188232
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 37,
+            "name" : "fixture4",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.897766113281250,
+                0.8977622985839844,
+                0.8977622985839844,
+                -0.897766113281250
+              ],
+              "y" : 
+              [
+                -0.2391290664672852,
+                -0.2391290664672852,
+                0.2391281127929688,
+                0.2391281127929688
+              ]
+            }
+          }
+        ],
+        "id" : 37,
+        "linearVelocity" : 0,
+        "name" : "body2",
+        "position" : 
+        {
+          "x" : 82.06192779541016,
+          "y" : 1.563212394714355
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 38,
+            "name" : "fixture4",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.897766113281250,
+                0.8977622985839844,
+                0.8977622985839844,
+                -0.897766113281250
+              ],
+              "y" : 
+              [
+                -0.2391290664672852,
+                -0.2391290664672852,
+                0.2391281127929688,
+                0.2391281127929688
+              ]
+            }
+          }
+        ],
+        "id" : 38,
+        "linearVelocity" : 0,
+        "name" : "body2",
+        "position" : 
+        {
+          "x" : 85.80120849609375,
+          "y" : 2.492463111877441
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 39,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 39,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 82.05808258056641,
+          "y" : 7.852983474731445
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 40,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 40,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 82.05548095703125,
+          "y" : 6.740439414978027
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 41,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 41,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 82.02627563476562,
+          "y" : 5.596107006072998
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 42,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 42,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 78.92142486572266,
+          "y" : 4.810932636260986
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 43,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 43,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 78.89221954345703,
+          "y" : 3.666600227355957
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 44,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 44,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 78.92402648925781,
+          "y" : 5.923476696014404
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 45,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 45,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 85.79878234863281,
+          "y" : 6.965444564819336
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 46,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 46,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 85.83058929443359,
+          "y" : 9.222320556640625
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 47,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "radius" : 0.4046658575534821,
+                "type" : "circle"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.0 ],
+              "y" : [ 0.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 47,
+        "linearVelocity" : 0,
+        "massData-I" : 0.04212172701954842,
+        "massData-mass" : 0.5144498348236084,
+        "name" : "body4",
+        "position" : 
+        {
+          "x" : 85.82798767089844,
+          "y" : 8.109777450561523
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "friction" : 0.2,
+            "id" : 48,
+            "name" : "fixture5",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -5.853652954101562,
+                11.60150909423828,
+                7.720873832702637,
+                10.1511230468750,
+                -4.735858917236328,
+                -5.180606842041016
+              ],
+              "y" : 
+              [
+                -6.278545379638672,
+                -2.702818393707275,
+                5.002970695495605,
+                -2.057149410247803,
+                -4.883069515228271,
+                1.160366058349609
+              ]
+            }
+          }
+        ],
+        "id" : 48,
+        "linearVelocity" : 0,
+        "name" : "body3",
+        "position" : 
+        {
+          "x" : 81.27803039550781,
+          "y" : -1.583195209503174
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixedRotation" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "id" : 49,
+            "name" : "fixture8",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.2531740069389343,
+                0.2531740069389343,
+                0.2531740069389343,
+                -0.2531740069389343
+              ],
+              "y" : 
+              [
+                -0.1492239236831665,
+                -0.1492239236831665,
+                0.1492239236831665,
+                0.1492239236831665
+              ]
+            }
+          }
+        ],
+        "id" : 49,
+        "linearVelocity" : 0,
+        "massData-mass" : 0.1511184722185135,
+        "name" : "chickenSensor",
+        "position" : 
+        {
+          "x" : -0.1801670044660568,
+          "y" : -1.175805807113647
+        },
+        "sleepingAllowed" : false,
+        "type" : "dynamic"
+      }
+    ],
+    "metaimage" : 
+    [
+      
+      {
+        "aspectScale" : 1,
+        "body" : 8,
+        "center" : 0,
+        "file" : "caisse.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 20,
+        "name" : "image2",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 1.380326271057129,
+          "y" : 1.108199834823608
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 30,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 1.383638620376587,
+          "y" : -1.601668715476990
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 31,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 1.383638739585876,
+          "y" : 3.815421342849731
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 32,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 7.533095359802246,
+          "y" : -1.601668715476990
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 33,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 7.533095836639404,
+          "y" : 3.815421342849731
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 34,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 7.392157554626465,
+          "y" : 1.108199834823608
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 35,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 13.39721393585205,
+          "y" : 1.108199834823608
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 36,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 19.54998397827148,
+          "y" : 3.815421342849731
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 37,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 13.40052604675293,
+          "y" : -1.601668715476990
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 38,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 13.40052604675293,
+          "y" : 3.815421342849731
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 39,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 19.54998397827148,
+          "y" : -1.601668715476990
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 40,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 19.40904617309570,
+          "y" : 1.108199834823608
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 41,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 31.42547416687012,
+          "y" : 1.108199834823608
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 42,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 25.41695404052734,
+          "y" : -1.601668715476990
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 43,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 31.56641197204590,
+          "y" : 3.815421342849731
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 44,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 25.41695404052734,
+          "y" : 3.815421342849731
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 45,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 25.41364097595215,
+          "y" : 1.108199834823608
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 46,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 31.56641197204590,
+          "y" : -1.601668715476990
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 47,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 16,
+        "center" : 
+        {
+          "x" : -2.670288085937500e-05,
+          "y" : 0.1159329414367676
+        },
+        "file" : "small_ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 48,
+        "name" : "image3",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 48.91112518310547,
+          "y" : -0.1725786924362183
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 50,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 42.76166534423828,
+          "y" : 5.244511127471924
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 51,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 48.77018737792969,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 52,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 48.91112518310547,
+          "y" : 5.244511127471924
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 53,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 42.75835418701172,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 54,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 42.76166534423828,
+          "y" : -0.1725786924362183
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 55,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 20,
+        "center" : 
+        {
+          "x" : 3.835006713867188,
+          "y" : -3.762072086334229
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "mortal"
+          }
+        ],
+        "file" : "rope2.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 56,
+        "name" : "image4",
+        "opacity" : 0.5,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 5.640414237976074,
+          "y" : -1.231276154518127
+        },
+        "file" : "rocks.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 57,
+        "name" : "image5",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.3959419429302216
+      },
+      
+      {
+        "aspectScale" : 1.177661418914795,
+        "center" : 
+        {
+          "x" : 14.78447055816650,
+          "y" : -1.166867494583130
+        },
+        "file" : "rocks.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 58,
+        "name" : "image5",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.4738934338092804
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 17.37954139709473,
+          "y" : 2.978398799896240
+        },
+        "file" : "hole.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 59,
+        "name" : "image6",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 1
+      },
+      
+      {
+        "angle" : 1.978551387786865,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 32.47495269775391,
+          "y" : -0.7204933762550354
+        },
+        "file" : "hole.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 60,
+        "name" : "image6",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.7412216663360596
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 21,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 61,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 22,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 66,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 23,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 67,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 60.82753372192383,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 68,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 54.81570053100586,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 69,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 54.81901168823242,
+          "y" : -0.1725786924362183
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 70,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 60.96847152709961,
+          "y" : -0.1725786924362183
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 71,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 60.96847152709961,
+          "y" : 5.244511127471924
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 72,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 54.81901168823242,
+          "y" : 5.244511127471924
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 73,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 73.01107025146484,
+          "y" : -0.1725786924362183
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 74,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 66.85829925537109,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 75,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 66.86161041259766,
+          "y" : -0.1725786924362183
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 76,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 66.86161041259766,
+          "y" : 5.244511127471924
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 77,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 73.01107025146484,
+          "y" : 5.244511127471924
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 78,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 72.87013244628906,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 79,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 28,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 80,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 30,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 81,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 29,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 82,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 33,
+        "center" : 0,
+        "customProperties" : 
+        [
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "mortal"
+          }
+        ],
+        "file" : "spikes.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 83,
+        "name" : "image8",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.5674865841865540
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 78.88600921630859,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 84,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 78.88600921630859,
+          "y" : 7.461624145507812
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 85,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 84.89356231689453,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 86,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 84.89356231689453,
+          "y" : 7.461624145507812
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 87,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 97.76805114746094,
+          "y" : 3.683334827423096
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 88,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 91.53871154785156,
+          "y" : 6.618344783782959
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 89,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 91.61859130859375,
+          "y" : 3.683334827423096
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 90,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "angle" : -3.141592502593994,
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 97.68817138671875,
+          "y" : 6.618344783782959
+        },
+        "file" : "ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 91,
+        "name" : "image1",
+        "opacity" : 1,
+        "renderOrder" : 10,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 96.91939544677734,
+          "y" : 7.462331771850586
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 92,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 90.90756225585938,
+          "y" : 7.462331771850586
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 93,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 36,
+        "center" : 
+        {
+          "x" : -2.670288085937500e-05,
+          "y" : 0.1159329414367676
+        },
+        "file" : "small_ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 94,
+        "name" : "image3",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 37,
+        "center" : 
+        {
+          "x" : -2.670288085937500e-05,
+          "y" : 0.1159329414367676
+        },
+        "file" : "small_ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 95,
+        "name" : "image3",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 38,
+        "center" : 
+        {
+          "x" : -2.670288085937500e-05,
+          "y" : 0.1159329414367676
+        },
+        "file" : "small_ground.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 96,
+        "name" : "image3",
+        "opacity" : 1,
+        "renderOrder" : 20.0,
+        "scale" : 0.71
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 41,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 97,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 40,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 98,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 39,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 99,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 43,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 100,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 42,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 101,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 44,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 102,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 46,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 103,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 47,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 104,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 45,
+        "center" : 
+        {
+          "x" : 0.007026672363281250,
+          "y" : -0.008747935295104980
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "int" : 1,
+            "name" : "coins"
+          },
+          
+          {
+            "name" : "spineFile",
+            "string" : "spines/coin/coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "coin"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "spine"
+          }
+        ],
+        "file" : "rope1.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 105,
+        "name" : "image7",
+        "opacity" : 1,
+        "renderOrder" : 30.0,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "body" : 48,
+        "center" : 
+        {
+          "x" : 2.136054992675781,
+          "y" : -9.403128623962402
+        },
+        "customProperties" : 
+        [
+          
+          {
+            "bool" : true,
+            "name" : "active"
+          },
+          
+          {
+            "bool" : true,
+            "name" : "mortal"
+          }
+        ],
+        "file" : "rope2.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 106,
+        "name" : "image4",
+        "opacity" : 0.5,
+        "scale" : 1
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 78.88600921630859,
+          "y" : -2.363279342651367
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 107,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 84.89356231689453,
+          "y" : -2.363279342651367
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 108,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 90.93010711669922,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 109,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 96.93766021728516,
+          "y" : 2.537290096282959
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 110,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 96.93766021728516,
+          "y" : -2.363279342651367
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 111,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      },
+      
+      {
+        "aspectScale" : 1,
+        "center" : 
+        {
+          "x" : 90.93010711669922,
+          "y" : -2.363279342651367
+        },
+        "file" : "wall.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 112,
+        "name" : "image0",
+        "opacity" : 1,
+        "scale" : 5
+      }
+    ],
+    "metajoint" : 
+    [
+      
+      {
+        "anchorA" : 
+        {
+          "x" : -0.0008416619966737926,
+          "y" : 0.01047439966350794
+        },
+        "anchorB" : 
+        {
+          "x" : 0.007656340021640062,
+          "y" : -0.4940379858016968
+        },
+        "bodyA" : 49,
+        "bodyB" : 3,
+        "collideConnected" : false,
+        "enableLimit" : false,
+        "enableMotor" : false,
+        "id" : 9,
+        "lowerLimit" : 0,
+        "maxMotorTorque" : 0,
+        "motorSpeed" : 0,
+        "name" : "joint0",
+        "referenceAngle" : 0,
+        "type" : "revolute",
+        "upperLimit" : 0
+      }
+    ],
+    "positionIterations" : 3,
+    "stepsPerSecond" : 60.0,
+    "subStepping" : false,
+    "velocityIterations" : 8,
+    "warmStarting" : true
+  }
+}

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="coin.svg"
+   inkscape:export-filename="/home/alex/Documents/Chicken jones/chicken jones/coin/images2/eye2.png"
+   inkscape:export-xdpi="30"
+   inkscape:export-ydpi="30">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="305.21931"
+     inkscape:cy="531.84503"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer6"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       sodipodi:type="arc"
+       style="fill:#a18b33;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path2985"
+       sodipodi:cx="372.74628"
+       sodipodi:cy="308.88992"
+       sodipodi:rx="45.456863"
+       sodipodi:ry="45.456863"
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23"
+       transform="matrix(4.4504371,0,0,4.4059362,-1307.6503,-845.82686)" />
+    <path
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       sodipodi:ry="45.456863"
+       sodipodi:rx="45.456863"
+       sodipodi:cy="308.88992"
+       sodipodi:cx="372.74628"
+       id="path3755"
+       style="fill:#ffcc34;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       sodipodi:type="arc"
+       transform="matrix(4.0893821,0,0,4.0598605,-1173.0684,-748.20028)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       transform="matrix(3.2747112,0,0,3.2419667,-869.40278,-486.28835)"
+       sodipodi:type="arc"
+       style="fill:#a18b33;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.71806383;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="path3757"
+       sodipodi:cx="372.74628"
+       sodipodi:cy="308.88992"
+       sodipodi:rx="45.456863"
+       sodipodi:ry="45.456863"
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       style="fill:none;stroke:#ffffd4;stroke-width:8.85626125;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 195.16697,424.99326 c 61.43885,-112.37122 227.3685,-139.28141 314.70942,4.72066"
+       id="path3868"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       sodipodi:ry="45.456863"
+       sodipodi:rx="45.456863"
+       sodipodi:cy="308.88992"
+       sodipodi:cx="372.74628"
+       id="path3759"
+       style="fill:#ffcc34;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       sodipodi:type="arc"
+       transform="matrix(2.9256952,0,0,2.8964406,-739.30842,-367.83588)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       id="path3763"
+       sodipodi:cx="348.12381"
+       sodipodi:cy="348.91721"
+       sodipodi:rx="18.814091"
+       sodipodi:ry="13.763329"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       transform="matrix(4.4504371,0,0,4.4059362,-1287.2271,-1133.2711)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       transform="matrix(2.3053028,0,0,2.2822515,-521.02175,-374.5227)"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       sodipodi:ry="13.763329"
+       sodipodi:rx="18.814091"
+       sodipodi:cy="348.91721"
+       sodipodi:cx="348.12381"
+       id="path3765"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3767"
+       sodipodi:cx="348.12381"
+       sodipodi:cy="348.91721"
+       sodipodi:rx="18.814091"
+       sodipodi:ry="13.763329"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       transform="matrix(0.93247906,0,0,0.92315506,-24.433166,92.785377)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       transform="matrix(-4.2710068,0,0,4.2283001,1929.725,-1069.426)"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       sodipodi:ry="13.763329"
+       sodipodi:rx="18.814091"
+       sodipodi:cy="348.91721"
+       sodipodi:cx="348.12381"
+       id="path3769"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path3771"
+       sodipodi:cx="348.12381"
+       sodipodi:cy="348.91721"
+       sodipodi:rx="18.814091"
+       sodipodi:ry="13.763329"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       transform="matrix(-2.2123591,0,0,2.1902372,1189.3021,-374.5664)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       transform="matrix(-0.89488399,0,0,0.88593587,745.93657,71.780388)"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       sodipodi:ry="13.763329"
+       sodipodi:rx="18.814091"
+       sodipodi:cy="348.91721"
+       sodipodi:cx="348.12381"
+       id="path3773"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3828"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Purisa;-inkscape-font-specification:Sans Bold"><flowRegion
+         id="flowRegion3830"><rect
+           id="rect3832"
+           width="40.658642"
+           height="42.931484"
+           x="231.32494"
+           y="312.93051" /></flowRegion><flowPara
+         id="flowPara3834" /></flowRoot>    <path
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 382.42198,483.1332 c -23.49915,-11.3741 -52.48818,-9.71455 -68.55818,5.84148"
+       id="path3870"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4316"
+       d="m 321.62328,575.6305 c 23.36804,11.63586 52.37411,10.30029 68.6204,-5.07527"
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 335.33222,522.71993 c 28.13637,16.94655 38.26785,-5.82862 73.38872,23.64194"
+       id="path4318"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4320"
+       d="m 357.28168,453.8384 -2.24778,-0.27802"
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       sodipodi:ry="45.456863"
+       sodipodi:rx="45.456863"
+       sodipodi:cy="308.88992"
+       sodipodi:cx="372.74628"
+       id="path4352"
+       style="fill:#a18b33;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23"
+       transform="matrix(4.4504371,0,0,4.4059362,-1307.6503,-845.82686)" />
+    <path
+       transform="matrix(4.0893821,0,0,4.0598605,-1173.0684,-748.20028)"
+       sodipodi:type="arc"
+       style="fill:#ffcc34;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path4354"
+       sodipodi:cx="372.74628"
+       sodipodi:cy="308.88992"
+       sodipodi:rx="45.456863"
+       sodipodi:ry="45.456863"
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       sodipodi:ry="45.456863"
+       sodipodi:rx="45.456863"
+       sodipodi:cy="308.88992"
+       sodipodi:cx="372.74628"
+       id="path4356"
+       style="fill:#a18b33;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.71806383;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       sodipodi:type="arc"
+       transform="matrix(3.2747112,0,0,3.2419667,-869.40278,-486.28835)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4358"
+       d="m 195.16697,424.99326 c 61.43885,-112.37122 227.3685,-139.28141 314.70942,4.72066"
+       style="fill:none;stroke:#ffffd4;stroke-width:8.85626125;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       transform="matrix(2.9256952,0,0,2.8964406,-739.30842,-367.83588)"
+       sodipodi:type="arc"
+       style="fill:#ffcc34;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="path4360"
+       sodipodi:cx="372.74628"
+       sodipodi:cy="308.88992"
+       sodipodi:rx="45.456863"
+       sodipodi:ry="45.456863"
+       d="m 418.20314,308.88992 a 45.456863,45.456863 0 1 1 -90.91373,0 45.456863,45.456863 0 1 1 90.91373,0 z"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       transform="matrix(4.4504371,0,0,4.4059362,-1287.2271,-1133.2711)"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       sodipodi:ry="13.763329"
+       sodipodi:rx="18.814091"
+       sodipodi:cy="348.91721"
+       sodipodi:cx="348.12381"
+       id="path4362"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-opacity:1"
+       id="path4368"
+       sodipodi:cx="348.12381"
+       sodipodi:cy="348.91721"
+       sodipodi:rx="18.814091"
+       sodipodi:ry="13.763329"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       transform="matrix(-4.2710068,0,0,4.2283001,1929.725,-1069.426)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <text
+       xml:space="preserve"
+       style="font-size:154.05558777px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:none;stroke:#151515;stroke-width:10.19046021;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline;font-family:GROBOLD;-inkscape-font-specification:GROBOLD"
+       x="186.07719"
+       y="674.59589"
+       id="text3836"
+       sodipodi:linespacing="125%"
+       transform="matrix(1.0405107,-0.15761215,0.17549497,0.93448329,0,0)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23"><tspan
+         sodipodi:role="line"
+         id="tspan3838"
+         x="186.07719"
+         y="674.59589"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:none;stroke:#151515;stroke-width:10.19046021;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:GROBOLD;-inkscape-font-specification:GROBOLD">$</tspan></text>
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4374"
+       d="m 377.74322,479.59721 c -22.24915,-2.44552 -43.02389,1.35688 -59.09389,16.91291"
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 325.17414,572.27617 c 14.61804,2.88586 28.08839,2.88957 41.1204,-5.5217"
+       id="path4376"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4378"
+       d="m 334.86086,520.381 c 10.4578,8.64298 31.0357,-3.50719 57.58515,16.4098"
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       style="fill:none;stroke:#ffffd4;stroke-width:4.42813063px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 350.8531,467.05268 -10.28349,1.86484"
+       id="path4380"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/body.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="eyes r"
+     style="display:inline">
+    <path
+       transform="matrix(-2.2123591,0,0,2.1902372,1455.9824,-326.07908)"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       sodipodi:ry="13.763329"
+       sodipodi:rx="18.814091"
+       sodipodi:cy="348.91721"
+       sodipodi:cx="348.12381"
+       id="path4370"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/alex/Images/bow/coin/eye.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       id="path4372"
+       sodipodi:cx="348.12381"
+       sodipodi:cy="348.91721"
+       sodipodi:rx="18.814091"
+       sodipodi:ry="13.763329"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       transform="matrix(-0.89488399,0,0,0.88593587,1012.6168,120.26771)"
+       inkscape:export-filename="/home/alex/Images/bow/coin/eye.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Layer"
+     style="display:inline">
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       id="path4364"
+       sodipodi:cx="348.12381"
+       sodipodi:cy="348.91721"
+       sodipodi:rx="18.814091"
+       sodipodi:ry="13.763329"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       transform="matrix(2.3053028,0,0,2.2822515,-112.92012,-241.18256)" />
+    <path
+       transform="matrix(0.93247906,0,0,0.92315506,383.66846,226.12551)"
+       d="m 366.9379,348.91721 a 18.814091,13.763329 0 1 1 -37.62818,0 18.814091,13.763329 0 1 1 37.62818,0 z"
+       sodipodi:ry="13.763329"
+       sodipodi:rx="18.814091"
+       sodipodi:cy="348.91721"
+       sodipodi:cx="348.12381"
+       id="path4366"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       sodipodi:type="arc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="alie l"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <path
+       style="fill:#87cdde;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       d="m 113.42909,244.75335 c 42.61805,58.67548 95.38215,93.27411 117.85202,77.27828 22.46977,-15.9958 6.13631,-76.52886 -36.48176,-135.20436 C 152.18126,128.15183 71.310055,47.390663 48.840249,63.386463 26.370483,79.382346 70.811027,186.0779 113.42909,244.75335 z"
+       id="path3803"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssss"
+       inkscape:export-filename="/home/alex/Images/bow/coin/aile-l.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:nodetypes="sssss"
+       inkscape:connector-curvature="0"
+       id="path3805"
+       d="m 130.23825,256.86977 c 36.66332,50.47704 82.05503,80.24148 101.38528,66.48063 19.3302,-13.76085 5.27892,-65.83601 -31.38436,-116.31306 C 163.57581,156.56016 94.004267,87.083301 74.674012,100.84414 55.343853,114.60503 93.574926,206.39262 130.23825,256.86977 z"
+       style="fill:#dbe3db;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       inkscape:export-filename="/home/alex/Images/bow/coin/aile-l.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       style="fill:#afdde9;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       d="m 136.19419,260.64905 c 34.67928,47.74554 77.61468,75.89929 95.89891,62.88315 18.28413,-13.01625 4.9932,-62.27334 -29.68607,-110.01893 C 167.72771,165.76764 101.92092,100.05051 83.636713,113.06665 c -18.284132,13.01619 17.878157,99.83684 52.557477,147.5824 z"
+       id="path3807"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssss"
+       inkscape:export-filename="/home/alex/Images/bow/coin/aile-l.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="ailg r"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <path
+       sodipodi:nodetypes="sssss"
+       inkscape:connector-curvature="0"
+       id="path3780"
+       d="M 619.63418,251.76153 C 572.99838,315.96852 515.26,353.82889 490.67187,336.32509 466.08378,318.82128 483.95705,252.58154 530.59287,188.37454 577.2287,124.16754 665.72394,35.79279 690.31202,53.296559 714.90011,70.80042 666.27,187.55451 619.63418,251.76153 z"
+       style="fill:#87cdde;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       inkscape:export-filename="/home/alex/Images/bow/coin/aile-r.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       style="fill:#dbe3db;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       d="m 601.24035,265.02016 c -40.11966,55.23573 -89.79062,87.80612 -110.9432,72.74801 -21.15253,-15.05813 -5.77658,-72.04256 34.34308,-127.27829 C 564.75994,155.25406 640.89027,79.22739 662.04284,94.285513 683.19532,109.34364 641.36007,209.7844 601.24035,265.02016 z"
+       id="path3782"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sssss"
+       inkscape:export-filename="/home/alex/Images/bow/coin/aile-r.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+    <path
+       sodipodi:nodetypes="sssss"
+       inkscape:connector-curvature="0"
+       id="path3801"
+       d="m 594.72295,269.15576 c -37.94861,52.24669 -84.93169,83.05457 -104.93961,68.81134 -20.00788,-14.24328 -5.46397,-68.14406 32.48464,-120.39075 37.94869,-52.24679 109.9593,-124.159337 129.96722,-109.9161 20.00782,14.2433 -19.56359,109.24881 -57.51225,161.49551 z"
+       style="fill:#afdde9;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       inkscape:export-filename="/home/alex/Images/bow/coin/aile-r.png"
+       inkscape:export-xdpi="23"
+       inkscape:export-ydpi="23" />
+  </g>
+</svg>

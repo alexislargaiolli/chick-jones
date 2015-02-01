@@ -2,15 +2,13 @@ package fr.alex.games.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
+import fr.alex.games.AM;
 import fr.alex.games.GM;
 import fr.alex.games.box2d.entities.Entity;
 import fr.alex.games.box2d.entities.components.Box2dSkeletonBasic;
@@ -35,14 +33,12 @@ public class Chicken {
 
 	private Entity chickenEntity;
 
-	public Chicken(Body chicken, TextureRegion defaultArrowTexture, Texture diffuseArrow, Texture normalArrow) {
+	public Chicken(Body chicken) {
 		this.chicken = chicken;
 
 		chickenEntity = new Entity();
-		TextureAtlas atlasDiffuse = GM.assetManager.get("chicken/chicken-diffuse.atlas", TextureAtlas.class);
-		Texture atlasTexture = atlasDiffuse.getRegions().first().getTexture();
-		Texture normalMapTexture = GM.assetManager.get("chicken/chicken-normal.png", Texture.class);
-		chickenEntity.add(new NormalMap(chickenEntity, atlasTexture, normalMapTexture));
+		
+		chickenEntity.add(new NormalMap(chickenEntity, AM.getSpineDiffuse(), AM.getSpineNormal()));
 		Box2dSkeletonBasic skeleton = new Box2dSkeletonBasic(chickenEntity, "chicken/chicken", chicken, new Vector2(width, height), new Vector2(0, height * .5f));
 		skeleton.addMix("idle", "run", 0.4f);
 		skeleton.addMix("run", "jump", 0.1f);
@@ -51,11 +47,11 @@ public class Chicken {
 		chickenEntity.add(new Dieable(chickenEntity));
 		chickenEntity.add(new Collector(chickenEntity));
 
-		jumpVector = new Vector2(0, 300);
+		jumpVector = new Vector2(0, 250);
 
 		idle();
 
-		bow = new Bow(this, defaultArrowTexture, diffuseArrow, normalArrow, new Vector2(1, 1f));
+		bow = new Bow(this, new Vector2(1, 1f));
 
 		for (Item item : ItemManager.get().getEquiped()) {
 			for (PassiveSkill skill : item.getPassives()) {

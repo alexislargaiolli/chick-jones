@@ -33,8 +33,7 @@ public class Stickable extends Component {
 	public void onEvent(ComponentEvent event) {
 		if (event.getType() == EventType.ARROW_STICK) {
 			maxStick--;
-			System.out.println(maxStick);
-			if (maxStick < 0) {
+			if (maxStick == 0) {
 				this.entity.broadcastEvent(new ComponentEvent(this, null, EventType.DESTROY));
 			}
 		}

@@ -10,10 +10,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.utils.Array;
 
-import fr.alex.games.Main;
 import fr.alex.games.Utils;
 
 public class EffectManager {
+	public static final String PARTICLES_PATH = "particles/";
 
 	private static EffectManager instance;	
 
@@ -32,7 +32,7 @@ public class EffectManager {
 		effectPools = new HashMap<Effect, ParticleEffectPool>();
 		for(Effect e : Effect.values()){
 			ParticleEffect fEffect = new ParticleEffect();
-			fEffect.load(Gdx.files.internal(Main.PARTICLES_PATH + e.getFile()), Gdx.files.internal(""));
+			fEffect.load(Gdx.files.internal(PARTICLES_PATH + e.getFile()), Gdx.files.internal(""));
 			ParticleEffectPool effectPool = new ParticleEffectPool(fEffect, 1, 2);
 			effectPools.put(e, effectPool);
 		}		

@@ -2,11 +2,9 @@ package fr.alex.games.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -23,13 +21,15 @@ import com.esotericsoftware.spine.SkeletonData;
 import com.esotericsoftware.spine.SkeletonJson;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
+import fr.alex.games.AM;
 import fr.alex.games.GM;
 import fr.alex.games.box2d.entities.Component;
 import fr.alex.games.box2d.entities.Entity;
 import fr.alex.games.box2d.entities.components.ArrowRotation;
+import fr.alex.games.box2d.entities.components.Box2dSprite;
 import fr.alex.games.box2d.entities.components.Collector;
 import fr.alex.games.box2d.entities.components.Destroyer;
-import fr.alex.games.box2d.entities.components.Box2dSprite;
+import fr.alex.games.box2d.entities.components.NormalMap;
 import fr.alex.games.box2d.entities.components.Stick;
 import fr.alex.games.screens.GameScreen.State;
 
@@ -55,8 +55,6 @@ public class Bow {
 	private float animTime = 0, animDuration = .2f;
 	private float angle;
 	private TextureRegion arrowTexture;
-	Texture diffuse;
-	Texture normal;
 
 	private PooledEffect effect;
 
@@ -64,17 +62,16 @@ public class Bow {
 	float heightArrow = .06f;
 	float arrowCount = 1;
 	private Sprite arrowSprite;
+	NormalMap normalMap;
 
-	public Bow(Chicken player, TextureRegion defaultArrowTexture, Texture diffuse, Texture normal, Vector2 size) {
+	public Bow(Chicken player, Vector2 size) {
 		super();
+		normalMap = new NormalMap(null, AM.getSpineDiffuse(), AM.getSpineNormal());
 		origin = new Vector2();
 		velocity = new Vector2();
-		this.diffuse = diffuse;
-		this.normal = normal;
 		strength = 10f;
 
-		TextureAtlas atlas = GM.assetManager.get("chicken/bow.atlas", TextureAtlas.class);
-		SkeletonJson skeletonJson = new SkeletonJson(atlas);
+		SkeletonJson skeletonJson = new SkeletonJson(AM.getSpineAtlas());
 		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("chicken/bow.json"));
 		root = skeletonData.findBone("root");
 		float scale = size.y / skeletonData.getHeight();
@@ -86,7 +83,7 @@ public class Bow {
 
 		skeleton = new Skeleton(skeletonData);
 		arrowSprite = new Sprite();
-		arrowTexture = defaultArrowTexture;
+		arrowTexture = AM.getSpineAtlas().findRegion("arrow");
 		bend();
 	}
 
@@ -118,6 +115,7 @@ public class Bow {
 	}
 
 	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer) {
+		normalMap.draw(batch, skeletonRenderer, 0);
 		skeletonRenderer.draw(batch, skeleton);
 		if (bend) {
 			bendSize = Math.min(1, (animTime / animDuration));
@@ -225,7 +223,7 @@ public class Bow {
 		FixtureDef fixtureDef = new FixtureDef();
 		fixtureDef.shape = shape;
 		fixtureDef.density = 1f;
-		fixtureDef.restitution = .5f;
+		fixtureDef.restitution = .8f;
 		fixtureDef.friction = .1f;
 		fixtureDef.filter.groupIndex = -1;
 		body.createFixture(fixtureDef);

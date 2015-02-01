@@ -23,6 +23,7 @@ import com.esotericsoftware.spine.Slot;
 import com.esotericsoftware.spine.attachments.AtlasAttachmentLoader;
 import com.esotericsoftware.spine.attachments.RegionAttachment;
 
+import fr.alex.games.AM;
 import fr.alex.games.GM;
 import fr.alex.games.box2d.entities.Component;
 import fr.alex.games.box2d.entities.ComponentEvent;
@@ -41,9 +42,7 @@ public class Box2dSkeleton extends Component {
 		super(entity);
 		entity.addListner(this);
 		entity.setPosition(body.getPosition().cpy());
-		GM.assetManager.load(spineFile + ".atlas", TextureAtlas.class);
-		GM.assetManager.finishLoading();
-		final TextureAtlas atlas = GM.assetManager.get(spineFile + ".atlas", TextureAtlas.class);
+		final TextureAtlas atlas = AM.getSceneAtlas();
 		AtlasAttachmentLoader atlasLoader = new AtlasAttachmentLoader(atlas) {
 
 			@Override

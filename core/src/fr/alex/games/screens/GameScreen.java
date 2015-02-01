@@ -18,12 +18,12 @@ import com.esotericsoftware.spine.SkeletonRenderer;
 import com.gushikustudios.rube.RubeScene;
 import com.gushikustudios.rube.loader.serializers.utils.RubeImage;
 
+import fr.alex.games.AM;
 import fr.alex.games.CameraManager;
 import fr.alex.games.GM;
 import fr.alex.games.GameCollisions;
 import fr.alex.games.HUD;
 import fr.alex.games.LightManager;
-import fr.alex.games.Main;
 import fr.alex.games.Utils;
 import fr.alex.games.box2d.entities.Component;
 import fr.alex.games.box2d.entities.Entity;
@@ -31,6 +31,7 @@ import fr.alex.games.box2d.entities.components.Box2dSkeletonBasic;
 import fr.alex.games.box2d.entities.components.Box2dSprite;
 import fr.alex.games.box2d.entities.components.Coins;
 import fr.alex.games.box2d.entities.components.DestoryedEffect;
+import fr.alex.games.box2d.entities.components.Destroyable;
 import fr.alex.games.box2d.entities.components.HorizontalMove;
 import fr.alex.games.box2d.entities.components.Mortal;
 import fr.alex.games.box2d.entities.components.NormalMap;
@@ -149,9 +150,7 @@ public class GameScreen implements Screen, InputProcessor {
 		arrows.clear();
 		statics.clear();
 		Array<Body> tmp = GM.scene.getNamed(Body.class, "chicken");
-		Texture commonDiffuse = GM.assetManager.get(Main.COMMON_ATLAS_PATH.replace(".atlas", "-diffuse.png"), Texture.class);
-		Texture commonNormal = GM.assetManager.get(Main.COMMON_ATLAS_PATH.replace(".atlas", "-normal.png"), Texture.class);
-		chicken = new Chicken(tmp.get(0), GM.commonAtlas.findRegion("arrow"), commonDiffuse, commonNormal);
+		chicken = new Chicken(tmp.get(0));
 		tmp = GM.scene.getNamed(Body.class, "chickenSensor");
 		tmp.get(0).setUserData(chicken);		
 
@@ -326,9 +325,6 @@ public class GameScreen implements Screen, InputProcessor {
 				entity.draw(batch, skeletonRenderer, delta);
 			}
 		}
-		batch.end();
-
-		batch.begin();
 
 		for (int i = 0; i < arrows.size; i++) {
 			Entity arrow = arrows.get(i);
@@ -337,19 +333,17 @@ public class GameScreen implements Screen, InputProcessor {
 			}
 		}
 
-		batch.end();
-
-		batch.begin();
-
 		for (int i = 0; i < entities.size; i++) {
 			Entity entity = entities.get(i);
 			if (GM.cameraManager.isInScreen(entity.getPosition())) {
 				entity.draw(batch, skeletonRenderer, delta);
 			}
 		}
+		
 		batch.end();
 
 		batch.begin();
+
 		for (int i = 0; i < enemies.size; i++) {
 			Entity ennemy = enemies.get(i);
 			if (GM.cameraManager.isInScreen(ennemy.getPosition())) {
@@ -357,9 +351,6 @@ public class GameScreen implements Screen, InputProcessor {
 			}
 		}
 
-		batch.end();
-
-		batch.begin();
 		chicken.draw(batch, skeletonRenderer, delta);
 		batch.end();
 
@@ -386,19 +377,16 @@ public class GameScreen implements Screen, InputProcessor {
 
 	private void createSpatialsFromRubeImages(RubeScene scene) {
 		Array<RubeImage> images = scene.getImages();
-
-		TextureAtlas atlas = GM.assetManager.get(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile(), TextureAtlas.class);
-		Texture diffuse = GM.assetManager.get(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile().replace(".atlas", "-diffuse.png"), Texture.class);
-		Texture normal = GM.assetManager.get(Main.SCENES_ATLAS_PATH + GM.level.getSceneAtlasFile().replace(".atlas", "-normal.png"), Texture.class);
+		
+		TextureAtlas atlas = AM.getSceneAtlas();
+		Texture diffuse = AM.getSceneDiffuse();
+		Texture normal = AM.getSceneNormal();
 
 		for (int i = 0; i < images.size; i++) {
 			RubeImage image = images.get(i);
 			tmp.set(image.width, image.height);
-			String textureFileName = image.file.replace(".png", "");
-			TextureRegion region = atlas.findRegion(textureFileName);
-			if (region == null) {
-				region = GM.commonAtlas.findRegion(textureFileName);
-			}
+			String regionName = image.file.replace(".png", "");
+			TextureRegion region = atlas.findRegion(regionName);
 
 			Entity e = new Entity();
 			Boolean spine = (Boolean) GM.scene.getCustom(image, "spine");
@@ -414,15 +402,11 @@ public class GameScreen implements Screen, InputProcessor {
 				}
 			} else {
 				String file = (String) GM.scene.getCustom(image, "spineFile");
-				GM.assetManager.load(file + "-diffuse.png", Texture.class);
-				GM.assetManager.load(file + "-normal.png", Texture.class);
 				// Component skeleton = new Box2dSkeleton(e, file, image.body,
 				// tmp);
-				Component skeleton = new Box2dSkeletonBasic(e, file, image.body, tmp, image.center);
-				Texture spineDiffuse = GM.assetManager.get(file + "-diffuse.png", Texture.class);
-				Texture spineNormal = GM.assetManager.get(file + "-normal.png", Texture.class);
+				Component skeleton = new Box2dSkeletonBasic(e, file, image.body, tmp, image.center);			
 
-				Component normalMap = new NormalMap(e, spineDiffuse, spineNormal);
+				Component normalMap = new NormalMap(e, AM.getSceneDiffuse(), AM.getSpineNormal());
 				e.add(normalMap);
 				e.add(skeleton);
 				enemies.add(e);
@@ -431,13 +415,13 @@ public class GameScreen implements Screen, InputProcessor {
 			if (active != null && active) {
 				Boolean destroyable = (Boolean) GM.scene.getCustom(image, "destroyable");
 				if (destroyable != null && destroyable) {
-					// e.add(new Destroyable(e));
+					e.add(new Destroyable(e));
 					e.add(new DestoryedEffect(e, Effect.GOLD));
 				}
 
 				Boolean stick = (Boolean) GM.scene.getCustom(image, "stick");
 				if (stick != null && stick) {
-					e.add(new Stickable(e, 3));
+					e.add(new Stickable(e, -1));
 				}
 
 				Float speedX = (Float) GM.scene.getCustom(image, "speedX");
@@ -471,7 +455,7 @@ public class GameScreen implements Screen, InputProcessor {
 				TextureRegion region = atlas.findRegion(textureFileName);
 
 				if (region == null) {
-					region = GM.commonAtlas.findRegion(textureFileName);
+					//region = GM.commonAtlas.findRegion(textureFileName);
 				}
 				SimpleSpatial spatial = null;
 				Boolean spine = (Boolean) GM.scene.getCustom(image, "spine");

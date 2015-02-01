@@ -17,12 +17,6 @@ import fr.alex.games.screens.Screens;
 
 public class Main extends Game {
 	
-	public static final String SCENES_PATH = "scenes/";
-	public static final String SCENES_ATLAS_PATH = "scenes/atlas/";
-	public static final String COMMON_ATLAS_PATH = "scenes/atlas/common.atlas";
-	public static final String BACKGROUND_ATLAS_PATH = "backgrounds/";
-	public static final String PARTICLES_PATH = "particles/";
-	
 	@Override
 	public void create() {
 		Gdx.app.log("Main", "init");

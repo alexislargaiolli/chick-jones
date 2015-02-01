@@ -48,7 +48,6 @@ public class Stick extends Component {
 			Body stickBody = contact.getFixtureA().getBody();
 			Body stickableBody = contact.getFixtureB().getBody();
 
-			stickBody.setLinearDamping(10);
 			stickInfo = new StickyInfo(stickBody, stickableBody, contactPoint);
 			sticked = true;
 			other.broadcastEvent(new ComponentEvent(this, null, EventType.ARROW_STICK));
