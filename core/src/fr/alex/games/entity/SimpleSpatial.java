@@ -12,9 +12,6 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.esotericsoftware.spine.SkeletonRenderer;
-import com.esotericsoftware.spine.Slot;
-
-import fr.alex.games.entity.SpineSpatial.Box2dAttachment;
 
 /**
  * Simple class for spatial (image) rendering. If a body reference is included,

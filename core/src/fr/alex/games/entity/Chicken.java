@@ -3,9 +3,13 @@ package fr.alex.games.entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.AM;
@@ -22,34 +26,54 @@ import fr.alex.games.items.PassiveSkill;
 import fr.alex.games.screens.GameScreen.State;
 
 public class Chicken {
-	protected Vector2 jumpVector;
-	private Body chicken;
+	private enum ANIM {
+		IDLE("idle"), RUN("run"), JUMP("jump");
+		String name;
+
+		ANIM(String name) {
+			this.name = name;
+		}
+
+		public String getName() {
+			return name;
+		}
+	}
+
+	private int footContactCount = 0;
+	private int jumpTimeout = 0;
+	private float jumpDefaultFactor = 150;
+	private float jumpFactor = 150;
+	private float jumpMaxValue = 5;
+	private int jumpCount = 0;
+
+	private float defaultSpeed = 10;
+	private float speed = 10;
+	private Body body;
 	private boolean jumping;
-	private float speed = 4;
+	private boolean stop;
+
 	private float timeFactor = 1;
 	private Bow bow;
 
 	private float width = 1, height = 1.2f;
 
 	private Entity chickenEntity;
+	private ANIM currentAnim;
 
 	public Chicken(Body chicken) {
-		this.chicken = chicken;
+		// this.body = chicken;
+		createBody(0, 0);
 
 		chickenEntity = new Entity();
-		
+
 		chickenEntity.add(new NormalMap(chickenEntity, AM.getSpineDiffuse(), AM.getSpineNormal()));
-		Box2dSkeletonBasic skeleton = new Box2dSkeletonBasic(chickenEntity, "chicken/chicken", chicken, new Vector2(width, height), new Vector2(0, height * .5f));
+		Box2dSkeletonBasic skeleton = new Box2dSkeletonBasic(chickenEntity, "chicken/chicken", this.body, new Vector2(width, height), new Vector2(0, height * .5f));
 		skeleton.addMix("idle", "run", 0.4f);
 		skeleton.addMix("run", "jump", 0.1f);
 		skeleton.addMix("jump", "run", 0.1f);
 		chickenEntity.add(skeleton);
 		chickenEntity.add(new Dieable(chickenEntity));
 		chickenEntity.add(new Collector(chickenEntity));
-
-		jumpVector = new Vector2(0, 250);
-
-		idle();
 
 		bow = new Bow(this, new Vector2(1, 1f));
 
@@ -58,38 +82,107 @@ public class Chicken {
 				handlePassiveSkill(skill);
 			}
 		}
-	}	
+	}
+
+	private void createBody(float x, float y) {
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.position.set(x, y);
+		bodyDef.allowSleep = false;
+		bodyDef.gravityScale = 1f;
+		bodyDef.fixedRotation = true;
+		body = GM.scene.getWorld().createBody(bodyDef);
+
+		PolygonShape shape = new PolygonShape();
+		shape.setAsBox(0.2f, 0.6f);
+		// float[] vertives = new float[] { -1, 0, widthArrow * .2f,
+		// -heightArrow * .5f, widthArrow * .5f, 0, widthArrow * .2f,
+		// heightArrow * .5f };
+		// shape.set(vertives);
+		FixtureDef fixtureDef = new FixtureDef();
+		fixtureDef.shape = shape;
+		fixtureDef.density = 1f;
+		fixtureDef.restitution = 0f;
+		fixtureDef.friction = 0f;
+		fixtureDef.filter.groupIndex = -1;
+		body.createFixture(fixtureDef);
+
+		shape.setAsBox(0.1f, 0.2f, new Vector2(0, -.6f), 0);
+		fixtureDef.isSensor = true;
+		Fixture f = body.createFixture(fixtureDef);
+		f.setUserData(this);
+	}
 
 	public void update(State state, float delta) {
-		handleInput();
 		chickenEntity.update(delta);
 		bow.setOrigin(chickenEntity.getPosition().x + width * 0.3f, chickenEntity.getPosition().y + height * .2f);
 		bow.update(state, delta * timeFactor);
 
-		if (state == State.PLAYING && !isDead() && chicken.getLinearVelocity().x < speed) {
-			chicken.setLinearVelocity(speed, chicken.getLinearVelocity().y);
+		if (state == State.PLAYING && !isDead()) {
+
+			// if (jumping) {
+			// if (jumpTimeout == 0) { // jumpFactor *= 0.7f;
+			// body.applyLinearImpulse(0, body.getMass() * 5,
+			// body.getWorldCenter().x, body.getWorldCenter().y, true);
+			// body.applyForce(0, body.getMass() * jumpFactor,
+			// body.getWorldCenter().x, body.getWorldCenter().y, true);
+			// jumpTimeout = 15;
+			// } else {
+			// body.applyForce(0, body.getMass() * jumpFactor * 0.1f,
+			// body.getWorldCenter().x, body.getWorldCenter().y, true);
+			// }
+			// } else if (body.getLinearVelocity().y < 3) { // speed =
+			// defaultSpeed
+			// // * .1f;
+			// body.applyForce(0, body.getMass() * -20f,
+			// body.getWorldCenter().x, body.getWorldCenter().y, true);
+			// } else {
+			// speed = defaultSpeed;
+			// }
+			if (body.getLinearVelocity().y < 3 && footContactCount == 0) {
+				body.applyForce(0, body.getMass() * -30f, body.getWorldCenter().x, body.getWorldCenter().y, true);
+			}
+			if (body.getLinearVelocity().x < 5 && !stop) {
+				body.applyForce(speed, 0, body.getWorldCenter().x, body.getWorldCenter().y, true);
+			}
+			if (footContactCount > 0) {
+				if (speed > 0 && !stop) {
+					setAnim(ANIM.RUN, true);
+				} else {
+					setAnim(ANIM.IDLE, true);
+				}
+			} else {
+				setAnim(ANIM.JUMP, true);
+			}
 		}
+		if(state == State.ENDING){
+			body.setLinearDamping(10);
+			setAnim(ANIM.IDLE, true);
+		}
+		if (jumpTimeout > 0) {
+			jumpTimeout--;
+		}
+	}
+
+	public void jump() {
+		if (footContactCount < 1 && jumpCount > 1) {
+			return;
+		}
+		body.applyLinearImpulse(0, body.getMass() * (5.5f - body.getLinearVelocity().y), body.getWorldCenter().x, body.getWorldCenter().y, true);
+		jumpCount++;
+		if (!jumping) {
+			jumpCount = 1;
+			jumpFactor = jumpDefaultFactor;
+		}
+
+		jumping = true;
 	}
 
 	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta) {
 		chickenEntity.draw(batch, skeletonRenderer, delta);
 		bow.draw(batch, skeletonRenderer);
 	}
-	
-	private void handleInput(){
-		if(Gdx.input.isTouched()){
-			if (Gdx.input.getX() < GM.cameraManager.getScreenCenterX()) {
-				jump();
-			}
-		}
-		if(Gdx.input.isKeyPressed(Keys.Q)){
-			jump();
-		}
-		if(Gdx.input.isKeyPressed(Keys.W)){
-			toggleStop();
-		}
-	}
-	
+
 	private void handlePassiveSkill(PassiveSkill skill) {
 		switch (skill.getCarac()) {
 		case BOW_STRENGTH:
@@ -126,79 +219,43 @@ public class Chicken {
 		return res;
 	}
 
-	/**
-	 * Set the chicken animation to run
-	 */
-	public void run() {
-		setAnim("run", true);
-		chicken.setLinearDamping(0);
-	}
-
-	/**
-	 * Set the chicken animation to idle
-	 */
-	public void idle() {
-		setAnim("idle", true);
-		chicken.setLinearDamping(10);
-	}
-
-	public void jump() {
-		if (!jumping && MathUtils.isZero(chicken.getLinearVelocity().y)) {
-			jumping = true;
-			setAnim("jump", true);
-			chicken.applyForce(jumpVector.x, jumpVector.y, width * .5f, 0, true);
-		}
-	}
-
-	public void onCollideGround() {
-		if (jumping) {
-			jumping = false;
-			setAnim("run", true);
-		}
-	}
-
 	public void die() {
-		chicken.setLinearDamping(10);
-		setAnim("idle", true);
+		body.setLinearDamping(10);
+		setAnim(ANIM.IDLE, true);
 	}
 
-	private void setAnim(String anim, boolean loop) {
-		Box2dSkeletonBasic skeleton = (Box2dSkeletonBasic) chickenEntity.get(Box2dSkeletonBasic.name);
-		skeleton.setAnim(anim, loop);
-	}
-
-	/**
-	 * Admin method to totaly stop the chicken
-	 */
-	public void stop() {
-		speed = 0;
-		chicken.setLinearDamping(10);
-		chicken.setLinearVelocity(0,0);
-		idle();
-	}
-
-	/**
-	 * Adminmethod to restart the chicken run
-	 */
-	public void play() {
-		speed = 1;
-		run();
+	private void setAnim(ANIM anim, boolean loop) {
+		if (!anim.equals(currentAnim)) {
+			Box2dSkeletonBasic skeleton = (Box2dSkeletonBasic) chickenEntity.get(Box2dSkeletonBasic.name);
+			skeleton.setAnim(anim.getName(), loop);
+			currentAnim = anim;
+		}
 	}
 
 	public void toggleStop() {
-		if (speed == 0) {
-			play();
-		} else {
-			stop();
+		stop = !stop;
+		if (stop) {
+			body.setLinearVelocity(0, 0);
 		}
 	}
 
+	public void incrementFootContact() {
+		footContactCount++;
+		if (footContactCount > 0) {
+			jumpCount = 0;
+		}
+	}
+
+	public void decrementFootContact() {
+		footContactCount--;
+	}
+
 	public float getSpeedX() {
-		return chicken.getLinearVelocity().x;
+		return body.getLinearVelocity().x;
 	}
 
 	public float getSpeedY() {
-		return chicken.getLinearVelocity().y;
+		return body.getLinearVelocity().y;
 	}
 
 	public Bow getBow() {
@@ -210,11 +267,11 @@ public class Chicken {
 	}
 
 	public float getX() {
-		return chicken.getPosition().x;
+		return body.getPosition().x;
 	}
 
 	public float getY() {
-		return chicken.getPosition().y;
+		return body.getPosition().y;
 	}
 
 	public boolean isDead() {
@@ -226,11 +283,11 @@ public class Chicken {
 	}
 
 	public Body getChicken() {
-		return chicken;
+		return body;
 	}
 
 	public void setChicken(Body chicken) {
-		this.chicken = chicken;
+		this.body = chicken;
 	}
 
 	public float getWidth() {
@@ -255,5 +312,13 @@ public class Chicken {
 
 	public void setTimeFactor(float timeFactor) {
 		this.timeFactor = timeFactor;
+	}
+
+	public int getFootContactCount() {
+		return footContactCount;
+	}
+
+	public void setFootContactCount(int footContactCount) {
+		this.footContactCount = footContactCount;
 	}
 }

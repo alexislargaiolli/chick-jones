@@ -34,6 +34,7 @@ public class Coins extends Component{
 	public void contact(Entity other, Contact contact) {
 		if(!collected && other.contains(Collector.name)){
 			GM.gold += coinCount;
+			contact.setEnabled(false);
 			this.entity.broadcastEvent(new ComponentEvent(this, null, EventType.DESTROY));
 			collected = true;
 		}

@@ -69,7 +69,7 @@ public class Bow {
 		normalMap = new NormalMap(null, AM.getSpineDiffuse(), AM.getSpineNormal());
 		origin = new Vector2();
 		velocity = new Vector2();
-		strength = 10f;
+		strength = 15f;
 
 		SkeletonJson skeletonJson = new SkeletonJson(AM.getSpineAtlas());
 		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("chicken/bow.json"));

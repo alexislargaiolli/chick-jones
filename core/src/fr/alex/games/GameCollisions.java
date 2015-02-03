@@ -12,25 +12,30 @@ public class GameCollisions implements ContactListener {
 
 	@Override
 	public void beginContact(Contact contact) {
-		Object o1 = contact.getFixtureA().getBody().getUserData();
-		Object o2 = contact.getFixtureB().getBody().getUserData();
-		if (o1 instanceof Chicken) {
-			chickenCollideGround((Chicken) o1, o2);
-		}
-		if (o2 instanceof Chicken) {
-			chickenCollideGround((Chicken) o2, o1);
-		}
-	}
+		Object fixtureUserData = contact.getFixtureA().getUserData();
 
-	private void chickenCollideGround(Chicken chicken, Object other) {
-		//if (!(other instanceof UserData)) {
-			chicken.onCollideGround();
-		//}
+		if (fixtureUserData instanceof Chicken) {
+			((Chicken) fixtureUserData).incrementFootContact();
+		}
+
+		fixtureUserData = contact.getFixtureB().getUserData();
+		if (fixtureUserData instanceof Chicken) {
+			((Chicken) fixtureUserData).incrementFootContact();
+		}
 	}
 
 	@Override
 	public void endContact(Contact contact) {
+		Object fixtureUserData = contact.getFixtureA().getUserData();
 
+		if (fixtureUserData instanceof Chicken) {
+			((Chicken) fixtureUserData).decrementFootContact();
+		}
+
+		fixtureUserData = contact.getFixtureB().getUserData();
+		if (fixtureUserData instanceof Chicken) {
+			((Chicken) fixtureUserData).decrementFootContact();
+		}
 	}
 
 	@Override
@@ -43,12 +48,12 @@ public class GameCollisions implements ContactListener {
 			Entity e2 = (Entity) o2;
 			e1.contact(e2, contact);
 			e2.contact(e1, contact);
-		}		
+		}
 	}
 
 	@Override
 	public void postSolve(Contact contact, ContactImpulse impulse) {
-		
+
 	}
 
 }

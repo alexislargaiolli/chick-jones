@@ -151,8 +151,8 @@ public class GameScreen implements Screen, InputProcessor {
 		statics.clear();
 		Array<Body> tmp = GM.scene.getNamed(Body.class, "chicken");
 		chicken = new Chicken(tmp.get(0));
-		tmp = GM.scene.getNamed(Body.class, "chickenSensor");
-		tmp.get(0).setUserData(chicken);		
+		
+		//tmp.get(0).setUserData(chicken);		
 
 		createSpatialsFromRubeImages(GM.scene);
 
@@ -161,6 +161,10 @@ public class GameScreen implements Screen, InputProcessor {
 
 		hud = new HUD(this);
 		GM.scene.getWorld().setContactListener(new GameCollisions());
+		
+		GM.scene.getWorld().destroyBody(tmp.get(0));
+		tmp = GM.scene.getNamed(Body.class, "chickenSensor");
+		GM.scene.getWorld().destroyBody(tmp.get(0));
 	}
 
 	@Override
@@ -222,7 +226,6 @@ public class GameScreen implements Screen, InputProcessor {
 				} else if (counter <= 0) {
 					state = State.PLAYING;
 					hud.hideMessage();
-					chicken.run();
 				}
 			} else if (state == State.PLAYING) {
 				updateSkills(delta);
@@ -235,7 +238,6 @@ public class GameScreen implements Screen, InputProcessor {
 					GM.world.clearForces();
 				}
 			} else if (state == State.ENDING) {
-				chicken.idle();
 				if (isLost()) {
 					hud.showLoose();
 					state = State.LOOSE;
@@ -583,6 +585,12 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
+		if (keycode == Keys.W) {
+			chicken.toggleStop();
+		}
+		if (keycode == Keys.Q) {
+			chicken.jump();
+		}
 		return false;
 	}
 
@@ -600,6 +608,7 @@ public class GameScreen implements Screen, InputProcessor {
 		if (keycode == Keys.D) {
 			debug = !debug;
 		}
+		
 		return false;
 	}
 
@@ -611,7 +620,7 @@ public class GameScreen implements Screen, InputProcessor {
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		if (state == State.PLAYING) {
-			if (Gdx.input.getX() >= GM.cameraManager.getScreenCenterX()) {
+			if (Gdx.input.getX() > GM.cameraManager.getScreenCenterX()) {
 				Vector2 touch = GM.cameraManager.toWorld(screenX, screenY);
 
 				tmp.set(chicken.getBow().getOrigin());
@@ -619,6 +628,9 @@ public class GameScreen implements Screen, InputProcessor {
 				chicken.getBow().setAngle(tmp.angle() + 180);
 				arrows.addAll(chicken.getBow().fire());
 				GM.arrowFiredCount++;
+			}
+			else if(Gdx.input.getX() <= GM.cameraManager.getScreenCenterX()){
+				chicken.jump();
 			}
 		}
 		return false;
