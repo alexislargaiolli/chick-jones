@@ -1,7 +1,6 @@
 package fr.alex.games.box2d.entities;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 public abstract class Component {
@@ -14,8 +13,6 @@ public abstract class Component {
 	public abstract void update(float delta);
 
 	public abstract void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta);
-
-	public abstract void contact(Entity other, Contact contact);	
 
 	public abstract String getName();
 	

@@ -2,12 +2,15 @@ package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.box2d.entities.Component;
 import fr.alex.games.box2d.entities.Entity;
+import fr.alex.games.box2d.entities.PhysicListener;
 
-public class Destroyer extends Component {
+public class Destroyer extends Component implements PhysicListener{
 	public final static String name = "destroyer";
 	private boolean hasDestroy;
 
@@ -27,7 +30,26 @@ public class Destroyer extends Component {
 	}
 
 	@Override
-	public void contact(Entity entity, Contact contact) {
+	public String getName() {
+		return name;
+	}
+
+	public boolean hasDestroy() {
+		return hasDestroy;
+	}
+
+	@Override
+	public void beginContact(Entity other, Contact contact) {
+		
+	}
+
+	@Override
+	public void endContact(Entity other, Contact contact) {
+		
+	}
+
+	@Override
+	public void preSolve(Entity other, Contact contact, Manifold oldManifold) {
 		if (entity.contains(Destroyable.name)) {
 			hasDestroy = true;
 			contact.setEnabled(false);			
@@ -35,12 +57,8 @@ public class Destroyer extends Component {
 	}
 
 	@Override
-	public String getName() {
-		return name;
-	}
-
-	public boolean hasDestroy() {
-		return hasDestroy;
+	public void postSolve(Entity other, Contact contact, ContactImpulse impulse) {
+		
 	}
 
 }

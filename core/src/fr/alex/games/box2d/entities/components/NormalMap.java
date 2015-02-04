@@ -2,7 +2,6 @@ package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.box2d.entities.Component;
@@ -28,11 +27,6 @@ public class NormalMap extends Component {
 	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta) {
 		normal.bind(1);
 		diffuse.bind(0);
-	}
-
-	@Override
-	public void contact(Entity entity, Contact contact) {
-		
 	}
 
 	@Override

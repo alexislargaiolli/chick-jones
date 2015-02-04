@@ -1,7 +1,6 @@
 package fr.alex.games.box2d.entities.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.box2d.entities.Component;
@@ -37,11 +36,6 @@ public class Stickable extends Component {
 				this.entity.broadcastEvent(new ComponentEvent(this, null, EventType.DESTROY));
 			}
 		}
-	}
-
-	@Override
-	public void contact(Entity other, Contact contact) {
-
 	}
 
 	@Override

@@ -7,6 +7,8 @@ import java.util.List;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 public class Entity {
@@ -14,7 +16,7 @@ public class Entity {
 	private boolean toRemove;
 	private Vector2 position;
 	private HashMap<String, Component> components;
-
+	private List<PhysicListener> physicListenerComponents;
 	private List<Component> eventListners;
 
 	public Entity() {
@@ -23,6 +25,7 @@ public class Entity {
 		position = new Vector2();
 		components = new HashMap<String, Component>();
 		eventListners = new ArrayList<Component>();
+		physicListenerComponents = new ArrayList<PhysicListener>();
 	}
 
 	public void update(float delta) {
@@ -36,10 +39,28 @@ public class Entity {
 			c.draw(batch, skeletonRenderer, delta);
 		}
 	}
+	
+	public void beginContact(Entity other, Contact contact) {		
+		for (PhysicListener c : physicListenerComponents) {			
+			c.beginContact(other, contact);
+		}
+	}
+	
+	public void endContact(Entity other, Contact contact) {		
+		for (PhysicListener c : physicListenerComponents) {			
+			c.endContact(other, contact);
+		}
+	}
 
-	public void contact(Entity entity, Contact contact) {		
-		for (Component c : components.values()) {			
-			c.contact(entity, contact);
+	public void preSolve(Entity other, Contact contact, Manifold oldManifold) {		
+		for (PhysicListener c : physicListenerComponents) {			
+			c.preSolve(other, contact, oldManifold);
+		}
+	}
+	
+	public void postSolve(Entity other, Contact contact, ContactImpulse impulse){
+		for (PhysicListener c : physicListenerComponents) {			
+			c.postSolve(other, contact, impulse);
 		}
 	}
 
@@ -55,6 +76,9 @@ public class Entity {
 
 	public void add(Component component) {
 		components.put(component.getName(), component);
+		if(component instanceof PhysicListener){
+			physicListenerComponents.add((PhysicListener) component);
+		}
 	}
 
 	public Component get(String name) {

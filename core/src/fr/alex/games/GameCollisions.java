@@ -22,6 +22,16 @@ public class GameCollisions implements ContactListener {
 		if (fixtureUserData instanceof Chicken) {
 			((Chicken) fixtureUserData).incrementFootContact();
 		}
+		
+		Object o1 = contact.getFixtureA().getBody().getUserData();
+		Object o2 = contact.getFixtureB().getBody().getUserData();
+
+		if (o1 instanceof Entity && o2 instanceof Entity) {
+			Entity e1 = (Entity) o1;
+			Entity e2 = (Entity) o2;
+			e1.beginContact(e2, contact);
+			e2.beginContact(e1, contact);
+		}
 	}
 
 	@Override
@@ -36,6 +46,16 @@ public class GameCollisions implements ContactListener {
 		if (fixtureUserData instanceof Chicken) {
 			((Chicken) fixtureUserData).decrementFootContact();
 		}
+		
+		Object o1 = contact.getFixtureA().getBody().getUserData();
+		Object o2 = contact.getFixtureB().getBody().getUserData();
+
+		if (o1 instanceof Entity && o2 instanceof Entity) {
+			Entity e1 = (Entity) o1;
+			Entity e2 = (Entity) o2;
+			e1.endContact(e2, contact);
+			e2.endContact(e1, contact);
+		}
 	}
 
 	@Override
@@ -46,14 +66,22 @@ public class GameCollisions implements ContactListener {
 		if (o1 instanceof Entity && o2 instanceof Entity) {
 			Entity e1 = (Entity) o1;
 			Entity e2 = (Entity) o2;
-			e1.contact(e2, contact);
-			e2.contact(e1, contact);
+			e1.preSolve(e2, contact, oldManifold);
+			e2.preSolve(e1, contact, oldManifold);
 		}
 	}
 
 	@Override
 	public void postSolve(Contact contact, ContactImpulse impulse) {
+		Object o1 = contact.getFixtureA().getBody().getUserData();
+		Object o2 = contact.getFixtureB().getBody().getUserData();
 
+		if (o1 instanceof Entity && o2 instanceof Entity) {
+			Entity e1 = (Entity) o1;
+			Entity e2 = (Entity) o2;
+			e1.postSolve(e2, contact, impulse);
+			e2.postSolve(e1, contact, impulse);
+		}
 	}
 
 }

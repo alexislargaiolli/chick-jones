@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.AnimationState;
 import com.esotericsoftware.spine.AnimationStateData;
 import com.esotericsoftware.spine.Bone;
@@ -92,11 +91,6 @@ public class Box2dSkeletonBasic extends Component {
 	@Override
 	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta) {
 		skeletonRenderer.draw(batch, skeleton);
-	}
-
-	@Override
-	public void contact(Entity entity, Contact contact) {
-
 	}
 
 	public void addMix(String anim1, String anim2, float duration) {

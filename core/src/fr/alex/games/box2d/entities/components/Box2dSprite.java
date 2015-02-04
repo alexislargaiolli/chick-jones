@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.Contact;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.GM;
@@ -81,11 +80,6 @@ public class Box2dSprite extends Component {
 	@Override
 	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta) {
 		sprite.draw(batch);
-	}
-
-	@Override
-	public void contact(Entity entity, Contact contact) {
-
 	}
 
 	public void destroy() {
