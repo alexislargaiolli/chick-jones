@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -40,7 +39,6 @@ public class HUD {
 	private Label lbInfo;
 	private Label scoreLabel;
 	private Label arrowLabel;
-	private ImageButton fireButton;
 	private TextButton btResume;
 	private TextButton btRestart;
 	private TextButton btQuit;
@@ -49,7 +47,7 @@ public class HUD {
 	public static String WIN_MESSAGE = "You win !";
 	public static String LOOSE_MESSAGE = "You loose...";
 	public static String CONTINUE_MESSAGE = "Click to continue";
-	private GameScreen game;
+	private GameScreen game;	
 
 	// Game win elements
 	private Label earnedGoldLabel, totalGoldLabel, arrowFiredLabel, hitCountLabel, precisionLabel;
@@ -59,7 +57,7 @@ public class HUD {
 
 	public HUD(final GameScreen game) {
 		this.game = game;
-		stage = new Stage(new ExtendViewport(VIRTUAL_WIDTH, VIRTUAL_HEIGHT));
+		stage = new Stage(new ExtendViewport(VIRTUAL_WIDTH, VIRTUAL_HEIGHT));		
 		mask = new Image(GM.skin.getDrawable("black"));
 		mask.setZIndex(50);
 		mask.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

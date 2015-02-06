@@ -1,7 +1,5 @@
 package fr.alex.games.entity;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -40,13 +38,8 @@ public class Chicken {
 	}
 
 	private int footContactCount = 0;
-	private int jumpTimeout = 0;
-	private float jumpDefaultFactor = 150;
-	private float jumpFactor = 150;
-	private float jumpMaxValue = 5;
 	private int jumpCount = 0;
 
-	private float defaultSpeed = 10;
 	private float speed = 10;
 	private Body body;
 	private boolean jumping;
@@ -115,7 +108,7 @@ public class Chicken {
 
 	public void update(State state, float delta) {
 		chickenEntity.update(delta);
-		bow.setOrigin(chickenEntity.getPosition().x + width * 0.3f, chickenEntity.getPosition().y + height * .2f);
+		bow.setPosition(chickenEntity.getPosition().x + width * 0.3f, chickenEntity.getPosition().y + height * .2f);
 		bow.update(state, delta * timeFactor);
 
 		if (state == State.PLAYING && !isDead()) {
@@ -159,9 +152,6 @@ public class Chicken {
 			body.setLinearDamping(10);
 			setAnim(ANIM.IDLE, true);
 		}
-		if (jumpTimeout > 0) {
-			jumpTimeout--;
-		}
 	}
 
 	public void jump() {
@@ -172,15 +162,13 @@ public class Chicken {
 		jumpCount++;
 		if (!jumping) {
 			jumpCount = 1;
-			jumpFactor = jumpDefaultFactor;
 		}
-
 		jumping = true;
 	}
 
 	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta) {
 		chickenEntity.draw(batch, skeletonRenderer, delta);
-		bow.draw(batch, skeletonRenderer);
+		bow.draw(batch, skeletonRenderer, delta);
 	}
 
 	private void handlePassiveSkill(PassiveSkill skill) {

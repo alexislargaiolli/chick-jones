@@ -1,6 +1,5 @@
 package fr.alex.games.entity;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.ParticleEffectPool.PooledEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -14,11 +13,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
-import com.esotericsoftware.spine.Animation;
-import com.esotericsoftware.spine.BoneData;
-import com.esotericsoftware.spine.Skeleton;
-import com.esotericsoftware.spine.SkeletonData;
-import com.esotericsoftware.spine.SkeletonJson;
+import com.esotericsoftware.spine.AnimationState.TrackEntry;
 import com.esotericsoftware.spine.SkeletonRenderer;
 
 import fr.alex.games.AM;
@@ -30,140 +25,93 @@ import fr.alex.games.box2d.entities.components.Box2dSprite;
 import fr.alex.games.box2d.entities.components.Collector;
 import fr.alex.games.box2d.entities.components.Destroyer;
 import fr.alex.games.box2d.entities.components.NormalMap;
+import fr.alex.games.box2d.entities.components.SkeletonBasic;
 import fr.alex.games.box2d.entities.components.Stick;
 import fr.alex.games.screens.GameScreen.State;
 
-public class Bow {
+public class Bow extends Entity{
+	public static float widthArrow = .9f;
+	public static float heightArrow = .06f;
+	
 	/**
 	 * Default shoot strength
 	 */
-	private float strength;
-
-	private boolean bend = false;
-
+	private float strength = 15;
+	/**
+	 * Current angle of the bow
+	 */
+	private float angle = 0;
+	/**
+	 * Current size of bow bending
+	 */
 	private float bendSize = 0f;
-
-	private Vector2 origin;
-
+	/**
+	 * Number of arrow the bow shot at the same time
+	 */
+	private float arrowCount = 1;
+	
 	private Vector2 velocity;
-
-	private Skeleton skeleton;
-	private Animation animShot;
-	private Animation animBend;
-	private Animation currentAnim;
-	private BoneData root;
-	private float animTime = 0, animDuration = .2f;
-	private float angle;
 	private TextureRegion arrowTexture;
-
 	private PooledEffect effect;
-
-	float widthArrow = .6f;
-	float heightArrow = .06f;
-	float arrowCount = 1;
 	private Sprite arrowSprite;
-	NormalMap normalMap;
+	SkeletonBasic skel;
+	TrackEntry bendTrack;
+	TrackEntry shotTrack;
 
 	public Bow(Chicken player, Vector2 size) {
 		super();
-		normalMap = new NormalMap(null, AM.getSpineDiffuse(), AM.getSpineNormal());
-		origin = new Vector2();
 		velocity = new Vector2();
-		strength = 15f;
+		add(new NormalMap(this, AM.getSpineDiffuse(), AM.getSpineNormal()));
+		skel = new SkeletonBasic(this, "chicken/bow", size, new Vector2(size.x * .5f, size.y * .5f), angle);
+		skel.addMix("shot", "bend", 0.2f);
+		skel.addMix("bend", "shot", 0.2f);
+		add(skel);
 
-		SkeletonJson skeletonJson = new SkeletonJson(AM.getSpineAtlas());
-		SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal("chicken/bow.json"));
-		root = skeletonData.findBone("root");
-		float scale = size.y / skeletonData.getHeight();
-		root.setScale(scale, scale);
-		root.setRotation(30);
-
-		animShot = skeletonData.findAnimation("shot");
-		animBend = skeletonData.findAnimation("bend");
-
-		skeleton = new Skeleton(skeletonData);
 		arrowSprite = new Sprite();
 		arrowTexture = AM.getSpineAtlas().findRegion("arrow");
-		bend();
-	}
-
-	public void shot() {
-
+		arrowSprite.setRegion(arrowTexture);
+		arrowSprite.setScale(1, 1.6f);
+		arrowSprite.setSize(widthArrow, heightArrow);
+		arrowSprite.setPosition(position.x, position.y);
+		arrowSprite.setRotation(angle);
+		skel.setAnim(1, "bend", false);
 	}
 
 	public void update(State state, float delta) {
-
-		if (currentAnim != null && animTime <= animDuration) {
-			currentAnim.apply(skeleton, animTime - delta, animTime, false, null);
-			animTime += delta;
-			if (animTime >= animDuration) {
-				if (currentAnim.equals(animShot)) {
-					bend();
-				}
-			}
-		}
-
-		skeleton.getRootBone().setRotation(angle);
-		skeleton.setPosition(origin.x, origin.y);
-		skeleton.updateWorldTransform();
-
-		if (bend) {
-			if (bendSize <= 1) {
-				bendSize += delta;
-			}
-		}
+		super.update(delta);
+		skel.setAngle(angle);
+		shotTrack = skel.getAnimState().getCurrent(0);
+		bendTrack = skel.getAnimState().getCurrent(1);
 	}
 
-	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer) {
-		normalMap.draw(batch, skeletonRenderer, 0);
-		skeletonRenderer.draw(batch, skeleton);
-		if (bend) {
-			bendSize = Math.min(1, (animTime / animDuration));
+	public void draw(SpriteBatch batch, SkeletonRenderer skeletonRenderer, float delta) {
+		super.draw(batch, skeletonRenderer, delta);
+		if(bendTrack != null){			
+			bendSize = Math.min(1, (bendTrack.getTime() / bendTrack.getAnimation().getDuration()));			
+		}
+		if(shotTrack == null){
 			if (arrowCount > 1) {
 				for (int i = 0; i < arrowCount; ++i) {
-					float x = origin.x;
-					float y = origin.y;
+					float x = position.x;
+					float y = position.y;
 					float spaceBetweenArrow = .3f / arrowCount;
 					x += MathUtils.cosDeg(angle + 90) * (i * spaceBetweenArrow - (arrowCount - 1) * .5f * spaceBetweenArrow);
 					y += MathUtils.sinDeg(angle + 90) * (i * spaceBetweenArrow - (arrowCount - 1) * .5f * spaceBetweenArrow);
 
-					arrowSprite.setPosition(x - MathUtils.cosDeg(angle) * (widthArrow * bendSize), y - MathUtils.sinDeg(angle) * (widthArrow * bendSize));
+					arrowSprite.setPosition(x - MathUtils.cosDeg(angle) * (widthArrow * 0.8f * bendSize), y - MathUtils.sinDeg(angle) * (widthArrow * 0.8f * bendSize));
 					arrowSprite.setRotation(angle);
 					arrowSprite.draw(batch);
 				}
 			} else {
-				arrowSprite.setPosition(origin.x - MathUtils.cosDeg(angle) * (widthArrow * bendSize), origin.y - MathUtils.sinDeg(angle) * (widthArrow * bendSize));
+				arrowSprite.setPosition(position.x - MathUtils.cosDeg(angle) * (widthArrow * 0.8f * bendSize), position.y - MathUtils.sinDeg(angle) * (widthArrow * 0.8f * bendSize));
 				arrowSprite.setRotation(angle);
 				arrowSprite.draw(batch);
 			}
 		}
 	}
 
-	public float getArrowCount() {
-		return arrowCount;
-	}
-
-	public void setArrowCount(float arrowCount) {
-		this.arrowCount = arrowCount;
-	}
-
 	public Vector2 computeVelocity() {
 		return velocity.set(strength * (float) Math.cos(getAngleRad()), strength * (float) Math.sin(getAngleRad()));
-	}
-
-	/**
-	 * Start bending of the bow
-	 */
-	public void bend() {
-		bend = true;
-		bendSize = 0;
-		animTime = 0;
-		currentAnim = animBend;
-		arrowSprite.setRegion(arrowTexture);
-		arrowSprite.setScale(1, 1.6f);
-		arrowSprite.setSize(widthArrow, heightArrow);
-		arrowSprite.setPosition(origin.x, origin.y);
-		arrowSprite.setRotation(angle);
 	}
 
 	/**
@@ -177,8 +125,8 @@ public class Bow {
 		Array<Entity> arrows = new Array<Entity>();
 		if (arrowCount > 1) {
 			for (int i = 0; i < arrowCount; ++i) {
-				float x = origin.x;
-				float y = origin.y;
+				float x = position.x;
+				float y = position.y;
 				float j = i - arrowCount * .5f;
 				if (j < arrowCount * .5f) {
 					x -= MathUtils.cosDeg(angle + 90) * j * .05f;
@@ -194,29 +142,23 @@ public class Bow {
 				arrows.add(arrow);
 			}
 		} else {
-			Entity arrow = createArrow(origin.x, origin.y);
+			Entity arrow = createArrow(position.x, position.y);
 			arrows.add(arrow);
 		}
-		bend = false;
-		animTime = 0;
-		currentAnim = animShot;
+		skel.addAnim(0, "shot", false, -1);
+		skel.addAnim(1, "bend", false, -1);
 		return arrows;
 	}
 
 	private Entity createArrow(float x, float y) {
 		PolygonShape shape = new PolygonShape();
-
-		// float[] vertives = new float[] { -widthArrow * .5f, -heightArrow *
-		// .5f, -widthArrow * .5f, heightArrow * .5f, widthArrow * .5f,
-		// heightArrow * .5f, widthArrow * .5f, -heightArrow * .5f };
 		float[] vertives = new float[] { -widthArrow * .5f, 0, widthArrow * .2f, -heightArrow * .5f, widthArrow * .5f, 0, widthArrow * .2f, heightArrow * .5f };
-
 		shape.set(vertives);
-
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.type = BodyType.DynamicBody;
 		bodyDef.position.set(x, y);
 		bodyDef.allowSleep = false;
+		//bodyDef.bullet = true;
 		bodyDef.gravityScale = 1f;
 		Body body = GM.world.createBody(bodyDef);
 
@@ -233,14 +175,10 @@ public class Bow {
 		body.setLinearVelocity(computeVelocity().cpy());
 		body.setAngularDamping(1f);
 
-		/*
-		 * Arrow arrow = new Arrow(body, getAngleRad(), new Vector2(widthArrow,
-		 * heightArrow), new Vector2(), arrowTexture, diffuse, normal, effect);
-		 * body.setUserData(arrow);
-		 */
 		Entity arrow = new Entity();
 		Component c = new Box2dSprite(arrow, arrowTexture, false, body, Color.WHITE, new Vector2(widthArrow*1.2f, heightArrow*1.8f), Vector2.Zero, 0);
 		arrow.add(c);
+		//arrow.add(new BodyAttachedEffect(arrow, body, Effect.FIRE));
 		arrow.add(new ArrowRotation(arrow));
 		arrow.add(new Destroyer(arrow));
 		arrow.add(new Stick(arrow));		
@@ -252,25 +190,12 @@ public class Bow {
 		return MathUtils.degreesToRadians * angle;
 	}
 
-	public void setOrigin(float x, float y) {
-		this.origin.x = x;
-		this.origin.y = y;
-	}
-
 	public float getStrength() {
 		return strength;
 	}
 
 	public void setStrength(float strength) {
 		this.strength = strength;
-	}
-
-	public Vector2 getOrigin() {
-		return origin;
-	}
-
-	public void setOrigin(Vector2 origin) {
-		this.origin = origin;
 	}
 
 	public Vector2 getVelocity() {
@@ -289,32 +214,12 @@ public class Bow {
 		this.angle = angle;
 	}
 
-	public boolean isBend() {
-		return bend;
-	}
-
 	public float getBendSize() {
 		return bendSize;
 	}
 
 	public void setBendSize(float bendSize) {
 		this.bendSize = bendSize;
-	}
-
-	public float getWidthArrow() {
-		return widthArrow;
-	}
-
-	public void setWidthArrow(float widthArrow) {
-		this.widthArrow = widthArrow;
-	}
-
-	public float getHeightArrow() {
-		return heightArrow;
-	}
-
-	public void setHeightArrow(float heightArrow) {
-		this.heightArrow = heightArrow;
 	}
 
 	public Sprite getArrowSprite() {
@@ -339,6 +244,14 @@ public class Bow {
 
 	public void setEffect(PooledEffect effect) {
 		this.effect = effect;
+	}
+
+	public float getArrowCount() {
+		return arrowCount;
+	}
+
+	public void setArrowCount(float arrowCount) {
+		this.arrowCount = arrowCount;
 	}
 
 }

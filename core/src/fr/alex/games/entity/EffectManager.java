@@ -40,6 +40,10 @@ public class EffectManager {
 		batch = new SpriteBatch();
 	}
 
+	public void clear(){
+		effects.clear();
+	}
+	
 	public void draw(Matrix4 m, float delta) {
 		batch.setProjectionMatrix(m);
 		batch.begin();
@@ -60,6 +64,10 @@ public class EffectManager {
 		effect.setPosition(Utils.toWorld(x), Utils.toWorld(y));
 		effects.add(effect);
 		return effect;
-	}	
+	}
+	
+	public void removed(PooledEffect effect){
+		effects.removeValue(effect, false);
+	}
 	
 }

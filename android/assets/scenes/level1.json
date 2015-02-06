@@ -4637,6 +4637,19 @@
 				"y" : [ -0.5, -0.5, 0.5, 0.5 ]
 			},
 			"file" : "caisse.png",
+			"customProperties" : 
+			[
+				
+				{
+					"bool" : true,
+					"name" : "active"
+				},
+				
+				{
+					"bool" : true,
+					"name" : "stick"
+				}
+			],
 			"filter" : 1,
 			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
 			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],

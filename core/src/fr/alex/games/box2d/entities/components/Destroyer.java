@@ -50,7 +50,7 @@ public class Destroyer extends Component implements PhysicListener{
 
 	@Override
 	public void preSolve(Entity other, Contact contact, Manifold oldManifold) {
-		if (entity.contains(Destroyable.name)) {
+		if (other.contains(Destroyable.name)) {
 			hasDestroy = true;
 			contact.setEnabled(false);			
 		}

@@ -49,9 +49,9 @@ public class LightManager {
 		//lightPosition.z = Interpolation.linear.apply(minStrength, maxStrength, animTime / animDuration);
 		//lightPosition.set(4, 4, .2f);
 		lightPosition.z = .3f;
-		attenuation.set(.2f, .4f, .8f);
+		attenuation.set(.15f, .35f, .75f);
 		lightColor.set(.7f, .7f, 1f);
-		ambientColor.set(0f, 0f, 0f);
+		ambientColor.set(0.2f, 0.2f, 0.2f);
 		//intensity = .5f;
 		attenuation.z = Interpolation.pow2.apply(minStrength, maxStrength, animTime / animDuration);
 		//intensity = Interpolation.exp10.apply(minStrength, maxStrength, animTime / animDuration);

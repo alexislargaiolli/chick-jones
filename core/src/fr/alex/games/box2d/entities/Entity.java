@@ -14,7 +14,7 @@ import com.esotericsoftware.spine.SkeletonRenderer;
 public class Entity {
 	private boolean dead;
 	private boolean toRemove;
-	private Vector2 position;
+	protected Vector2 position;
 	private HashMap<String, Component> components;
 	private List<PhysicListener> physicListenerComponents;
 	private List<Component> eventListners;
@@ -61,6 +61,12 @@ public class Entity {
 	public void postSolve(Entity other, Contact contact, ContactImpulse impulse){
 		for (PhysicListener c : physicListenerComponents) {			
 			c.postSolve(other, contact, impulse);
+		}
+	}
+	
+	public void destroy(){
+		for(Component c : eventListners){
+			c.onEvent(new ComponentEvent(null, null, EventType.DESTROY));
 		}
 	}
 

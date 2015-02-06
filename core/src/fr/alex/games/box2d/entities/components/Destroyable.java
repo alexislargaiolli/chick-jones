@@ -52,8 +52,9 @@ public class Destroyable extends Component implements PhysicListener{
 
 	@Override
 	public void preSolve(Entity other, Contact contact, Manifold oldManifold) {
-		if (!trigger && entity.contains(Destroyer.name)) {
-			trigger = true;			
+		if (!trigger && other.contains(Destroyer.name)) {
+			trigger = true;
+			contact.setEnabled(false);
 			this.entity.broadcastEvent(new ComponentEvent(this, null, EventType.DESTROY));
 		}
 	}
